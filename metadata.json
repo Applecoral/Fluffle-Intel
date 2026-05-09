@@ -1,0 +1,6 @@
+{
+  "name": "Fluffle Intel",
+  "description": "Tactical intelligence layer for MegaETH Terminal Season 1. Track top farmers, decode transaction strategies, and master the frontier.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["DeFi Analysis", "Transaction Interpretation", "Leaderboard Tracking"]
+}
