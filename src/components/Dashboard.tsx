@@ -1,21 +1,60 @@
+import { useState } from "react";
 import { motion } from "motion/react";
-import { Panel, Badge, BunnyLogo } from "./ui/Tactical";
+import { Panel, Badge, BunnyLogo, TacticalButton } from "./ui/Tactical";
 import { PERFORMANCE_MATRIX } from "../lib/data";
-import { TrendingUp, Users, Activity } from "lucide-react";
+import { TrendingUp, Users, Activity, Search, ArrowRight } from "lucide-react";
 
-export function Dashboard() {
+interface DashboardProps {
+  onSelectWallet?: (address: string, rank: number) => void;
+}
+
+export function Dashboard({ onSelectWallet }: DashboardProps) {
+  const [address, setAddress] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (address && address.startsWith("0x")) {
+      onSelectWallet?.(address, 0);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex justify-between items-start border-b border-white/5 pb-12 relative">
+      <div className="flex flex-col md:flex-row justify-between items-start border-b border-white/5 pb-12 relative gap-8">
         <div className="flex-1">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 bg-blue-500/10 px-3 py-1 border border-blue-500/20">MegaETH Mainnet</span>
+          </div>
           <h1 className="text-8xl font-black tracking-tighter uppercase mb-2">
             Fluffle Intel
           </h1>
           <div className="flex gap-12 items-start mt-4">
             <p className="max-w-xl text-neutral-400 font-medium leading-relaxed">
-              Real-time wallet monitoring and protocol performance analysis on the MegaETH network.
+              Real-time monitoring and intel for the MegaETH mainnet frontier. Analyze wallet behavior and protocol health across the ecosystem.
             </p>
           </div>
+        </div>
+
+        <div className="w-full md:w-96">
+           <form onSubmit={handleSearch} className="flex flex-col gap-4">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600">Analyze Wallet Address</span>
+              <div className="relative group">
+                 <input 
+                    type="text" 
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    placeholder="0x..." 
+                    className="w-full bg-[#0a0a0a] border border-white/10 px-6 py-4 text-sm font-mono focus:outline-none focus:border-blue-500 transition-all placeholder:text-neutral-700"
+                 />
+                 <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-600 hover:text-blue-500 transition-colors">
+                    <ArrowRight size={18} />
+                 </button>
+              </div>
+              <div className="flex items-center gap-2 text-[9px] text-neutral-600 font-bold uppercase tracking-widest px-2">
+                 <Activity size={10} className="text-blue-500/50" />
+                 Live transaction decoding enabled
+              </div>
+           </form>
         </div>
       </div>
 
