@@ -1,6 +1,6 @@
 import { useState, useMemo, ChangeEvent, useEffect } from "react";
 import { LEADERBOARD_DATA } from "../lib/data";
-import { Panel } from "./ui/Tactical";
+import { Panel, BunnyLogo } from "./ui/Tactical";
 import { Search, ExternalLink, Loader2 } from "lucide-react";
 import { fetchWalletPoints, PointsData, fetchLeaderboard } from "../services/megaethService";
 import { motion, AnimatePresence } from "motion/react";
@@ -124,7 +124,8 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
 
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-8 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-8 gap-6 relative overflow-hidden">
+        <BunnyLogo className="absolute -right-2 top-0 opacity-10 scale-50" />
         <div>
           <h1 className="text-4xl font-black tracking-tight text-white uppercase flex items-baseline gap-4">
             Leaderboard

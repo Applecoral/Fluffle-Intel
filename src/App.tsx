@@ -10,38 +10,6 @@ import { motion, AnimatePresence } from "motion/react";
 export default function App() {
   const [activeTab, setActiveTab] = useState("booster");
   const [selectedWallet, setSelectedWallet] = useState<{address: string, rank: number} | null>(null);
-  const [connectedAddress, setConnectedAddress] = useState<string | null>(null);
-
-  const connectWallet = async () => {
-    if (typeof window.ethereum !== 'undefined') {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        if (accounts.length > 0) {
-          setConnectedAddress(accounts[0]);
-          
-          // Suggest switching to MegaETH
-          try {
-            await window.ethereum.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: '0x343a', // 13370 placeholder for Mainnet or Devnet
-                chainName: 'MegaETH',
-                nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-                rpcUrls: ['https://rpc.megaeth.com'], // Placeholder
-                blockExplorerUrls: ['https://mega.etherscan.io']
-              }]
-            });
-          } catch (e) {
-            console.log("Network switch error:", e);
-          }
-        }
-      } catch (error) {
-        console.error("User rejected connection:", error);
-      }
-    } else {
-      alert("Please install a browser wallet like MetaMask to connect.");
-    }
-  };
 
   const renderContent = () => {
     // If a wallet is selected, show its detail view
@@ -61,9 +29,6 @@ export default function App() {
         </motion.div>
       );
     }
-    
-    // If connected and on rank tab, maybe show own details if user wants?
-    // For now, let's just make the connected wallet selectable in the detail view
 
     switch (activeTab) {
       case "booster":
@@ -137,11 +102,7 @@ export default function App() {
          </div>
       </div>
 
-      <Header 
-        connectedAddress={connectedAddress} 
-        onConnect={connectWallet} 
-        onViewProfile={() => connectedAddress && setSelectedWallet({ address: connectedAddress, rank: 0 })}
-      />
+      <Header />
       
       <main className="container mx-auto px-12 py-16 relative z-10 pb-40">
         <AnimatePresence mode="wait">

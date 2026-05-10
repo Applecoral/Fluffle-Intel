@@ -1,4 +1,4 @@
-import { Panel, Badge, TacticalButton } from "./ui/Tactical";
+import { Panel, Badge, TacticalButton, BunnyLogo } from "./ui/Tactical";
 import { PERFORMANCE_MATRIX } from "../lib/data";
 import { Sword, Zap, ShieldAlert, Binary, Rocket } from "lucide-react";
 import { motion } from "motion/react";
@@ -102,6 +102,14 @@ export function StrategiesPage() {
                </div>
             </Panel>
          </div>
+      </div>
+      <div className="mt-20 border-t border-white/5 pt-20 flex flex-col items-center gap-8">
+        <div className="flex items-center gap-8 opacity-20 hover:opacity-50 transition-opacity">
+           <BunnyLogo sickle className="scale-150 rotate-[-15deg]" />
+           <div className="h-12 w-[1px] bg-white/10" />
+           <BunnyLogo className="scale-150 rotate-[15deg]" />
+        </div>
+        <p className="text-[10px] font-bold text-neutral-700 uppercase tracking-[0.4em]">Farming Securely on MegaETH Mainnet</p>
       </div>
     </div>
   );

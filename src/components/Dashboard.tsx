@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Panel, Badge, BunnyLogo, TacticalButton } from "./ui/Tactical";
 import { PERFORMANCE_MATRIX } from "../lib/data";
-import { TrendingUp, Users, Activity, Search, ArrowRight } from "lucide-react";
+import { TrendingUp, Users, Activity, Search, ArrowRight, ShieldCheck, Cpu } from "lucide-react";
+import { publicClient } from "../lib/web3";
 
 interface DashboardProps {
   onSelectWallet?: (address: string, rank: number) => void;
@@ -10,6 +11,29 @@ interface DashboardProps {
 
 export function Dashboard({ onSelectWallet }: DashboardProps) {
   const [address, setAddress] = useState("");
+  const [blockNumber, setBlockNumber] = useState<bigint | null>(null);
+  const [isSyncing, setIsSyncing] = useState(true);
+
+  useEffect(() => {
+    let unwatch: (() => void) | undefined;
+    
+    async function startWatching() {
+      try {
+        const latest = await publicClient.getBlockNumber();
+        setBlockNumber(latest);
+        setIsSyncing(false);
+
+        unwatch = publicClient.watchBlockNumber({
+          onBlockNumber: (num) => setBlockNumber(num),
+        });
+      } catch (e) {
+        console.error("Failed to sync with MegaETH:", e);
+      }
+    }
+
+    startWatching();
+    return () => unwatch?.();
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,29 +83,31 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-        <Panel title="Market Overview" className="md:col-span-4 h-full">
-          <div className="flex flex-col gap-6">
+        <Panel title="Network Status" className="md:col-span-4 h-full relative group bg-blue-500/5">
+          <div className="flex flex-col gap-6 relative z-10">
             <div className="flex justify-between items-end">
-                <div className="text-6xl font-bold tracking-tighter italic">84<span className="text-xl align-top ml-1">%</span></div>
-                <div className="text-[10px] uppercase tracking-widest text-blue-500 font-bold pb-1">Network Activity</div>
-            </div>
-            
-            <div className="w-full bg-white/5 h-1 relative">
-                <motion.div 
-                   initial={{ width: 0 }}
-                   animate={{ width: "84%" }}
-                   className="absolute top-0 left-0 bottom-0 bg-blue-500"
-                />
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4 mt-2">
-                <div className="flex flex-col">
-                    <span className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Vol (24h)</span>
-                    <span className="text-2xl font-bold tracking-tighter text-white">4.2K ETH</span>
+                <div className="text-5xl font-black tracking-tighter italic text-white flex items-baseline gap-2">
+                   {blockNumber ? blockNumber.toString().slice(-6) : "------"}
+                   <span className="text-xs font-mono text-blue-500 animate-pulse">LIVE</span>
                 </div>
-                <div className="flex flex-col">
-                    <span className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Users</span>
-                    <span className="text-2xl font-bold tracking-tighter text-white">82.4K</span>
+                <div className="text-[10px] uppercase tracking-widest text-blue-500 font-bold pb-1">Current Block</div>
+            </div>
+            
+            <div className="flex items-center gap-4 py-4 border-y border-white/5">
+                <div className={`w-2 h-2 rounded-full ${isSyncing ? 'bg-orange-500 animate-pulse' : 'bg-[#00ff85] shadow-[0_0_10px_#00ff85]'}`} />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+                   {isSyncing ? 'Synchronizing Nodes...' : 'Sequencer Real-Time Sync'}
+                </span>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1">
+                    <span className="text-[9px] text-neutral-600 uppercase font-black">Block Time</span>
+                    <span className="text-xs font-mono text-white">~10ms (Mini)</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                    <span className="text-[9px] text-neutral-600 uppercase font-black">Finality</span>
+                    <span className="text-xs font-mono text-white">Sequenced</span>
                 </div>
             </div>
           </div>

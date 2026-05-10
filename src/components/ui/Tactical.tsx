@@ -75,10 +75,13 @@ export function Badge({ children, type = "default" }: { children: ReactNode; typ
   );
 }
 
-export function BunnyLogo({ className = "" }: { className?: string }) {
+export function BunnyLogo({ className = "", sickle = false }: { className?: string; sickle?: boolean }) {
   return (
-    <pre className={`text-[#00ff85] font-mono leading-none ${className}`}>
-{`  (\\(\\
+    <pre className={`text-[#00ff85] font-mono leading-none ${className} select-none pointer-events-none`}>
+{sickle ? `  (\\(\\  /
+  ( -.-)/
+  o_(")(")` : 
+`  (\\(\\
   ( -.-)
   o_(")(")`}
     </pre>
