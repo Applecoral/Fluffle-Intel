@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import { fetchWalletTransactions, fetchWalletPoints } from "../services/megaethService";
-import { generateWalletIntel } from "../services/aiService";
 import { interpretTransaction, summarizeWallet } from "../lib/interpreter";
 import { WalletProfile, InterpretedTransaction } from "../types";
 import { Panel, Badge, TacticalButton } from "./ui/Tactical";
@@ -16,8 +15,6 @@ interface WalletDetailProps {
 export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
   const [profile, setProfile] = useState<WalletProfile | null>(null);
   const [interpretedTxs, setInterpretedTxs] = useState<InterpretedTransaction[]>([]);
-  const [intelReport, setIntelReport] = useState<string | null>(null);
-  const [isGeneratingIntel, setIsGeneratingIntel] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
@@ -68,14 +65,6 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
     </div>
   );
 
-  const loadIntel = async () => {
-    if (!profile || interpretedTxs.length === 0) return;
-    setIsGeneratingIntel(true);
-    const report = await generateWalletIntel(profile, interpretedTxs);
-    setIntelReport(report);
-    setIsGeneratingIntel(false);
-  };
-
   const filteredTransactions = interpretedTxs.filter(tx => {
     if (activeFilter === "all") return true;
     if (activeFilter === "failed") return tx.failed;
@@ -121,63 +110,20 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 mb-8">
-        <Panel title="Data Analysis Engine">
-           <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="flex-1 space-y-6">
-                 <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                       <BrainCircuit size={18} className="text-blue-500" />
-                    </div>
-                    <div>
-                       <h3 className="text-sm font-bold uppercase tracking-widest text-white">Gemini Grounded Intel</h3>
-                       <p className="text-[10px] text-neutral-500 uppercase font-black">Reasoning based on real-time onchain vectors</p>
-                    </div>
-                 </div>
-                 
-                 <div className="p-6 bg-black/40 border border-white/5 min-h-[120px] relative overflow-hidden">
-                    {isGeneratingIntel ? (
-                      <div className="flex items-center gap-4 animate-pulse">
-                         <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" />
-                         <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.3em]">Deciphering behavior...</span>
-                      </div>
-                    ) : intelReport ? (
-                      <div className="text-sm text-neutral-300 leading-relaxed font-mono whitespace-pre-line">
-                         {intelReport}
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-center justify-center text-center py-4">
-                         <p className="text-[10px] text-neutral-600 uppercase tracking-widest mb-4">Awaiting Signal Analysis</p>
-                         <TacticalButton onClick={loadIntel} size="sm">Generate Intel Report</TacticalButton>
-                      </div>
-                    )}
-                    <div className="absolute top-0 right-0 p-2 opacity-5">
-                       <Activity size={40} />
-                        </div>
-                     </div>
-                  </div>
-
-                  <div className="w-full md:w-64 space-y-4">
-                     <div className="flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-neutral-600 border-b border-white/5 pb-2">
-                        <span>Reliability Score</span>
-                        <span className="text-blue-500">98.2%</span>
-                     </div>
-                     <div className="grid grid-cols-1 gap-2">
-                        <div className="flex justify-between items-center text-[10px] bg-white/2 p-2 border border-white/5 uppercase font-bold tracking-tighter">
-                           <span className="text-neutral-500">Latency</span>
-                           <span className="text-white font-mono">1.2s</span>
-                        </div>
-                        <div className="flex justify-between items-center text-[10px] bg-white/2 p-2 border border-white/5 uppercase font-bold tracking-tighter">
-                           <span className="text-neutral-500">Tokens</span>
-                           <span className="text-white font-mono">428</span>
-                        </div>
-                     </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <Panel title="Analysis Context">
+           <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                 <Activity size={16} className="text-[#00ff85]" />
+                 <span className="text-[10px] text-white font-bold uppercase tracking-widest">Protocol Intelligence</span>
               </div>
+              <div className="w-full h-[1px] bg-white/5" />
+              <p className="text-[10px] text-neutral-400 font-medium leading-relaxed font-mono">
+                {profile.summary}
+              </p>
            </div>
         </Panel>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
         <Panel title="Overview" className="col-span-3">
           <div className="grid grid-cols-3 gap-12">
              <div className="space-y-1">
@@ -212,9 +158,9 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-4 space-y-12">
           <div className="space-y-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 block">AI Interpretation</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 block">System Interpretation</span>
             <p className="text-sm text-neutral-400 font-medium leading-relaxed border-l-2 border-blue-500/30 pl-6 py-2">
-              {profile.summary}
+              All transactions decoded via local registry lookup. Verification complete.
             </p>
           </div>
           

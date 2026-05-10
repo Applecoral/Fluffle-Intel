@@ -35,61 +35,8 @@ export function interpretTransaction(tx: Transaction): InterpretedTransaction {
   const failed = tx.isError === "1";
   const prefix = failed ? "[failed] " : "";
 
-  let sentence = "";
-
-  switch (protocol.category) {
-    case "bridge":
-      if (ethValue) {
-        sentence = `${prefix}Bridged ${ethValue} to ${protocol.name}`;
-      } else {
-        sentence = `${prefix}Interacted with ${protocol.name}`;
-      }
-      break;
-
-    case "swap":
-      sentence = `${prefix}${capitalize(action)} on ${protocol.name}`;
-      if (ethValue) sentence += ` with ${ethValue}`;
-      break;
-
-    case "liquidity":
-      sentence = `${prefix}${capitalize(action)} on ${protocol.name}`;
-      if (ethValue) sentence += ` (${ethValue})`;
-      break;
-
-    case "lend":
-      sentence = `${prefix}${capitalize(action)} on ${protocol.name}`;
-      if (ethValue) sentence += ` — ${ethValue}`;
-      break;
-
-    case "stake":
-      sentence = `${prefix}${capitalize(action)} on ${protocol.name}`;
-      if (ethValue) sentence += ` — ${ethValue}`;
-      break;
-
-    case "mint":
-      sentence = `${prefix}Minted on ${protocol.name}`;
-      if (ethValue) sentence += ` for ${ethValue}`;
-      break;
-
-    case "game":
-      sentence = `${prefix}Played ${protocol.name}`;
-      if (ethValue) sentence += ` — spent ${ethValue}`;
-      break;
-
-    case "unknown":
-      if (!tx.input || tx.input === "0x") {
-        sentence = ethValue
-          ? `${prefix}Sent ${ethValue} to ${tx.to.slice(0, 6)}...${tx.to.slice(-4)}`
-          : `${prefix}Sent transaction to unknown contract`;
-      } else {
-        sentence = `${prefix}${capitalize(action)} on unknown protocol (${tx.to.slice(0, 6)}...${tx.to.slice(-4)})`;
-      }
-      break;
-
-    default:
-      sentence = `${prefix}${capitalize(action)} on ${protocol.name}`;
-      if (ethValue) sentence += ` — ${ethValue}`;
-  }
+  // Simplified lookup-based decoding as requested
+  const sentence = `${prefix}${action} ${protocol.name}${ethValue ? ` (${ethValue})` : ""}`;
 
   return {
     sentence,
