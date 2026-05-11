@@ -232,7 +232,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                           </div>
                           <div className="flex flex-col items-end gap-2">
                              <span className="text-[9px] font-mono text-neutral-700 uppercase group-hover:text-neutral-500 transition-colors">{tx.hash.slice(0, 8)}</span>
-                             <a href={`https://mega.etherscan.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-neutral-500 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">
+                             <a href={`https://miniblocks.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-neutral-500 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">
                                 <LinkIcon size={10} />
                              </a>
                           </div>

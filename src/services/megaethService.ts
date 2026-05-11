@@ -12,26 +12,26 @@ export interface PointsData {
 }
 
 /**
- * Fetches the recent 100 transactions for a given wallet address on MegaETH.
+ * Fetches the recent transactions from Miniblocks API for a given wallet address on MegaETH.
  */
 export async function fetchWalletTransactions(address: string): Promise<Transaction[]> {
   try {
-    const params = new URLSearchParams({
-      module: 'account',
-      action: 'txlist',
-      address: address,
-      startblock: '0',
-      endblock: '99999999',
-      page: '1',
-      offset: '100',
-      sort: 'desc'
-    });
-
-    const response = await fetch(`${EXPLORER_API_URL}?${params.toString()}`);
+    const response = await fetch(`https://miniblocks.io/api/address/${address}/transactions`);
+    if (!response.ok) return [];
+    
     const data = await response.json();
 
-    if (data.status === '1' && Array.isArray(data.result)) {
-      return data.result;
+    if (Array.isArray(data)) {
+      return data.map((tx: any) => ({
+        hash: tx.txHash,
+        from: tx.fromAddress,
+        to: tx.toAddress,
+        valueEth: tx.valueEth,
+        timestamp: tx.timestamp,
+        success: tx.success,
+        categoryLabel: tx.txCategoryLabel,
+        direction: tx.direction
+      }));
     }
     return [];
   } catch (error) {

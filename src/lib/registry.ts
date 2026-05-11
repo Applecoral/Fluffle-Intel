@@ -7,30 +7,60 @@ export const PROTOCOLS: Record<string, Protocol> = {
     category: "bridge",
     isTerminalApproved: true,
   },
-  // Teko Finance (Lending)
-  "0x1234567890123456789012345678901234567890": {
+  // Kumbaya (Swap)
+  "0x68b34591f662508076927803c567cc8006988a09": {
+    name: "Kumbaya",
+    category: "swap",
+    isTerminalApproved: true,
+  },
+  // Top Strike (Game)
+  "0xf3393dc9e747225fca0d61bfe588ba2838afb077": {
+    name: "Top Strike",
+    category: "game",
+    isTerminalApproved: true,
+  },
+  // Prism (Liquidity)
+  "0xed62616a7c1dd354801f4e72389299a81493e004": {
+    name: "Prism",
+    category: "liquidity",
+    isTerminalApproved: true,
+  },
+  // Xeet (Other)
+  "0x57020375f4df37012a2f1c765d5a0f9a2bb77996": {
+    name: "Xeet",
+    category: "other",
+    isTerminalApproved: true,
+  },
+  // Mega Domains (Mint)
+  "0x5b424c6ccba77b32b9625a6fd5a30d409d20d997": {
+    name: "Mega Domains",
+    category: "mint",
+    isTerminalApproved: true,
+  },
+  // GMX (Swap)
+  "0x8ca83c6243b7461ae24b5cb167912f5c055f80b0": {
+    name: "GMX",
+    category: "swap",
+    isTerminalApproved: true,
+  },
+  // World Markets (Swap)
+  "0x5e3ae52eba0f9740364bd5dd39738e1336086a8b": {
+    name: "World Markets",
+    category: "swap",
+    isTerminalApproved: true,
+  },
+  // Showdown TCG (Game)
+  "0x8aaf217a7a1534327234bd09474fc358e6e4d322": {
+    name: "Showdown TCG",
+    category: "game",
+    isTerminalApproved: true,
+  },
+  // Teko Finance (Lending) - Identified high frequency
+  "0x955d56f6391a496231509134e0d2beadf82a223f": {
     name: "Teko Finance",
     category: "lend",
     isTerminalApproved: true,
   },
-  // Gutter (DEX)
-  "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd": {
-    name: "Gutter",
-    category: "swap",
-    isTerminalApproved: true,
-  },
-  // The Fluffle (NFTs / Game)
-  "0x9876543210987654321098765432109876543210": {
-    name: "The Fluffle",
-    category: "game",
-    isTerminalApproved: true,
-  },
-  // Aave V3
-  "0x617ba037e499630d70205183391456c06ad55123": {
-    name: "Aave V3",
-    category: "lend",
-    isTerminalApproved: true,
-  }
 };
 
 export const TOKENS: Record<string, Token> = {
@@ -98,8 +128,13 @@ export const SELECTORS: Record<string, string> = {
   "0x": "Sent ETH",
 };
 
-export function getProtocol(address: string): Protocol {
-  return PROTOCOLS[address.toLowerCase()] || { name: `Unknown (${address.slice(0, 6)}...${address.slice(-4)})`, category: "unknown" };
+export function getProtocol(address: string | null | undefined): Protocol {
+  if (!address) return { name: "Contract Creation", category: "other" };
+  const addr = address.toLowerCase();
+  return PROTOCOLS[addr] || { 
+    name: `Unknown protocol (${address.slice(0, 6)}...${address.slice(-4)})`, 
+    category: "unknown" 
+  };
 }
 
 export function getAction(inputData: string): string {

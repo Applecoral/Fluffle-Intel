@@ -13,11 +13,11 @@ export interface Transaction {
   hash: string;
   from: string;
   to: string;
-  value: string; // wei
-  input: string;
-  timeStamp: string;
-  gasUsed: string;
-  isError: string;
+  valueEth: number;
+  timestamp: string;
+  success: boolean;
+  categoryLabel: string;
+  direction: string;
 }
 
 export interface InterpretedTransaction {

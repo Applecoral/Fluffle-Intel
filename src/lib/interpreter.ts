@@ -1,19 +1,18 @@
 import { Transaction, InterpretedTransaction, WalletProfile } from "../types";
 import { getProtocol, getAction } from "./registry";
 
-function formatValue(weiValue: string, tokenSymbol = "ETH"): string | null {
-  const val = parseFloat(weiValue) / 1e18;
-  if (val === 0) return null;
-  if (val < 0.001) return `<0.001 ${tokenSymbol}`;
-  if (val < 1) return `${val.toFixed(4)} ${tokenSymbol}`;
-  return `${val.toFixed(2)} ${tokenSymbol}`;
+function formatValue(ethValue: number, tokenSymbol = "ETH"): string | null {
+  if (ethValue === 0) return null;
+  if (ethValue < 0.001) return `<0.001 ${tokenSymbol}`;
+  if (ethValue < 1) return `${ethValue.toFixed(4)} ${tokenSymbol}`;
+  return `${ethValue.toFixed(2)} ${tokenSymbol}`;
 }
 
 function formatTime(timestamp: string): string {
-  const date = new Date(parseInt(timestamp) * 1000);
-  const now = Date.now();
-  const diff = now - date.getTime();
-  const mins = Math.floor(diff / 60000);
+  const date = new Date(timestamp);
+  const now = new Date();
+  const diff = now.getTime() - date.getTime();
+  const mins = Math.max(0, Math.floor(diff / 60000));
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
 
@@ -29,14 +28,18 @@ function capitalize(str: string): string {
 
 export function interpretTransaction(tx: Transaction): InterpretedTransaction {
   const protocol = getProtocol(tx.to);
-  const action = getAction(tx.input);
-  const ethValue = formatValue(tx.value);
-  const time = formatTime(tx.timeStamp);
-  const failed = tx.isError === "1";
+  const ethValueStr = formatValue(tx.valueEth);
+  const time = formatTime(tx.timestamp);
+  const failed = !tx.success;
   const prefix = failed ? "[failed] " : "";
 
-  // Simplified lookup-based decoding as requested
-  const sentence = `${prefix}${action} ${protocol.name}${ethValue ? ` (${ethValue})` : ""}`;
+  let action = "Interacted with";
+  if (tx.categoryLabel === "Transfer") {
+    action = tx.direction === "sent" ? "Sent" : "Received";
+  }
+
+  // Interacted with [Protocol Name] — 0.01 ETH — 2d ago
+  const sentence = `${prefix}${action} ${protocol.name}${ethValueStr ? ` — ${ethValueStr}` : ""} — ${time}`;
 
   return {
     sentence,
@@ -45,7 +48,7 @@ export function interpretTransaction(tx: Transaction): InterpretedTransaction {
     category: protocol.category,
     hash: tx.hash,
     failed,
-    valueEth: ethValue || undefined,
+    valueEth: ethValueStr || undefined,
     raw: tx
   };
 }
@@ -65,11 +68,14 @@ export function summarizeWallet(address: string, transactions: Transaction[], ra
     categoryCounts[t.category]++;
   });
 
-  const topProtocolEntry = Object.entries(protocolCounts).sort((a, b) => b[1] - a[1])[0];
-  const dominantCategoryEntry = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1])[0];
+  const sortedProtocols = Object.entries(protocolCounts).sort((a, b) => b[1] - a[1]);
+  const sortedCategories = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1]);
+  
+  const topProtocolEntry = sortedProtocols[0];
+  const dominantCategoryEntry = sortedCategories[0];
 
   const totalTx = transactions.length;
-  const failedTx = transactions.filter(t => t.isError === "1").length;
+  const failedTx = transactions.filter(t => !t.success).length;
 
   const summary = [
     `This wallet has made ${totalTx} transactions on MegaETH.`,
