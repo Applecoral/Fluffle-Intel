@@ -3,7 +3,7 @@ import { fetchWalletTransactions, fetchWalletPoints } from "../services/megaethS
 import { interpretTransaction, summarizeWallet } from "../lib/interpreter";
 import { WalletProfile, InterpretedTransaction } from "../types";
 import { Panel, Badge, TacticalButton } from "./ui/Tactical";
-import { ArrowLeft, Clock, Link as LinkIcon, AlertCircle, TrendingUp, ShieldCheck, Loader2, Activity, CheckCircle2, XCircle, BrainCircuit } from "lucide-react";
+import { ArrowLeft, Clock, Link as LinkIcon, AlertCircle, TrendingUp, ShieldCheck, Loader2, Activity, CheckCircle2, XCircle, BrainCircuit, Copy, Check } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface WalletDetailProps {
@@ -15,6 +15,7 @@ interface WalletDetailProps {
 export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
   const [profile, setProfile] = useState<WalletProfile | null>(null);
   const [interpretedTxs, setInterpretedTxs] = useState<InterpretedTransaction[]>([]);
+  const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
@@ -50,6 +51,16 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
     }
     loadWalletData();
   }, [address, rank]);
+
+  const handleBack = () => {
+    onBack();
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(address);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   if (isLoading) return (
     <div className="flex flex-col items-center justify-center min-h-[400px] gap-4">
@@ -91,9 +102,18 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         <div className="flex-1">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-4xl font-black tracking-tighter text-white uppercase flex items-center gap-4">
-                {profile.address.slice(0, 16)}...{profile.address.slice(-4)}
-              </h1>
+              <div className="flex items-center gap-4">
+                <h1 className="text-4xl font-black tracking-tighter text-white uppercase flex items-center gap-4">
+                  {profile.address.slice(0, 16)}...{profile.address.slice(-4)}
+                </h1>
+                <button 
+                  onClick={copyToClipboard}
+                  className="p-2 border border-white/5 bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-500 hover:text-blue-500 transition-all rounded"
+                  title="Copy Full Address"
+                >
+                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                </button>
+              </div>
               <div className="flex gap-4 mt-2">
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500">Active</span>
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600">•</span>

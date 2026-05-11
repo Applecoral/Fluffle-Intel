@@ -1,7 +1,7 @@
 import { useState, useMemo, ChangeEvent, useEffect } from "react";
 import { LEADERBOARD_DATA } from "../lib/data";
 import { Panel, BunnyLogo } from "./ui/Tactical";
-import { Search, ExternalLink, Loader2 } from "lucide-react";
+import { Search, ExternalLink, Loader2, Copy, Check } from "lucide-react";
 import { fetchWalletPoints, PointsData, fetchLeaderboard } from "../services/megaethService";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -16,6 +16,7 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
   const [livePoints, setLivePoints] = useState<Record<string, PointsData>>({});
   const [isLoadingPoints, setIsLoadingPoints] = useState(false);
   const [liveLeaderboard, setLiveLeaderboard] = useState<any[]>([]);
+  const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
 
   // Fetch live leaderboard on mount
   useEffect(() => {
@@ -101,6 +102,13 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
   const handleItemsPerPageChange = (count: number) => {
     setItemsPerPage(count);
     setCurrentPage(1);
+  };
+
+  const copyToClipboard = (address: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(address);
+    setCopiedAddress(address);
+    setTimeout(() => setCopiedAddress(null), 2000);
   };
 
   const getPageNumbers = () => {
@@ -189,8 +197,17 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
                         {entry.rank.toString().padStart(2, '0')}
                       </td>
                       <td className="px-6 py-5">
-                        <div className="text-white font-bold group-hover:text-blue-500 transition-colors tracking-tight text-xs">
-                          {entry.address}
+                        <div className="flex items-center gap-3">
+                          <div className="text-white font-bold group-hover:text-blue-500 transition-colors tracking-tight text-xs">
+                            {entry.address}
+                          </div>
+                          <button 
+                            onClick={(e) => copyToClipboard(entry.address, e)}
+                            className="p-1.5 border border-white/5 bg-white/2 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-600 hover:text-blue-500 transition-all rounded"
+                            title="Copy Address"
+                          >
+                            {copiedAddress === entry.address ? <Check size={10} /> : <Copy size={10} />}
+                          </button>
                         </div>
                       </td>
                       <td className="px-6 py-5 text-neutral-300 font-mono text-xs">
