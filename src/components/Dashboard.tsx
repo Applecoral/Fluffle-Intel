@@ -13,6 +13,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
   const [address, setAddress] = useState("");
   const [blockNumber, setBlockNumber] = useState<bigint | null>(null);
   const [isSyncing, setIsSyncing] = useState(true);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     let unwatch: (() => void) | undefined;
@@ -34,6 +35,13 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
     startWatching();
     return () => unwatch?.();
   }, []);
+
+  const handleCopy = () => {
+    if (!address) return;
+    navigator.clipboard.writeText(address);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -68,23 +76,31 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
               <div className="relative group">
                   <input 
                      type="text" 
+                     id="wallet-search-input-dashboard"
                      value={address}
                      onChange={(e) => setAddress(e.target.value)}
                      placeholder="0x..." 
-                     className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 px-6 py-4 pr-24 text-sm font-mono focus:outline-none focus:border-blue-500 transition-all placeholder:text-neutral-500 dark:placeholder:text-neutral-700 text-black dark:text-white shadow-sm dark:shadow-none"
+                     className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 px-6 py-4 pr-24 text-sm font-mono focus:outline-none focus:border-blue-500 transition-all placeholder:text-neutral-600 dark:placeholder:text-neutral-500 text-black dark:text-white shadow-sm dark:shadow-none"
+                     aria-label="Wallet Address"
                   />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1">
                      {address && (
                         <button 
                            type="button"
-                           onClick={() => navigator.clipboard.writeText(address)}
-                           className="text-neutral-600 dark:text-neutral-600 hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
+                           onClick={handleCopy}
+                           className={`p-2 transition-colors ${isCopied ? "text-green-500" : "text-neutral-700 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400"}`}
+                           aria-label="Copy address"
+                           title="Copy address"
                         >
-                           <Copy size={16} />
+                           {isCopied ? <Check size={16} /> : <Copy size={16} />}
                         </button>
                      )}
-                     <button type="submit" className="text-neutral-600 dark:text-neutral-600 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
-                        <ArrowRight size={18} />
+                     <button 
+                        type="submit" 
+                        className="p-2 text-neutral-700 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center justify-center"
+                        aria-label="Submit search"
+                     >
+                        <ArrowRight size={20} />
                      </button>
                   </div>
                </div>
@@ -100,7 +116,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                   <TrendingUp size={12} className="animate-pulse" /> Live Network Intel
                 </span>
                 {blockNumber && (
-                  <span className="text-[9px] font-mono text-neutral-400 dark:text-neutral-600">
+                  <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 font-bold">
                     BLK #{blockNumber.toString()}
                   </span>
                 )}
@@ -145,12 +161,12 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
         <Panel title="Current Progress">
            <div className="space-y-8">
               <div className="flex gap-6">
-                 <div className="text-8xl font-black text-black/5 dark:text-white/5 tracking-tighter leading-none italic font-serif">
+                 <div className="text-8xl font-black text-black/10 dark:text-white/10 tracking-tighter leading-none italic font-serif select-none" aria-hidden="true">
                     S1
                  </div>
                  <div className="flex flex-col justify-center">
-                    <h3 className="text-xl font-bold uppercase tracking-tighter text-black dark:text-white">Season 1: Alpha</h3>
-                    <p className="text-[10px] text-neutral-500 dark:text-neutral-500 uppercase tracking-widest mt-1 font-bold">Ends: June 23</p>
+                    <h2 className="text-xl font-black uppercase tracking-tighter text-black dark:text-white">Season 1: Alpha</h2>
+                    <p className="text-[10px] text-neutral-600 dark:text-neutral-400 uppercase tracking-widest mt-1 font-black">Ends: June 23</p>
                  </div>
               </div>
               

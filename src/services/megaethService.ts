@@ -80,32 +80,35 @@ export async function fetchLeaderboard(limit = 100, offset = 0): Promise<any[]> 
  * Fetches real-time points data from MegaETH Terminal API (or fallback to estimates).
  */
 export async function fetchWalletPoints(address: string): Promise<PointsData> {
-  // Check static leaderboard first (source of truth for top 1000)
+  // Check static leaderboard first
   const staticEntry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === address.toLowerCase());
   
-  if (staticEntry) {
-    return {
-      allTimePoints: staticEntry.allTimePoints,
-      weeklyPoints: staticEntry.weeklyPoints,
-      rank: staticEntry.rank,
-      topProtocol: staticEntry.topProtocol
-    };
-  }
-
   try {
-    // Attempting to fetch from terminal API for others
+    // ALWAYS attempt to fetch from terminal API for live data
     const response = await fetch(`${TERMINAL_API_URL}/user/${address}`);
     if (response.ok) {
         const data = await response.json();
-        return {
-            allTimePoints: data.points || 0,
-            weeklyPoints: data.weekly_points || 0,
-            rank: data.rank || 0,
-            topProtocol: data.top_protocol || "Unknown"
-        };
+        if (data && data.status !== "not_found") {
+            return {
+                allTimePoints: data.points || (staticEntry?.allTimePoints ?? 0),
+                weeklyPoints: data.weekly_points || (staticEntry?.weeklyPoints ?? 0),
+                rank: data.rank || (staticEntry?.rank ?? 0),
+                topProtocol: data.top_protocol || (staticEntry?.topProtocol !== "Pending" ? (staticEntry?.topProtocol || "Unknown") : "Unknown")
+            };
+        }
     }
     
-    // Fallback: estimate points based on transaction count
+    // Fallback if not found in live API
+    if (staticEntry) {
+      return {
+        allTimePoints: staticEntry.allTimePoints,
+        weeklyPoints: staticEntry.weeklyPoints,
+        rank: staticEntry.rank,
+        topProtocol: staticEntry.topProtocol
+      };
+    }
+
+    // Secondary fallback: estimate points based on transaction count
     const txs = await fetchWalletTransactions(address);
     const score = txs.length * 12;
     return {
@@ -115,6 +118,14 @@ export async function fetchWalletPoints(address: string): Promise<PointsData> {
         topProtocol: txs.length > 0 ? getProtocol(txs[0].to).name : "Inactive"
     };
   } catch (error) {
+    if (staticEntry) {
+        return {
+            allTimePoints: staticEntry.allTimePoints,
+            weeklyPoints: staticEntry.weeklyPoints,
+            rank: staticEntry.rank,
+            topProtocol: staticEntry.topProtocol
+        };
+    }
     return { allTimePoints: 0, weeklyPoints: 0, rank: 0, topProtocol: "Unknown" };
   }
 }

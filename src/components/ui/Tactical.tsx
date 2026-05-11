@@ -9,13 +9,13 @@ interface PanelProps {
 
 export function Panel({ title, children, className = "" }: PanelProps) {
   return (
-    <div className={`bg-white/40 dark:bg-[#0c0c0c] border border-black/10 dark:border-white/10 relative overflow-hidden backdrop-blur-sm shadow-sm dark:shadow-none ${className}`}>
+    <section className={`bg-white/40 dark:bg-[#0c0c0c] border border-black/10 dark:border-white/10 relative overflow-hidden backdrop-blur-sm shadow-sm dark:shadow-none ${className}`}>
       {title && (
         <div className="border-b border-black/10 dark:border-white/10 bg-white/60 dark:bg-[#0c0c0c] px-4 py-2 flex justify-between items-center transition-colors">
-          <span className="text-[9px] font-sans font-bold uppercase tracking-[0.3em] text-blue-600 dark:text-blue-500">
+          <h2 className="text-[10px] font-sans font-black uppercase tracking-[0.3em] text-blue-700 dark:text-blue-400">
             {title}
-          </span>
-          <div className="flex gap-1.5">
+          </h2>
+          <div className="flex gap-1.5" aria-hidden="true">
             <div className="w-[1px] h-3 bg-black/10 dark:bg-white/10 rotate-12" />
           </div>
         </div>
@@ -23,7 +23,7 @@ export function Panel({ title, children, className = "" }: PanelProps) {
       <div className="p-6">
         {children}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -62,14 +62,14 @@ export function TacticalButton({ children, onClick, active, className = "", icon
 
 export function Badge({ children, type = "default" }: { children: ReactNode; type?: "default" | "success" | "error" | "warning" }) {
   const colors = {
-    default: "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10",
-    success: "bg-blue-500/10 text-blue-600 dark:text-blue-500 border-blue-500/20",
-    error: "bg-red-500/10 text-red-600 dark:text-red-500 border-red-500/20",
-    warning: "bg-orange-500/10 text-orange-600 dark:text-orange-500 border-orange-500/20",
+    default: "bg-black/5 dark:bg-white/5 text-neutral-700 dark:text-neutral-200 border-black/20 dark:border-white/20",
+    success: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/30",
+    error: "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/30",
+    warning: "bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/30",
   };
 
   return (
-    <span className={`px-2 py-0.5 text-[9px] font-sans font-bold uppercase tracking-widest border transition-colors ${colors[type]}`}>
+    <span className={`px-2 py-0.5 text-[10px] font-sans font-black uppercase tracking-widest border transition-colors ${colors[type]}`}>
       {children}
     </span>
   );

@@ -55,7 +55,7 @@ export const PROTOCOLS: Record<string, Protocol> = {
     category: "game",
     isTerminalApproved: true,
   },
-  // Teko Finance (Lending) - Identified high frequency
+  // Teko Finance (Lending)
   "0x955d56f6391a496231509134e0d2beadf82a223f": {
     name: "Teko Finance",
     category: "lend",
@@ -81,51 +81,51 @@ export const SELECTORS: Record<string, string> = {
   "0x4a25d94a": "swapped tokens for exact ETH",
   "0x18cbafe5": "swapped exact tokens for ETH",
   "0x5c11d795": "swapped exact tokens for tokens (with fee)",
-  "0x414bf389": "Swapped on",
-  "0xdb3e2198": "Swapped on",
-  "0xac9650d8": "Executed multicall",
-  "0x5ae401dc": "Executed multicall",
+  "0x414bf389": "swapped on",
+  "0xdb3e2198": "swapped on",
+  "0xac9650d8": "executed multicall",
+  "0x5ae401dc": "executed multicall",
 
   // Liquidity
-  "0xe8e33700": "Added liquidity to",
-  "0xf305d719": "Added ETH liquidity to",
-  "0xbaa2abde": "Removed liquidity from",
-  "0x02751cec": "Removed ETH liquidity from",
-  "0xa34123a7": "Minted position on",
-  "0x49404b7c": "Burned position on",
-  "0xfc6f7865": "Collected fees from",
-  "0x219f5d17": "Increased liquidity on",
-  "0x0c49ccbe": "Decreased liquidity from",
+  "0xe8e33700": "added liquidity",
+  "0xf305d719": "added ETH liquidity",
+  "0xbaa2abde": "removed liquidity",
+  "0x02751cec": "removed ETH liquidity",
+  "0xa34123a7": "minted position",
+  "0x49404b7c": "burned position",
+  "0xfc6f7865": "collected fees",
+  "0x219f5d17": "increased liquidity",
+  "0x0c49ccbe": "decreased liquidity",
 
   // Lending
-  "0xe8eda9df": "Deposited to",
-  "0x69328dec": "Withdrew from",
-  "0xa415bcad": "Borrowed from",
-  "0x573ade81": "Repaid to",
-  "0x617ba037": "Supplied on",
-  "0x8f112a52": "Withdrew from",
-  "0x6a439be9": "Borrowed from",
-  "0xd65dc7a1": "Liquidated on",
+  "0xe8eda9df": "deposited",
+  "0x69328dec": "withdrew",
+  "0xa415bcad": "borrowed",
+  "0x573ade81": "repaid",
+  "0x617ba037": "supplied",
+  "0x8f112a52": "withdrew",
+  "0x6a439be9": "borrowed",
+  "0xd65dc7a1": "liquidated",
 
   // Staking
-  "0xa694fc3a": "Staked on",
-  "0x2e1a7d4d": "Unstaked from",
-  "0x3d18b912": "Claimed rewards from",
-  "0xe9fad8ee": "Exited stake on",
+  "0xa694fc3a": "staked",
+  "0x2e1a7d4d": "unstaked",
+  "0x3d18b912": "claimed rewards",
+  "0xe9fad8ee": "exited stake",
 
   // NFT
-  "0x40c10f19": "Minted on",
-  "0xa22cb465": "Set approval on",
-  "0x42842e0e": "Transferred NFT from",
-  "0xb88d4fde": "Transferred NFT from",
-  "0x1249c58b": "Minted NFT on",
+  "0x40c10f19": "minted",
+  "0xa22cb465": "set approval",
+  "0x42842e0e": "transferred NFT",
+  "0xb88d4fde": "transferred NFT",
+  "0x1249c58b": "minted NFT",
 
   // Bridges
-  "0x9f3d45ac": "Bridged tokens via",
-  "0xd0e30db0": "Bridged to",
+  "0x9f3d45ac": "bridged tokens",
+  "0xd0e30db0": "deposited ETH",
 
   // Generic
-  "0x": "Sent ETH",
+  "0x": "sent ETH",
 };
 
 export function getProtocol(address: string | null | undefined): Protocol {

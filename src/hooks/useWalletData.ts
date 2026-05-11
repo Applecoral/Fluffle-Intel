@@ -7,6 +7,9 @@ export interface Transaction {
   category: string;
   hash: string;
   failed: boolean;
+  blockNumber?: string;
+  direction?: string;
+  txCategoryLabel?: string;
 }
 
 export interface WalletData {

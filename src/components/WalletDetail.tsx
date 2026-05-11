@@ -72,7 +72,11 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
   return (
     <div className="flex flex-col gap-12 pb-20">
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-8 border-b border-black/10 dark:border-white/5 pb-8 relative transition-colors">
-        <button onClick={onBack} className="p-3 md:p-4 border border-black/10 dark:border-white/5 bg-white/40 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+        <button 
+          onClick={onBack} 
+          className="p-3 md:p-4 border border-black/10 dark:border-white/5 bg-white/40 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all flex items-center justify-center"
+          aria-label="Back to dashboard"
+        >
           <ArrowLeft size={18} />
         </button>
         <div className="flex-1 w-full">
@@ -85,8 +89,9 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                 </h1>
                 <button 
                   onClick={copyToClipboard}
-                  className="p-2 border border-black/10 dark:border-white/5 bg-white/20 dark:bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-600 hover:text-blue-600 dark:hover:text-blue-500 transition-all rounded"
+                  className="p-2 border border-black/10 dark:border-white/5 bg-white/20 dark:bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-700 dark:text-neutral-400 hover:text-blue-700 dark:hover:text-blue-400 transition-all rounded flex items-center justify-center min-w-[32px] min-h-[32px]"
                   title="Copy Full Address"
+                  aria-label="Copy wallet address"
                 >
                   {copied ? <Check size={14} /> : <Copy size={14} />}
                 </button>
@@ -139,9 +144,9 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                    }, {} as Record<string, number>)
                 ).sort((a, b) => (b[1] as number) - (a[1] as number)).map(([p, count]) => (
                   <div key={p} className="space-y-2">
-                    <div className="flex justify-between text-[9px] uppercase font-bold tracking-widest">
-                      <span className="text-neutral-700 dark:text-neutral-400 truncate max-w-[180px]">{p}</span>
-                      <span className="text-neutral-500 dark:text-neutral-600">{count} Events</span>
+                    <div className="flex justify-between text-[10px] uppercase font-black tracking-widest">
+                      <span className="text-neutral-800 dark:text-neutral-300 truncate max-w-[180px]">{p}</span>
+                      <span className="text-neutral-600 dark:text-neutral-500 font-bold">{count} Events</span>
                     </div>
                     <div className="w-full h-[1px] bg-black/5 dark:bg-white/5 transition-colors">
                       <div className="h-full bg-blue-600 dark:bg-blue-500 transition-all duration-500" style={{ width: `${(Number(count) / (walletData.totalTx || 1)) * 100}%` }} />
@@ -163,20 +168,22 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         </div>
 
         <div className="md:col-span-8 flex flex-col gap-6 overflow-hidden">
-          <div className="flex justify-between items-center border-b border-black/10 dark:border-white/5 pb-4 overflow-x-auto no-scrollbar transition-colors">
-             <div className="flex gap-6 md:gap-8 min-w-max pr-4">
+          <div className="flex justify-between items-center border-b border-black/10 dark:border-white/10 pb-4 overflow-x-auto no-scrollbar transition-colors">
+             <div className="flex gap-6 md:gap-8 min-w-max pr-4" role="tablist">
                 {["all", "lend", "swap", "bridge", "failed"].map((f) => (
                   <button 
                     key={f}
+                    role="tab"
+                    aria-selected={activeFilter === f}
                     onClick={() => setActiveFilter(f)}
-                    className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all relative pb-2 ${activeFilter === f ? "text-blue-600 dark:text-blue-500" : "text-neutral-500 dark:text-neutral-500 hover:text-black dark:hover:text-white"}`}
+                    className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all relative pb-2 min-h-[32px] ${activeFilter === f ? "text-blue-700 dark:text-blue-400" : "text-neutral-600 dark:text-neutral-500 hover:text-black dark:hover:text-white"}`}
                   >
                     {f}
-                    {activeFilter === f && <motion.div layoutId="filter-underline" className="absolute bottom-0 left-0 right-0 h-[1px] bg-blue-600 dark:bg-blue-500" />}
+                    {activeFilter === f && <motion.div layoutId="filter-underline" className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-700 dark:bg-blue-400" />}
                   </button>
                 ))}
              </div>
-             <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-600 italic whitespace-nowrap">Total: {filteredTransactions.length}</span>
+             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-400 italic whitespace-nowrap">Total: {filteredTransactions.length}</span>
           </div>
 
           <div className="space-y-12 overflow-y-auto max-h-[800px] pr-4 custom-scrollbar">
@@ -188,48 +195,48 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
              ) : (
                <AnimatePresence mode="popLayout">
                  {protocols.map((protocol) => (
-                    <div key={protocol} className="space-y-4">
+                    <div className="space-y-2">
                       <div className="flex items-center gap-4">
-                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-600 bg-black/5 dark:bg-white/5 py-1 px-3 border border-black/5 dark:border-white/5">{protocol}</span>
-                        <div className="h-[1px] flex-1 bg-black/5 dark:bg-white/5" />
-                        <span className="text-[9px] font-bold text-neutral-500 dark:text-neutral-500">{groupedByProtocol[protocol].length} Actions</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-800 dark:text-neutral-300 bg-black/5 dark:bg-white/5 py-1 px-3 border border-black/10 dark:border-white/10">{protocol}</span>
+                        <div className="h-[1px] flex-1 bg-black/10 dark:bg-white/10" />
+                        <span className="text-[10px] font-black text-neutral-600 dark:text-neutral-500">{groupedByProtocol[protocol].length} Actions</span>
                       </div>
                       
                       <div className="space-y-3">
                         {groupedByProtocol[protocol].map((tx, i) => (
-                          <motion.div
+                          <motion.button
                              key={tx.hash}
                              initial={{ opacity: 0, x: -10 }}
                              animate={{ opacity: 1, x: 0 }}
                              transition={{ delay: i * 0.02 }}
-                             className={`p-5 border border-black/5 dark:border-white/5 bg-white/40 dark:bg-[#0a0a0a] hover:bg-black/5 dark:hover:bg-white/5 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center group cursor-pointer gap-4 shadow-sm dark:shadow-none ${tx.failed ? "border-red-600/20 dark:border-red-900/20" : ""}`}
+                             className={`w-full text-left p-5 border border-black/5 dark:border-white/5 bg-white/40 dark:bg-[#0a0a0a] hover:bg-black/5 dark:hover:bg-white/5 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center group cursor-pointer gap-4 shadow-sm dark:shadow-none ${tx.failed ? "border-red-600/20 dark:border-red-900/20" : ""}`}
                              onClick={() => setSelectedTx(tx)}
                           >
                              <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 w-full min-w-0">
-                                <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${tx.failed ? "border-red-500/20 text-red-600 dark:text-red-500 bg-red-500/5" : "border-black/5 dark:border-white/5 text-neutral-600 dark:text-neutral-600 group-hover:text-blue-600 dark:group-hover:text-blue-500 bg-black/2 dark:bg-white/2"}`}>
+                                <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${tx.failed ? "border-red-500/20 text-red-700 dark:text-red-400 bg-red-500/5" : "border-black/10 dark:border-white/10 text-neutral-600 dark:text-neutral-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 bg-black/2 dark:bg-white/2"}`}>
                                    {tx.failed ? <XCircle size={12} /> : <CheckCircle2 size={12} />}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                   <div className="text-sm font-bold text-black dark:text-white tracking-tight leading-normal sm:leading-none group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors uppercase flex flex-wrap items-center gap-x-3 gap-y-1">
+                                   <div className="text-sm font-black text-black dark:text-white tracking-tight leading-normal sm:leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors uppercase flex flex-wrap items-center gap-x-3 gap-y-1">
                                       <span className="truncate max-w-full block">{tx.sentence}</span>
-                                      {tx.failed && <span className="text-[8px] bg-red-500/10 text-red-600 dark:text-red-500 px-2 py-0.5 border border-red-500/10 tracking-widest shrink-0">ERROR</span>}
+                                      {tx.failed && <span className="text-[8px] font-black bg-red-500/10 text-red-700 dark:text-red-400 px-2 py-0.5 border border-red-500/10 tracking-widest shrink-0">ERROR</span>}
                                    </div>
                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
-                                      <span className="text-[9px] font-black uppercase tracking-[0.1em] text-neutral-600 dark:text-neutral-600 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">{tx.category}</span>
+                                      <span className="text-[10px] font-black uppercase tracking-[0.1em] text-neutral-700 dark:text-neutral-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">{tx.category}</span>
                                       <span className="hidden sm:block w-1 h-1 bg-black/10 dark:bg-white/10 rounded-full transition-colors" />
-                                      <span className="text-[9px] text-neutral-600 dark:text-neutral-500 uppercase flex items-center gap-2 font-bold">
+                                      <span className="text-[10px] text-neutral-700 dark:text-neutral-500 uppercase flex items-center gap-2 font-black">
                                          <Clock size={10} /> {tx.time}
                                       </span>
                                    </div>
                                 </div>
                              </div>
                              <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center w-full sm:w-auto gap-4 sm:gap-2">
-                                <span className="text-[9px] font-mono text-neutral-500 dark:text-neutral-700 uppercase group-hover:text-neutral-700 dark:group-hover:text-neutral-500 transition-colors">{tx.hash.slice(0, 8)}</span>
-                                <div className="w-7 h-7 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-500 dark:text-neutral-500 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-white hover:border-blue-600 dark:hover:border-blue-500 transition-all">
-                                   <ExternalLink size={10} />
+                                <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-700 uppercase group-hover:text-neutral-800 dark:group-hover:text-neutral-400 transition-colors">{tx.hash.slice(0, 8)}</span>
+                                <div className="w-8 h-8 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-600 dark:text-neutral-500 group-hover:bg-blue-700 dark:group-hover:bg-blue-400 group-hover:text-white dark:group-hover:text-black group-hover:border-blue-700 dark:group-hover:border-blue-400 transition-all">
+                                   <ExternalLink size={12} aria-label="View Details" />
                                 </div>
                              </div>
-                          </motion.div>
+                          </motion.button>
                         ))}
                       </div>
                     </div>
@@ -258,7 +265,8 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
             >
               <button 
                 onClick={() => setSelectedTx(null)}
-                className="absolute top-6 right-6 text-neutral-400 dark:text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
+                className="absolute top-6 right-6 p-2 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                aria-label="Close"
               >
                 <X size={20} />
               </button>
@@ -272,22 +280,22 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-2 gap-8 border-y border-black/10 dark:border-white/5 py-8 transition-colors">
+              <div className="grid grid-cols-2 gap-8 border-y border-black/10 dark:border-white/10 py-8 transition-colors">
                 <div className="space-y-1">
-                  <span className="text-[9px] text-neutral-500 dark:text-neutral-600 uppercase font-black tracking-widest">Protocol</span>
-                  <div className="text-sm font-bold text-black dark:text-white uppercase">{selectedTx.protocol}</div>
+                  <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest">Protocol</span>
+                  <div className="text-sm font-black text-black dark:text-white uppercase">{selectedTx.protocol}</div>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[9px] text-neutral-500 dark:text-neutral-600 uppercase font-black tracking-widest">Category</span>
-                  <div className="text-sm font-bold text-black dark:text-white uppercase">{selectedTx.category}</div>
+                  <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest">Category</span>
+                  <div className="text-sm font-black text-black dark:text-white uppercase">{selectedTx.category}</div>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[9px] text-neutral-500 dark:text-neutral-600 uppercase font-black tracking-widest">Time</span>
-                  <div className="text-sm font-bold text-black dark:text-white uppercase">{selectedTx.time}</div>
+                  <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest">Time</span>
+                  <div className="text-sm font-black text-black dark:text-white uppercase">{selectedTx.time}</div>
                 </div>
                 <div className="space-y-1">
-                   <span className="text-[9px] text-neutral-500 dark:text-neutral-600 uppercase font-black tracking-widest">Network</span>
-                   <div className="text-sm font-bold text-black dark:text-white uppercase">MegaETH Mainnet</div>
+                   <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest">Network</span>
+                   <div className="text-sm font-black text-black dark:text-white uppercase">MegaETH Mainnet</div>
                 </div>
               </div>
 

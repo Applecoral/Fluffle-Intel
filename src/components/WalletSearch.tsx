@@ -31,10 +31,12 @@ export function WalletSearch({ onSearch }: WalletSearchProps) {
           </div>
           <input
             type="text"
+            id="wallet-search-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="0x... wallet address"
-            className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-none py-4 pl-12 pr-4 text-sm font-bold uppercase tracking-widest focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-all placeholder:text-neutral-300 dark:placeholder:text-neutral-700"
+            className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-none py-4 pl-12 pr-4 text-sm font-black uppercase tracking-widest focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-all placeholder:text-neutral-500 dark:placeholder:text-neutral-500 text-black dark:text-white"
+            aria-label="Wallet Address"
           />
           {error && (
             <div className="absolute top-full left-0 mt-2 text-[10px] font-black uppercase text-red-600 tracking-widest">
