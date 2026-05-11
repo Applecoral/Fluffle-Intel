@@ -110,22 +110,9 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <Panel title="Analysis Context">
-           <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                 <Activity size={16} className="text-[#00ff85]" />
-                 <span className="text-[10px] text-white font-bold uppercase tracking-widest">Protocol Intelligence</span>
-              </div>
-              <div className="w-full h-[1px] bg-white/5" />
-              <p className="text-[10px] text-neutral-400 font-medium leading-relaxed font-mono">
-                {profile.summary}
-              </p>
-           </div>
-        </Panel>
-        
-        <Panel title="Overview" className="col-span-3">
-          <div className="grid grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 gap-8">
+        <Panel title="Overview">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
              <div className="space-y-1">
                <span className="text-[10px] text-neutral-500 uppercase tracking-[0.2em] font-bold">Total Points</span>
                <div className="text-4xl font-black text-white tracking-tighter">{profile.allTimePoints.toLocaleString()}</div>
@@ -134,24 +121,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                <span className="text-[10px] text-neutral-500 uppercase tracking-[0.2em] font-bold">Weekly Performance</span>
                <div className="text-4xl font-black text-blue-400 tracking-tighter">+{profile.weeklyPoints.toLocaleString()}</div>
              </div>
-             <div className="space-y-1 border-l border-white/5 pl-12">
-               <span className="text-[10px] text-neutral-500 uppercase tracking-[0.2em] font-bold">Activity Score</span>
-               <div className="text-4xl font-black text-white tracking-tighter">1.2<span className="text-xl">x</span></div>
-             </div>
           </div>
-        </Panel>
-
-        <Panel title="Verification">
-           <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                 <ShieldCheck size={16} className="text-blue-500" />
-                 <span className="text-[10px] text-white font-bold uppercase tracking-widest">On-Chain Data Verified</span>
-              </div>
-              <div className="w-full h-[1px] bg-white/5" />
-              <p className="text-[10px] text-neutral-500 font-medium leading-relaxed">
-                Wallet identity and transaction history verified against MegaETH explorer data.
-              </p>
-           </div>
         </Panel>
       </div>
 
