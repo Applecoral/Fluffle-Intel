@@ -97,7 +97,7 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-8 gap-6 relative overflow-hidden">
         <BunnyLogo className="absolute -right-2 top-0 opacity-10 scale-50" />
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-white uppercase flex items-baseline gap-4">
+          <h1 className="text-3xl md:text-4xl font-black tracking-tight text-white uppercase flex items-baseline gap-4">
             Leaderboard
             {isLoadingPoints && <Loader2 size={16} className="animate-spin text-blue-500 inline" />}
           </h1>
@@ -140,12 +140,12 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b border-white/5 text-neutral-500 text-[9px] font-bold uppercase tracking-[0.2em]">
-                    <th className="px-6 py-4 text-left w-24">Rank</th>
+                    <th className="px-6 py-4 text-left w-16 md:w-24">Rank</th>
                     <th className="px-6 py-4 text-left">Wallet Address</th>
                     <th className="px-6 py-4 text-left">Total Points</th>
-                    <th className="px-6 py-4 text-left">Weekly</th>
-                    <th className="px-6 py-4 text-left">Top Protocol</th>
-                    <th className="px-6 py-4 text-right">View</th>
+                    <th className="px-6 py-4 text-left hidden md:table-cell">Weekly</th>
+                    <th className="px-6 py-4 text-left hidden lg:table-cell">Top Protocol</th>
+                    <th className="px-6 py-4 text-right w-16">View</th>
                   </tr>
                 </thead>
                 <tbody className="text-sm">
@@ -161,7 +161,9 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
                       <td className="px-6 py-5">
                         <div className="flex items-center gap-3">
                           <div className="text-white font-bold group-hover:text-blue-500 transition-colors tracking-tight text-xs">
-                            {entry.address}
+                            <span className="md:hidden">{entry.address.slice(0, 6)}...{entry.address.slice(-4)}</span>
+                            <span className="hidden md:inline lg:hidden">{entry.address.slice(0, 12)}...{entry.address.slice(-4)}</span>
+                            <span className="hidden lg:inline">{entry.address}</span>
                           </div>
                           <button 
                             onClick={(e) => copyToClipboard(entry.address, e)}
@@ -177,14 +179,14 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
                           ? livePoints[entry.address].allTimePoints.toLocaleString() 
                           : entry.allTimePoints > 0 ? entry.allTimePoints.toLocaleString() : "---"}
                       </td>
-                      <td className="px-6 py-5">
+                      <td className="px-6 py-5 hidden md:table-cell">
                         {(livePoints[entry.address]?.weeklyPoints ?? entry.weeklyPoints) > 0 ? (
                             <span className="text-blue-500 font-bold">+{(livePoints[entry.address]?.weeklyPoints ?? entry.weeklyPoints).toLocaleString()}</span>
                         ) : (
                             <span className="text-neutral-700">---</span>
                         )}
                       </td>
-                      <td className="px-6 py-5">
+                      <td className="px-6 py-5 hidden lg:table-cell">
                          <span className="text-[10px] font-medium text-neutral-400 capitalize">
                            {livePoints[entry.address]?.topProtocol || entry.topProtocol}
                          </span>
@@ -201,32 +203,32 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
         </div>
       </div>
       
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center mt-8 gap-6">
          <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500">
             Page {currentPage.toString().padStart(2, '0')} // {totalPages.toString().padStart(2, '0')}
          </div>
-         <div className="flex gap-2">
+         <div className="flex flex-wrap justify-center gap-2">
             <button 
                 onClick={() => setCurrentPage(1)}
                 disabled={currentPage === 1}
-                className="px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="px-3 md:px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
             >
                 First
             </button>
             <button 
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="px-3 md:px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
             >
                 Prev
             </button>
             
-            <div className="flex gap-1">
+            <div className="hidden sm:flex gap-1">
                {getPageNumbers().map((pageNum) => (
                   <button 
                     key={pageNum}
                     onClick={() => setCurrentPage(pageNum)}
-                    className={`min-w-[40px] h-10 border font-bold text-[10px] uppercase tracking-widest transition-all ${currentPage === pageNum ? "border-blue-500 text-blue-500 bg-blue-500/5" : "border-white/10 text-neutral-500 hover:text-white"}`}
+                    className={`min-w-[32px] md:min-w-[40px] h-8 md:h-10 border font-bold text-[10px] uppercase tracking-widest transition-all ${currentPage === pageNum ? "border-blue-500 text-blue-500 bg-blue-500/5" : "border-white/10 text-neutral-500 hover:text-white"}`}
                   >
                     {pageNum}
                   </button>
@@ -236,14 +238,14 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
             <button 
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="px-3 md:px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
             >
                 Next
             </button>
             <button 
                 onClick={() => setCurrentPage(totalPages)}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="px-3 md:px-4 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
             >
                 Last
             </button>

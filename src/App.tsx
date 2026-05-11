@@ -4,7 +4,6 @@ import { Navigation } from "./components/Navigation";
 import { Dashboard } from "./components/Dashboard";
 import { LeaderboardPage } from "./components/LeaderboardPage";
 import { WalletDetail } from "./components/WalletDetail";
-import { StrategiesPage } from "./components/StrategiesPage";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function App() {
@@ -56,19 +55,8 @@ export default function App() {
             />
           </motion.div>
         );
-      case "usage":
-        return (
-          <motion.div
-            key="usage"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <StrategiesPage />
-          </motion.div>
-        );
       default:
-        return <Dashboard />;
+        return <Dashboard onSelectWallet={(address, rank) => setSelectedWallet({ address, rank })} />;
     }
   };
 
@@ -95,7 +83,7 @@ export default function App() {
 
       <Header />
       
-      <main className="container mx-auto px-12 py-16 relative z-10 pb-40">
+      <main className="container mx-auto px-4 md:px-12 py-16 relative z-10 pb-40">
         <AnimatePresence mode="wait">
           {renderContent()}
         </AnimatePresence>

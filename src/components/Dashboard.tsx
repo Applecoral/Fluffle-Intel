@@ -44,22 +44,22 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
 
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex flex-col md:flex-row justify-between items-start border-b border-white/5 pb-12 relative gap-8">
+      <div className="flex flex-col xl:flex-row justify-between items-start border-b border-white/5 pb-12 relative gap-8">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 bg-blue-500/10 px-3 py-1 border border-blue-500/20">MegaETH Mainnet</span>
           </div>
-          <h1 className="text-8xl font-black tracking-tighter uppercase mb-2">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase mb-2">
             Fluffle Intel
           </h1>
           <div className="flex gap-12 items-start mt-4">
-            <p className="max-w-xl text-neutral-400 font-medium leading-relaxed">
+            <p className="max-w-xl text-sm md:text-base text-neutral-400 font-medium leading-relaxed">
               Real-time monitoring and intel for the MegaETH terminal farming.
             </p>
           </div>
         </div>
 
-        <div className="w-full md:w-96">
+        <div className="w-full xl:w-96">
            <form onSubmit={handleSearch} className="flex flex-col gap-4">
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600">Analyze Wallet Address</span>
               <div className="relative group">
@@ -108,7 +108,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
               
               <div className="p-6 border border-white/5 bg-black/40">
                  <p className="text-sm text-neutral-400 leading-relaxed uppercase tracking-widest text-[9px]">
-                    Analysis of the MegaETH frontier using real-time data ingestion. 
+                    Analysis of the MegaETH ecosystem using real-time data ingestion. 
                     Search a wallet to begin decoding.
                  </p>
               </div>
