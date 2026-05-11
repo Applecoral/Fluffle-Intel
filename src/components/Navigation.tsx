@@ -1,4 +1,4 @@
-import { Rocket, Wallet, Trophy, Sword, HelpCircle } from "lucide-react";
+import { Home, Wallet, Trophy, Sword, HelpCircle } from "lucide-react";
 import { TacticalButton } from "./ui/Tactical";
 
 interface NavigationProps {
@@ -8,7 +8,7 @@ interface NavigationProps {
 
 export function Navigation({ activeTab, onTabChange }: NavigationProps) {
   const tabs = [
-    { id: "booster", label: "Booster", icon: <Rocket size={16} /> },
+    { id: "booster", label: "Home", icon: <Home size={16} /> },
     { id: "leaderboard", label: "Ranking", icon: <Wallet size={16} /> },
   ];
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Navigation } from "./components/Navigation";
 import { Dashboard } from "./components/Dashboard";
@@ -7,8 +7,25 @@ import { WalletDetail } from "./components/WalletDetail";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState("booster");
-  const [selectedWallet, setSelectedWallet] = useState<{address: string, rank: number} | null>(null);
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem("fluffle_activeTab") || "booster";
+  });
+  const [selectedWallet, setSelectedWallet] = useState<{address: string, rank: number} | null>(() => {
+    const saved = localStorage.getItem("fluffle_selectedWallet");
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("fluffle_activeTab", activeTab);
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (selectedWallet) {
+      localStorage.setItem("fluffle_selectedWallet", JSON.stringify(selectedWallet));
+    } else {
+      localStorage.removeItem("fluffle_selectedWallet");
+    }
+  }, [selectedWallet]);
 
   const renderContent = () => {
     // If a wallet is selected, show its detail view
