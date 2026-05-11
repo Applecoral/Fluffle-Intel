@@ -101,60 +101,118 @@ async function startServer() {
         }
       }
 
-      // 3. Fetch live data
-      const latestBlock = await rpcClient.getBlockNumber();
+      // 3. Fetch live data from Blockscout MegaETH API
+      const blockscoutUrl = `https://megaeth.blockscout.com/api?module=account&action=txlist&address=${walletAddress}&sort=desc`;
+      const response = await fetch(blockscoutUrl, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Blockscout API responded with ${response.status}`);
+      }
+
+      const bsData = await response.json();
+
+      // Handle "No transactions found"
+      if (bsData.status === "0" && bsData.message === "No transactions found") {
+        const emptyResponse = {
+          address: walletAddress,
+          summary: "No transactions found for this address.",
+          totalTx: 0,
+          failedTx: 0,
+          topProtocol: "None",
+          dominantCategory: "None",
+          recentActivity: [],
+          timestamp: new Date().toISOString(),
+          cached: false
+        };
+
+        // Cache empty result too
+        if (supabase) {
+          await supabase.from("wallet_cache").upsert({
+            wallet_address: walletAddress,
+            data: emptyResponse,
+            cached_at: new Date().toISOString(),
+            expires_at: new Date(Date.now() + 5 * 60 * 1000).toISOString()
+          });
+        }
+
+        return res.json(emptyResponse);
+      }
+
+      if (bsData.status !== "1") {
+        throw new Error(bsData.message || "Failed to fetch from Blockscout");
+      }
+
+      const rawTxs = bsData.result || [];
       const transactions = [];
       let totalTx = 0;
       let failedTx = 0;
       const protocolCounts: Record<string, number> = {};
       const categoryCounts: Record<string, number> = {};
 
-      // Scan last 50 blocks
-      const startBlock = latestBlock - 50n > 0n ? latestBlock - 50n : 0n;
-      
-      // For efficiency in this limited environment, we'll fetch blocks in parallel
-      // but keep it reasonable to avoid rate limits
-      const blockPromises = [];
-      for (let i = latestBlock; i >= startBlock; i--) {
-        blockPromises.push(rpcClient.getBlock({ blockNumber: i, includeTransactions: true }));
-      }
-      
-      const blocks = await Promise.all(blockPromises);
+      // Limit to last 50 transactions
+      const processedTxs = rawTxs.slice(0, 50);
 
-      for (const block of blocks) {
-        const blockTxs = block.transactions as any[];
-        for (const tx of blockTxs) {
-          if (tx.from?.toLowerCase() === walletAddress || tx.to?.toLowerCase() === walletAddress) {
-            totalTx++;
-            
-            // Get receipt for status
-            const receipt = await rpcClient.getTransactionReceipt({ hash: tx.hash });
-            const isFailed = receipt.status === 'reverted';
-            if (isFailed) failedTx++;
+      for (const bsTx of processedTxs) {
+        // Map according to user request
+        const txHash = bsTx.hash;
+        const blockNumber = bsTx.blockNumber;
+        const fromAddress = bsTx.from;
+        const toAddressRaw = bsTx.to;
+        const valueWei = bsTx.value;
+        const gasUsed = bsTx.gasUsed;
+        const input = bsTx.input || "0x";
+        const success = bsTx.txreceipt_status === "1";
+        const timestampIso = new Date(Number(bsTx.timeStamp) * 1000).toISOString();
+        const direction = fromAddress.toLowerCase() === walletAddress ? "sent" : "received";
+        const txCategoryLabel = (toAddressRaw && input !== "0x") ? "Call" : "Transfer";
 
-            // Decode
-            const selector = tx.input?.slice(0, 10);
-            const action = SELECTOR_REGISTRY[selector] || (tx.input && tx.input !== '0x' ? `called function ${selector}` : "sent ETH");
-            const protocolInfo = PROTOCOL_REGISTRY[tx.to?.toLowerCase() || ""];
-            const protocolName = protocolInfo?.name || (tx.to ? `Unknown protocol (${tx.to.slice(0, 6)}...${tx.to.slice(-4)})` : "N/A");
-            const category = protocolInfo?.category || "other";
-            
-            protocolCounts[protocolName] = (protocolCounts[protocolName] || 0) + 1;
-            categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+        totalTx++;
+        const isFailed = !success;
+        if (isFailed) failedTx++;
 
-            const valueStr = tx.value && tx.value > 0n ? ` — ${formatEther(tx.value)} ETH` : "";
-            const sentence = `${isFailed ? "[failed] " : ""}${action.charAt(0).toUpperCase() + action.slice(1)} on ${protocolName}${valueStr}`;
+        // Existing decoding logic using mapped fields
+        const selector = input.slice(0, 10);
+        const action = SELECTOR_REGISTRY[selector] || (input !== "0x" ? `called function ${selector}` : "sent ETH");
+        
+        const toAddress = (toAddressRaw || "").toLowerCase();
+        const protocolInfo = PROTOCOL_REGISTRY[toAddress];
+        const protocolName = protocolInfo?.name || (toAddress ? `Unknown protocol (${toAddress.slice(0, 6)}...${toAddress.slice(-4)})` : "N/A");
+        const category = protocolInfo?.category || "other";
+        
+        protocolCounts[protocolName] = (protocolCounts[protocolName] || 0) + 1;
+        categoryCounts[category] = (categoryCounts[category] || 0) + 1;
 
-            transactions.push({
-              sentence,
-              time: "recent", // Simplified for now
-              protocol: protocolName,
-              category,
-              hash: tx.hash,
-              failed: isFailed
-            });
-          }
-        }
+        const val = valueWei ? BigInt(valueWei) : 0n;
+        const valueStr = val > 0n ? ` — ${formatEther(val)} ETH` : "";
+        const sentence = `${isFailed ? "[failed] " : ""}${action.charAt(0).toUpperCase() + action.slice(1)} on ${protocolName}${valueStr}`;
+
+        // Format time ago
+        let timeLabel = "recent";
+        const ts = Number(bsTx.timeStamp);
+        const diffParams = (Date.now() / 1000) - ts;
+        if (diffParams < 60) timeLabel = `${Math.floor(diffParams)}s ago`;
+        else if (diffParams < 3600) timeLabel = `${Math.floor(diffParams / 60)}m ago`;
+        else if (diffParams < 86400) timeLabel = `${Math.floor(diffParams / 3600)}h ago`;
+        else timeLabel = `${Math.floor(diffParams / 86400)}d ago`;
+
+        transactions.push({
+          sentence,
+          time: timeLabel,
+          protocol: protocolName,
+          category,
+          hash: txHash,
+          failed: isFailed,
+          // Optional: we can include these extra requested fields if needed, 
+          // but the STEP 3 contract doesn't explicitly list them.
+          // I will include them to be safe as the user mentioned them.
+          blockNumber,
+          direction,
+          txCategoryLabel
+        });
       }
 
       // 5. Generate summary
@@ -162,8 +220,8 @@ async function startServer() {
       const dominantCategory = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || "None";
       
       const summary = totalTx === 0 
-        ? "No transactions found in the last 50 blocks."
-        : `This wallet has made ${totalTx} transactions in the last 50 blocks. Most activity is on ${topProtocol}. Primary behavior: ${dominantCategory}. ${failedTx} failed transactions.`;
+        ? "No transactions found for this address."
+        : `This wallet has made ${totalTx} transactions recently. Most activity is on ${topProtocol}. Primary behavior: ${dominantCategory}. ${failedTx} failed transactions.`;
 
       const responseData = {
         address: walletAddress,

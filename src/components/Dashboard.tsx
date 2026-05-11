@@ -37,8 +37,11 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    if (address && address.startsWith("0x")) {
-      onSelectWallet?.(address, 0);
+    const cleanAddress = address.trim();
+    if (/^0x[a-fA-F0-9]{40}$/.test(cleanAddress)) {
+      onSelectWallet?.(cleanAddress, 0);
+    } else {
+      alert("Please enter a valid 0x wallet address (42 characters)");
     }
   };
 
