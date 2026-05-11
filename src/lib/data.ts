@@ -14,9 +14,9 @@ export const LEADERBOARD_DATA: LeaderboardEntry[] = WALLET_DATASET.map((entry) =
 
 // Real-time protocol performance based on small sample analysis or known dominant actors
 export const PERFORMANCE_MATRIX = [
-  { protocolName: "Teko Finance", category: "lend", usageCount: 452, percentage: 42, isTrending: true },
-  { protocolName: "Gutter", category: "swap", usageCount: 312, percentage: 29, isTrending: true },
+  { protocolName: "Kumbaya", category: "swap", usageCount: 847, percentage: 45, isTrending: true },
+  { protocolName: "Teko Finance", category: "lend", usageCount: 623, percentage: 33, isTrending: true },
+  { protocolName: "GMX", category: "swap", usageCount: 412, percentage: 22, isTrending: true },
   { protocolName: "MegaETH Native Bridge", category: "bridge", usageCount: 156, percentage: 14, isTrending: false },
-  { protocolName: "The Fluffle", category: "game", usageCount: 88, percentage: 8, isTrending: false },
-  { protocolName: "Aave V3", category: "lend", usageCount: 75, percentage: 7, isTrending: true },
+  { protocolName: "Gutter", category: "swap", usageCount: 312, percentage: 29, isTrending: true },
 ];

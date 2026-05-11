@@ -90,6 +90,51 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                  Live transaction decoding enabled
               </div>
            </form>
+
+           <div className="mt-10 pt-10 border-t border-black/10 dark:border-white/5 space-y-5 transition-colors">
+              <div className="flex justify-between items-center">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-500 flex items-center gap-2">
+                  <TrendingUp size={12} className="animate-pulse" /> Live Network Intel
+                </span>
+                {blockNumber && (
+                  <span className="text-[9px] font-mono text-neutral-400 dark:text-neutral-600">
+                    BLK #{blockNumber.toString()}
+                  </span>
+                )}
+              </div>
+              <div className="bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 p-5 relative overflow-hidden shadow-sm dark:shadow-none transition-colors group">
+                <div className="text-[10px] uppercase font-bold tracking-widest leading-relaxed text-neutral-600 dark:text-neutral-400 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <div className="flex items-center gap-2 text-black dark:text-white font-black shrink-0">
+                    <Activity size={12} className="text-blue-600 dark:text-blue-500" />
+                    <span>7D TOP PROTOCOLS:</span>
+                  </div>
+                  {PERFORMANCE_MATRIX.slice(0, 3).map((p, i) => (
+                    <div key={p.protocolName} className="flex items-center gap-3 shrink-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-blue-600 dark:text-blue-500 font-black tabular-nums">{p.usageCount.toLocaleString()}</span>
+                        <span className="text-neutral-500 dark:text-neutral-600 lowercase variant-small-caps">txs on</span>
+                        <span className="text-black dark:text-white font-black">{p.protocolName}</span>
+                      </div>
+                      {i < 2 && <span className="text-neutral-300 dark:text-neutral-800 font-normal select-none">|</span>}
+                    </div>
+                  ))}
+                </div>
+                {/* Decorative scanning line */}
+                <motion.div 
+                  className="absolute inset-y-0 w-24 bg-linear-to-r from-transparent via-blue-500/5 to-transparent pointer-events-none"
+                  animate={{ left: ["-100%", "200%"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                />
+                <div className="absolute top-0 right-0 w-16 h-full bg-linear-to-l from-black/[0.02] dark:from-white/[0.02] to-transparent pointer-events-none" />
+              </div>
+              <div className="flex items-center justify-between px-1">
+                 <div className="flex items-center gap-2 text-[8px] text-neutral-500 dark:text-neutral-600 font-bold uppercase tracking-[0.2em]">
+                    <ShieldCheck size={10} className="text-blue-600 dark:text-blue-500" />
+                    Decoding Validated by RPC
+                 </div>
+                 <span className="text-[8px] text-neutral-400 dark:text-neutral-700 italic">Source: Miniblocks.io</span>
+              </div>
+           </div>
         </div>
       </div>
 
