@@ -18,6 +18,7 @@ export interface Transaction {
   success: boolean;
   categoryLabel: string;
   direction: string;
+  input?: string;
 }
 
 export interface InterpretedTransaction {

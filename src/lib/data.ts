@@ -1,15 +1,14 @@
 import { Transaction, LeaderboardEntry } from "../types";
-import { DATASET_WALLETS } from "./wallets.json";
+import { WALLET_DATASET } from "./wallets.json.ts";
 
 // The core dataset of top wallets from the scrapper
-export const LEADERBOARD_DATA: LeaderboardEntry[] = DATASET_WALLETS.map((address, index) => {
-    // Rank is based on position in dataset
+export const LEADERBOARD_DATA: LeaderboardEntry[] = WALLET_DATASET.map((entry) => {
     return {
-        address,
-        rank: index + 1,
-        allTimePoints: 0, // In live mode, we'd fetch this from a points API
-        weeklyPoints: 0,
-        topProtocol: "Pending Analysis"
+        address: entry.wallet,
+        rank: entry.rank,
+        allTimePoints: entry.totalPoints,
+        weeklyPoints: entry.weeklyPoints,
+        topProtocol: "Pending" // Will be updated via interpreter once txs load
     };
 });
 

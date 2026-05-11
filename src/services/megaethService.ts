@@ -1,5 +1,7 @@
 import { Transaction, WalletProfile } from "../types";
+import { LEADERBOARD_DATA } from "../lib/data";
 import { interpretTransaction, summarizeWallet } from "../lib/interpreter";
+import { getProtocol } from "../lib/registry";
 
 const EXPLORER_API_URL = "/api/megaeth-proxy";
 const TERMINAL_API_URL = "/api/terminal-proxy";
@@ -32,7 +34,8 @@ export async function fetchWalletTransactions(address: string): Promise<Transact
         timestamp: tx.timestamp || tx.timeStamp || new Date().toISOString(),
         success: tx.success !== undefined ? tx.success : (tx.isError === "0" || tx.status === "1"),
         categoryLabel: tx.txCategoryLabel || tx.category || "Call",
-        direction: tx.direction || "sent"
+        direction: tx.direction || "sent",
+        input: tx.input || tx.data || tx.methodId || "0x"
       }));
     }
     return [];
@@ -63,8 +66,20 @@ export async function fetchLeaderboard(limit = 100, offset = 0): Promise<any[]> 
  * Fetches real-time points data from MegaETH Terminal API (or fallback to estimates).
  */
 export async function fetchWalletPoints(address: string): Promise<PointsData> {
+  // Check static leaderboard first (source of truth for top 1000)
+  const staticEntry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === address.toLowerCase());
+  
+  if (staticEntry) {
+    return {
+      allTimePoints: staticEntry.allTimePoints,
+      weeklyPoints: staticEntry.weeklyPoints,
+      rank: staticEntry.rank,
+      topProtocol: staticEntry.topProtocol
+    };
+  }
+
   try {
-    // Attempting to fetch from terminal API
+    // Attempting to fetch from terminal API for others
     const response = await fetch(`${TERMINAL_API_URL}/user/${address}`);
     if (response.ok) {
         const data = await response.json();
@@ -76,14 +91,14 @@ export async function fetchWalletPoints(address: string): Promise<PointsData> {
         };
     }
     
-    // Fallback: estimate points based on transaction count if API fails
+    // Fallback: estimate points based on transaction count
     const txs = await fetchWalletTransactions(address);
-    const score = txs.length * 12 + Math.floor(Math.random() * 50);
+    const score = txs.length * 12;
     return {
         allTimePoints: score,
         weeklyPoints: Math.floor(score * 0.1),
-        rank: 0, // Rank handled by leaderboard index generally
-        topProtocol: txs.length > 0 ? txs[0].to.slice(0, 10) : "Inactive"
+        rank: 0,
+        topProtocol: txs.length > 0 ? getProtocol(txs[0].to).name : "Inactive"
     };
   } catch (error) {
     return { allTimePoints: 0, weeklyPoints: 0, rank: 0, topProtocol: "Unknown" };

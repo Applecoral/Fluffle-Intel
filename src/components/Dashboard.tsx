@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { motion } from "motion/react";
 import { Panel, Badge, BunnyLogo, TacticalButton } from "./ui/Tactical";
 import { PERFORMANCE_MATRIX } from "../lib/data";
-import { TrendingUp, Users, Activity, Search, ArrowRight, ShieldCheck, Cpu } from "lucide-react";
+import { TrendingUp, Users, Activity, Search, ArrowRight, ShieldCheck, Cpu, Copy, Check } from "lucide-react";
 import { publicClient } from "../lib/web3";
 
 interface DashboardProps {
@@ -35,7 +35,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
     return () => unwatch?.();
   }, []);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     if (address && address.startsWith("0x")) {
       onSelectWallet?.(address, 0);
@@ -63,17 +63,28 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
            <form onSubmit={handleSearch} className="flex flex-col gap-4">
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600">Analyze Wallet Address</span>
               <div className="relative group">
-                 <input 
-                    type="text" 
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    placeholder="0x..." 
-                    className="w-full bg-[#0a0a0a] border border-white/10 px-6 py-4 text-sm font-mono focus:outline-none focus:border-blue-500 transition-all placeholder:text-neutral-700"
-                 />
-                 <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-600 hover:text-blue-500 transition-colors">
-                    <ArrowRight size={18} />
-                 </button>
-              </div>
+                  <input 
+                     type="text" 
+                     value={address}
+                     onChange={(e) => setAddress(e.target.value)}
+                     placeholder="0x..." 
+                     className="w-full bg-[#0a0a0a] border border-white/10 px-6 py-4 pr-24 text-sm font-mono focus:outline-none focus:border-blue-500 transition-all placeholder:text-neutral-700"
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                     {address && (
+                        <button 
+                           type="button"
+                           onClick={() => navigator.clipboard.writeText(address)}
+                           className="text-neutral-600 hover:text-blue-500 transition-colors"
+                        >
+                           <Copy size={16} />
+                        </button>
+                     )}
+                     <button type="submit" className="text-neutral-600 hover:text-blue-500 transition-colors">
+                        <ArrowRight size={18} />
+                     </button>
+                  </div>
+               </div>
               <div className="flex items-center gap-2 text-[9px] text-neutral-600 font-bold uppercase tracking-widest px-2">
                  <Activity size={10} className="text-blue-500/50" />
                  Live transaction decoding enabled

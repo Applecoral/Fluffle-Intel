@@ -33,10 +33,14 @@ export function interpretTransaction(tx: Transaction): InterpretedTransaction {
   const failed = !tx.success;
   const prefix = failed ? "[failed] " : "";
 
-  let action = "Interacted with";
+  let action = getAction(tx.input || "0x");
   if (tx.categoryLabel === "Transfer") {
     action = tx.direction === "sent" ? "Sent" : "Received";
+  } else if (action === "sent ETH" && tx.categoryLabel === "Call") {
+    action = "Interacted with";
   }
+  
+  action = capitalize(action);
 
   // Interacted with [Protocol Name] — 0.01 ETH — 2d ago
   const sentence = `${prefix}${action} ${protocol.name}${ethValueStr ? ` — ${ethValueStr}` : ""} — ${time}`;

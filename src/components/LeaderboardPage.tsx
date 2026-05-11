@@ -1,8 +1,8 @@
-import { useState, useMemo, ChangeEvent, useEffect } from "react";
+import { useState, useMemo, ChangeEvent, useEffect, MouseEvent } from "react";
 import { LEADERBOARD_DATA } from "../lib/data";
 import { Panel, BunnyLogo } from "./ui/Tactical";
 import { Search, ExternalLink, Loader2, Copy, Check } from "lucide-react";
-import { fetchWalletPoints, PointsData, fetchLeaderboard } from "../services/megaethService";
+import { fetchWalletPoints, PointsData } from "../services/megaethService";
 import { motion, AnimatePresence } from "motion/react";
 
 interface LeaderboardPageProps {
@@ -15,50 +15,12 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [livePoints, setLivePoints] = useState<Record<string, PointsData>>({});
   const [isLoadingPoints, setIsLoadingPoints] = useState(false);
-  const [liveLeaderboard, setLiveLeaderboard] = useState<any[]>([]);
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
 
-  // Fetch live leaderboard on mount
-  useEffect(() => {
-    const getLeaderboard = async () => {
-      setIsLoadingPoints(true);
-      const data = await fetchLeaderboard(500); // Fetch top 500 for better coverage
-      if (data && data.length > 0) {
-        setLiveLeaderboard(data);
-      }
-      setIsLoadingPoints(false);
-    };
-    getLeaderboard();
-  }, []);
-
+  // The pre-loaded data is the single source of truth for the ranking
   const mergedData = useMemo(() => {
-    // If we have live leaderboard, we can use it to augment or provide the primary list
-    const liveMap = new Map((liveLeaderboard || []).map(u => [u.address.toLowerCase(), u]));
-    
-    // Create a Set of all addresses from both sources
-    const allAddresses = new Set([
-        ...LEADERBOARD_DATA.map(e => e.address.toLowerCase()),
-        ...liveLeaderboard.map(e => e.address.toLowerCase())
-    ]);
-
-    const results = Array.from(allAddresses).map(addr => {
-        const entry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === addr);
-        const liveUser = liveMap.get(addr);
-        
-        return {
-            address: addr,
-            rank: liveUser?.rank || entry?.rank || 9999,
-            allTimePoints: liveUser?.points || liveUser?.total_points || entry?.allTimePoints || 0,
-            weeklyPoints: liveUser?.weekly_points || liveUser?.weekly_total_points || entry?.weeklyPoints || 0,
-            topProtocol: liveUser?.top_protocol || entry?.topProtocol || "Active User"
-        };
-    });
-
-    // Filter out zero-point users if they are not in our initial dataset (to keep quality high)
-    return results
-      .filter(r => r.allTimePoints > 0 || LEADERBOARD_DATA.some(e => e.address.toLowerCase() === r.address.toLowerCase()))
-      .sort((a, b) => a.rank - b.rank || b.allTimePoints - a.allTimePoints);
-  }, [liveLeaderboard]);
+    return [...LEADERBOARD_DATA].sort((a, b) => a.rank - b.rank);
+  }, []);
 
   const filteredData = useMemo(() => {
     return mergedData.filter(entry => 
@@ -104,7 +66,7 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
     setCurrentPage(1);
   };
 
-  const copyToClipboard = (address: string, e: React.MouseEvent) => {
+  const copyToClipboard = (address: string, e: MouseEvent) => {
     e.stopPropagation();
     navigator.clipboard.writeText(address);
     setCopiedAddress(address);

@@ -1,10 +1,11 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { fetchWalletTransactions, fetchWalletPoints } from "../services/megaethService";
 import { interpretTransaction, summarizeWallet } from "../lib/interpreter";
 import { WalletProfile, InterpretedTransaction } from "../types";
 import { Panel, Badge, TacticalButton } from "./ui/Tactical";
-import { ArrowLeft, Clock, Link as LinkIcon, AlertCircle, TrendingUp, ShieldCheck, Loader2, Activity, CheckCircle2, XCircle, BrainCircuit, Copy, Check } from "lucide-react";
+import { ArrowLeft, Clock, Link as LinkIcon, AlertCircle, Loader2, CheckCircle2, XCircle, Copy, Check } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { LEADERBOARD_DATA } from "../lib/data";
 
 interface WalletDetailProps {
   address: string;
@@ -23,6 +24,9 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
     async function loadWalletData() {
       setIsLoading(true);
       try {
+        // Find static data as a base
+        const staticEntry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === address.toLowerCase());
+        
         const [transactions, pointsData] = await Promise.all([
           fetchWalletTransactions(address),
           fetchWalletPoints(address)
@@ -31,20 +35,40 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         const interpreted = transactions.map(interpretTransaction);
         setInterpretedTxs(interpreted);
 
+        const finalRank = rank || pointsData.rank || staticEntry?.rank || 0;
+        const finalPoints = pointsData.allTimePoints || staticEntry?.allTimePoints || 0;
+        const finalWeekly = pointsData.weeklyPoints || staticEntry?.weeklyPoints || 0;
+
         const summaryProfile = summarizeWallet(
           address, 
           transactions, 
-          rank || pointsData.rank, 
-          pointsData.allTimePoints, 
-          pointsData.weeklyPoints
+          finalRank, 
+          finalPoints, 
+          finalWeekly
         );
         
         setProfile({
           ...summaryProfile,
-          topProtocol: pointsData.topProtocol || summaryProfile.topProtocol
+          topProtocol: pointsData.topProtocol !== "Unknown" ? pointsData.topProtocol : (summaryProfile.topProtocol || staticEntry?.topProtocol || "Unknown")
         });
       } catch (error) {
         console.error("Error loading wallet details:", error);
+        // Fallback to static data only if fetch fails
+        const staticEntry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === address.toLowerCase());
+        if (staticEntry) {
+           setProfile({
+              address,
+              rank: staticEntry.rank,
+              allTimePoints: staticEntry.allTimePoints,
+              weeklyPoints: staticEntry.weeklyPoints,
+              topProtocol: staticEntry.topProtocol,
+              transactions: [],
+              interpretedTransactions: [],
+              dominantCategory: "unknown",
+              summary: "Could not fetch real-time transaction data. Displaying historical stats.",
+              lastUpdated: new Date().toISOString()
+           });
+        }
       } finally {
         setIsLoading(false);
       }
@@ -194,54 +218,61 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
           </div>
 
           <div className="space-y-12 overflow-y-auto max-h-[800px] pr-4 custom-scrollbar">
-             <AnimatePresence mode="popLayout">
-               {protocols.map((protocol) => (
-                 <div key={protocol} className="space-y-4">
-                   <div className="flex items-center gap-4">
-                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-600 bg-white/5 py-1 px-3 border border-white/5">{protocol}</span>
-                     <div className="h-[1px] flex-1 bg-white/5" />
-                     <span className="text-[9px] font-bold text-neutral-500">{groupedByProtocol[protocol].length} Actions</span>
-                   </div>
-                   
-                   <div className="space-y-3">
-                     {groupedByProtocol[protocol].map((tx, i) => (
-                       <motion.div
-                          key={tx.hash}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.02 }}
-                          className={`p-5 border border-white/5 bg-[#0a0a0a] hover:bg-white/5 transition-all flex justify-between items-center group ${tx.failed ? "border-red-900/20" : ""}`}
-                       >
-                          <div className="flex items-center gap-6">
-                             <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-colors ${tx.failed ? "border-red-500/20 text-red-500 bg-red-500/5" : "border-white/5 text-neutral-600 group-hover:text-blue-500 bg-white/2"}`}>
-                                {tx.failed ? <XCircle size={12} /> : <CheckCircle2 size={12} />}
-                             </div>
-                             <div>
-                                <div className="text-sm font-bold text-white tracking-tight leading-none group-hover:text-blue-500 transition-colors uppercase flex items-center gap-3">
-                                   {tx.sentence}
-                                   {tx.failed && <span className="text-[8px] bg-red-500/10 text-red-500 px-2 py-0.5 border border-red-500/10 tracking-widest">ERROR</span>}
-                                </div>
-                                <div className="flex items-center gap-4 mt-2">
-                                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-neutral-600 group-hover:text-blue-400 transition-colors">{tx.category}</span>
-                                   <span className="w-1 h-1 bg-white/10 rounded-full" />
-                                   <span className="text-[9px] text-neutral-500 uppercase flex items-center gap-2">
-                                      <Clock size={10} /> {tx.time}
-                                   </span>
-                                </div>
-                             </div>
-                          </div>
-                          <div className="flex flex-col items-end gap-2">
-                             <span className="text-[9px] font-mono text-neutral-700 uppercase group-hover:text-neutral-500 transition-colors">{tx.hash.slice(0, 8)}</span>
-                             <a href={`https://miniblocks.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-neutral-500 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">
-                                <LinkIcon size={10} />
-                             </a>
-                          </div>
-                       </motion.div>
-                     ))}
-                   </div>
-                </div>
-               ))}
-             </AnimatePresence>
+             {protocols.length === 0 ? (
+               <div className="flex flex-col items-center justify-center py-20 border border-white/5 bg-black/20 gap-4">
+                 <Activity size={32} className="text-white/5" />
+                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600">No transactions detected on-chain</span>
+               </div>
+             ) : (
+               <AnimatePresence mode="popLayout">
+                 {protocols.map((protocol) => (
+                   <div key={protocol} className="space-y-4">
+                     <div className="flex items-center gap-4">
+                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-600 bg-white/5 py-1 px-3 border border-white/5">{protocol}</span>
+                       <div className="h-[1px] flex-1 bg-white/5" />
+                       <span className="text-[9px] font-bold text-neutral-500">{groupedByProtocol[protocol].length} Actions</span>
+                     </div>
+                     
+                     <div className="space-y-3">
+                       {groupedByProtocol[protocol].map((tx, i) => (
+                         <motion.div
+                            key={tx.hash}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.02 }}
+                            className={`p-5 border border-white/5 bg-[#0a0a0a] hover:bg-white/5 transition-all flex justify-between items-center group ${tx.failed ? "border-red-900/20" : ""}`}
+                         >
+                            <div className="flex items-center gap-6">
+                               <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-colors ${tx.failed ? "border-red-500/20 text-red-500 bg-red-500/5" : "border-white/5 text-neutral-600 group-hover:text-blue-500 bg-white/2"}`}>
+                                  {tx.failed ? <XCircle size={12} /> : <CheckCircle2 size={12} />}
+                               </div>
+                               <div>
+                                  <div className="text-sm font-bold text-white tracking-tight leading-none group-hover:text-blue-500 transition-colors uppercase flex items-center gap-3">
+                                     {tx.sentence}
+                                     {tx.failed && <span className="text-[8px] bg-red-500/10 text-red-500 px-2 py-0.5 border border-red-500/10 tracking-widest">ERROR</span>}
+                                  </div>
+                                  <div className="flex items-center gap-4 mt-2">
+                                     <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-neutral-600 group-hover:text-blue-400 transition-colors">{tx.category}</span>
+                                     <span className="w-1 h-1 bg-white/10 rounded-full" />
+                                     <span className="text-[9px] text-neutral-500 uppercase flex items-center gap-2">
+                                        <Activity size={10} /> {tx.time}
+                                     </span>
+                                  </div>
+                               </div>
+                            </div>
+                            <div className="flex flex-col items-end gap-2">
+                               <span className="text-[9px] font-mono text-neutral-700 uppercase group-hover:text-neutral-500 transition-colors">{tx.hash.slice(0, 8)}</span>
+                               <a href={`https://miniblocks.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-neutral-500 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">
+                                  <ArrowRight size={10} />
+                               </a>
+                            </div>
+                         </motion.div>
+                       ))}
+                     </div>
+                  </div>
+                 ))}
+               </AnimatePresence>
+             )}
           </div>
         </div>
       </div>

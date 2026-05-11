@@ -1,5 +1,5 @@
 import { Panel, Badge, TacticalButton, BunnyLogo } from "./ui/Tactical";
-import { PERFORMANCE_MATRIX } from "../lib/data";
+import { PERFORMANCE_MATRIX, LEADERBOARD_DATA } from "../lib/data";
 import { Sword, Zap, ShieldAlert, Binary, Rocket } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -11,7 +11,7 @@ export function StrategiesPage() {
           Protocol Usage
         </h1>
         <p className="text-neutral-500 text-[10px] font-bold tracking-widest uppercase">
-          Ecosystem-wide interaction patterns and dominance metrics
+          Ecosystem-wide interaction patterns and dominance metrics based on top {LEADERBOARD_DATA.length} wallet analysis
         </p>
       </div>
 
