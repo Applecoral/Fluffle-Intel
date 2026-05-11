@@ -56,10 +56,10 @@ export default function App() {
             />
           </motion.div>
         );
-      case "strategies":
+      case "usage":
         return (
           <motion.div
-            key="strategies"
+            key="usage"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -67,15 +67,6 @@ export default function App() {
             <StrategiesPage />
           </motion.div>
         );
-      case "guide":
-        return (
-           <motion.div 
-              key="guide"
-              className="flex flex-col items-center justify-center min-h-[400px] text-zinc-500 font-mono text-xs uppercase"
-           >
-              Targeting protocol documentation... [PENDING]
-           </motion.div>
-        )
       default:
         return <Dashboard />;
     }

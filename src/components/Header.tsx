@@ -21,10 +21,6 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-8">
-        <div className="hidden md:block text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600 animate-pulse">
-           Mainnet Live Feed
-        </div>
-        
         <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
           <div className="w-1.5 h-1.5 bg-[#00ff85] rounded-full animate-ping" />
           <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">Connected to Frontier</span>

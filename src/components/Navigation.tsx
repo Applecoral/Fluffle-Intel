@@ -10,8 +10,7 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
   const tabs = [
     { id: "booster", label: "Booster", icon: <Rocket size={16} /> },
     { id: "leaderboard", label: "Ranking", icon: <Wallet size={16} /> },
-    { id: "strategies", label: "Tactics", icon: <Sword size={16} /> },
-    { id: "guide", label: "Intelligence", icon: <HelpCircle size={16} /> },
+    { id: "usage", label: "Usage", icon: <Sword size={16} /> },
   ];
 
   return (
@@ -30,10 +29,6 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
         ))}
       </div>
       
-      <div className="flex flex-col items-end opacity-20 pointer-events-none">
-         <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Sub-sector 043</span>
-         <span className="text-[8px] font-mono">X: 46.72 Y: 80.12</span>
-      </div>
     </nav>
   );
 }
