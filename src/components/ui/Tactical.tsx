@@ -9,14 +9,14 @@ interface PanelProps {
 
 export function Panel({ title, children, className = "" }: PanelProps) {
   return (
-    <div className={`bg-[#0c0c0c] border border-white/10 relative overflow-hidden ${className}`}>
+    <div className={`bg-white/40 dark:bg-[#0c0c0c] border border-black/10 dark:border-white/10 relative overflow-hidden backdrop-blur-sm shadow-sm dark:shadow-none ${className}`}>
       {title && (
-        <div className="border-b border-white/10 bg-[#0c0c0c] px-4 py-2 flex justify-between items-center">
-          <span className="text-[9px] font-sans font-bold uppercase tracking-[0.3em] text-blue-500">
+        <div className="border-b border-black/10 dark:border-white/10 bg-white/60 dark:bg-[#0c0c0c] px-4 py-2 flex justify-between items-center transition-colors">
+          <span className="text-[9px] font-sans font-bold uppercase tracking-[0.3em] text-blue-600 dark:text-blue-500">
             {title}
           </span>
           <div className="flex gap-1.5">
-            <div className="w-[1px] h-3 bg-white/10 rotate-12" />
+            <div className="w-[1px] h-3 bg-black/10 dark:bg-white/10 rotate-12" />
           </div>
         </div>
       )}
@@ -43,29 +43,29 @@ export function TacticalButton({ children, onClick, active, className = "", icon
       className={`
         group relative px-8 py-4 font-sans text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300
         ${active 
-          ? "bg-white text-black" 
-          : "bg-transparent text-white/60 hover:text-white border border-white/10 hover:bg-white/5"
+          ? "bg-black text-white dark:bg-white dark:text-black shadow-lg dark:shadow-none" 
+          : "bg-transparent text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5"
         }
         ${className}
       `}
     >
       <div className="flex items-center justify-center gap-3">
-        {icon && <span className={`${active ? "text-black" : "text-blue-500"} opacity-70`}>{icon}</span>}
+        {icon && <span className={`${active ? "text-white dark:text-black" : "text-blue-600 dark:text-blue-500"} opacity-70`}>{icon}</span>}
         {children}
       </div>
       
       {/* Accent dot */}
-      {active && <div className="absolute top-2 right-2 w-1 h-1 bg-blue-500 rounded-full" />}
+      {active && <div className="absolute top-2 right-2 w-1 h-1 bg-blue-600 dark:bg-blue-500 rounded-full" />}
     </button>
   );
 }
 
 export function Badge({ children, type = "default" }: { children: ReactNode; type?: "default" | "success" | "error" | "warning" }) {
   const colors = {
-    default: "bg-white/5 text-neutral-400 border-white/10",
-    success: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    error: "bg-red-500/10 text-red-500 border-red-500/20",
-    warning: "bg-orange-500/10 text-orange-500 border-orange-500/20",
+    default: "bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10",
+    success: "bg-blue-500/10 text-blue-600 dark:text-blue-500 border-blue-500/20",
+    error: "bg-red-500/10 text-red-600 dark:text-red-500 border-red-500/20",
+    warning: "bg-orange-500/10 text-orange-600 dark:text-orange-500 border-orange-500/20",
   };
 
   return (
@@ -77,8 +77,8 @@ export function Badge({ children, type = "default" }: { children: ReactNode; typ
 
 export function BunnyLogo({ className = "", sickle = false }: { className?: string; sickle?: boolean }) {
   return (
-    <pre className={`text-[#00ff85] font-mono leading-none ${className} select-none pointer-events-none`}>
-{sickle ? `  (\\(\\  /
+    <pre className={`text-black dark:text-[#00ff85] font-mono leading-none ${className} select-none pointer-events-none transition-colors duration-300`}>
+      {sickle ? `  (\\(\\  /
   ( -.-)/
   o_(")(")` : 
 `  (\\(\\

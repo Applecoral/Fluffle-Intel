@@ -13,7 +13,7 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-[#080808] border-t border-white/10 flex items-center justify-center md:justify-between px-6 md:px-12 z-50">
+    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-[#f7f7f7] dark:bg-[#080808] border-t border-black/10 dark:border-white/10 flex items-center justify-center md:justify-between px-6 md:px-12 z-50 transition-colors">
       <div className="flex gap-2 md:gap-4 h-full py-4 overflow-x-auto no-scrollbar">
         {tabs.map((tab) => (
           <TacticalButton

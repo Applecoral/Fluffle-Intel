@@ -83,18 +83,18 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-[#f7f7f7] dark:bg-[#080808] text-black dark:text-white font-sans selection:bg-blue-500 selection:text-white transition-colors duration-300">
       {/* Editorial Background Effect */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30 dark:opacity-30">
          <div className="absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_bottom,rgba(59,130,246,0.05)_0%,transparent_100%)]" />
          <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(to_top,rgba(59,130,246,0.05)_0%,transparent_100%)]" />
          
          {/* Subtle Vertical Lines */}
          <div className="absolute inset-0 flex justify-between px-12 opacity-5">
-            <div className="w-[1px] h-full bg-white" />
-            <div className="w-[1px] h-full bg-white hidden md:block" />
-            <div className="w-[1px] h-full bg-white hidden md:block" />
-            <div className="w-[1px] h-full bg-white" />
+            <div className="w-[1px] h-full bg-black dark:bg-white" />
+            <div className="w-[1px] h-full bg-black dark:bg-white hidden md:block" />
+            <div className="w-[1px] h-full bg-black dark:bg-white hidden md:block" />
+            <div className="w-[1px] h-full bg-black dark:bg-white" />
          </div>
       </div>
 

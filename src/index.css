@@ -7,10 +7,26 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   body {
+    background-color: #f7f7f7;
+    color: #080808;
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    @apply transition-colors duration-300;
+  }
+  
+  .dark body {
     background-color: #080808;
     color: #ffffff;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 
@@ -18,10 +34,16 @@
   .custom-scrollbar::-webkit-scrollbar {
     width: 2px;
   }
-  .custom-scrollbar::-webkit-scrollbar-track {
+  
+  .dark .custom-scrollbar::-webkit-scrollbar-track {
     background: #080808;
   }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f7f7f7;
+  }
+  
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #3b82f6; /* Blue-500 */
+    @apply bg-blue-500;
   }
 }
