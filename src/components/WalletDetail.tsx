@@ -3,7 +3,7 @@ import { fetchWalletTransactions, fetchWalletPoints } from "../services/megaethS
 import { interpretTransaction, summarizeWallet } from "../lib/interpreter";
 import { WalletProfile, InterpretedTransaction } from "../types";
 import { Panel, Badge, TacticalButton } from "./ui/Tactical";
-import { ArrowLeft, Clock, Link as LinkIcon, AlertCircle, Loader2, CheckCircle2, XCircle, Copy, Check } from "lucide-react";
+import { ArrowLeft, Clock, Link as LinkIcon, AlertCircle, Loader2, CheckCircle2, XCircle, Copy, Check, Activity, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { LEADERBOARD_DATA } from "../lib/data";
 
