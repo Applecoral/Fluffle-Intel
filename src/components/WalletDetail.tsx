@@ -56,20 +56,20 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         console.error("Error loading wallet details:", error);
         // Fallback to static data only if fetch fails
         const staticEntry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === address.toLowerCase());
-        if (staticEntry) {
-           setProfile({
-              address,
-              rank: staticEntry.rank,
-              allTimePoints: staticEntry.allTimePoints,
-              weeklyPoints: staticEntry.weeklyPoints,
-              topProtocol: staticEntry.topProtocol,
-              transactions: [],
-              interpretedTransactions: [],
-              dominantCategory: "unknown",
-              summary: "Could not fetch real-time transaction data. Displaying historical stats.",
-              lastUpdated: new Date().toISOString()
-           });
-        }
+        setInterpretedTxs([]);
+        
+        setProfile({
+          address,
+          rank: staticEntry?.rank || 0,
+          allTimePoints: staticEntry?.allTimePoints || 0,
+          weeklyPoints: staticEntry?.weeklyPoints || 0,
+          topProtocol: staticEntry?.topProtocol || "Unknown",
+          transactions: [],
+          interpretedTransactions: [],
+          dominantCategory: "unknown",
+          summary: "Real-time sync failed. Please check node connection or try again later.",
+          lastUpdated: new Date().toISOString()
+        });
       } finally {
         setIsLoading(false);
       }

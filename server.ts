@@ -91,17 +91,20 @@ async function startServer() {
   // Proxy route for Miniblocks API
   app.get("/api/miniblocks-proxy/address/:address/transactions", async (req, res) => {
     const { address } = req.params;
-    const targetUrl = `https://miniblocks.io/api/address/${address}/transactions`;
+    // Standard Miniblocks API might be v1 or direct. Let's use lowercased address.
+    const targetUrl = `https://miniblocks.io/api/address/${address.toLowerCase()}/transactions`;
 
     try {
       const response = await fetch(targetUrl, {
         headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept": "application/json"
         }
       });
       
       if (!response.ok) {
-        return res.status(response.status).json({ error: "Failed to fetch from Miniblocks" });
+        console.error(`Miniblocks error: ${response.status} for ${address}`);
+        return res.status(response.status).json({ error: "Failed to fetch from Miniblocks", details: await response.text() });
       }
 
       const data = await response.json();

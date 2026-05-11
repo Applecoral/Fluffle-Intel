@@ -19,10 +19,24 @@ export interface PointsData {
  */
 export async function fetchWalletTransactions(address: string): Promise<Transaction[]> {
   try {
-    const response = await fetch(`${MINIBLOCKS_API_URL}/address/${address}/transactions`);
-    if (!response.ok) return [];
+    // Primary source: Miniblocks
+    let response = await fetch(`${MINIBLOCKS_API_URL}/address/${address}/transactions`);
+    let data;
     
-    const data = await response.json();
+    if (response.ok) {
+        data = await response.json();
+    } else {
+        // Fallback to Etherscan proxy
+        console.warn(`Miniblocks failed, trying Etherscan fallback for ${address}`);
+        const etherscanUrl = `${EXPLORER_API_URL}?module=account&action=txlist&address=${address.toLowerCase()}&sort=desc&offset=50&page=1`;
+        response = await fetch(etherscanUrl);
+        if (response.ok) {
+            data = await response.json();
+        }
+    }
+
+    if (!data) return [];
+    
     const txArray = Array.isArray(data) ? data : (data.transactions || data.data || data.result || []);
 
     if (Array.isArray(txArray)) {
@@ -30,11 +44,11 @@ export async function fetchWalletTransactions(address: string): Promise<Transact
         hash: tx.txHash || tx.hash || "",
         from: tx.fromAddress || tx.from || "",
         to: tx.toAddress || tx.to || "",
-        valueEth: tx.valueEth || 0,
+        valueEth: tx.valueEth || (tx.value ? Number(tx.value) / 1e18 : 0),
         timestamp: tx.timestamp || tx.timeStamp || new Date().toISOString(),
         success: tx.success !== undefined ? tx.success : (tx.isError === "0" || tx.status === "1"),
-        categoryLabel: tx.txCategoryLabel || tx.category || "Call",
-        direction: tx.direction || "sent",
+        categoryLabel: tx.txCategoryLabel || tx.category || tx.functionName?.split("(")[0] || "Call",
+        direction: tx.direction || (tx.from?.toLowerCase() === address.toLowerCase() ? "sent" : "received"),
         input: tx.input || tx.data || tx.methodId || "0x"
       }));
     }
