@@ -86,6 +86,30 @@ async function startServer() {
       console.error("Terminal Proxy error:", error);
       res.status(500).json({ error: "Failed to fetch from MegaETH terminal" });
     }
+  }); 
+
+  // Proxy route for Miniblocks API
+  app.get("/api/miniblocks-proxy/address/:address/transactions", async (req, res) => {
+    const { address } = req.params;
+    const targetUrl = `https://miniblocks.io/api/address/${address}/transactions`;
+
+    try {
+      const response = await fetch(targetUrl, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+      });
+      
+      if (!response.ok) {
+        return res.status(response.status).json({ error: "Failed to fetch from Miniblocks" });
+      }
+
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error("Miniblocks Proxy error:", error);
+      res.status(500).json({ error: "Failed to fetch from Miniblocks" });
+    }
   });
 
   // Vite middleware for development

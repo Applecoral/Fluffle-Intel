@@ -3,6 +3,7 @@ import { interpretTransaction, summarizeWallet } from "../lib/interpreter";
 
 const EXPLORER_API_URL = "/api/megaeth-proxy";
 const TERMINAL_API_URL = "/api/terminal-proxy";
+const MINIBLOCKS_API_URL = "/api/miniblocks-proxy";
 
 export interface PointsData {
   allTimePoints: number;
@@ -16,21 +17,22 @@ export interface PointsData {
  */
 export async function fetchWalletTransactions(address: string): Promise<Transaction[]> {
   try {
-    const response = await fetch(`https://miniblocks.io/api/address/${address}/transactions`);
+    const response = await fetch(`${MINIBLOCKS_API_URL}/address/${address}/transactions`);
     if (!response.ok) return [];
     
     const data = await response.json();
+    const txArray = Array.isArray(data) ? data : (data.transactions || data.data || data.result || []);
 
-    if (Array.isArray(data)) {
-      return data.map((tx: any) => ({
-        hash: tx.txHash,
-        from: tx.fromAddress,
-        to: tx.toAddress,
-        valueEth: tx.valueEth,
-        timestamp: tx.timestamp,
-        success: tx.success,
-        categoryLabel: tx.txCategoryLabel,
-        direction: tx.direction
+    if (Array.isArray(txArray)) {
+      return txArray.map((tx: any) => ({
+        hash: tx.txHash || tx.hash || "",
+        from: tx.fromAddress || tx.from || "",
+        to: tx.toAddress || tx.to || "",
+        valueEth: tx.valueEth || 0,
+        timestamp: tx.timestamp || tx.timeStamp || new Date().toISOString(),
+        success: tx.success !== undefined ? tx.success : (tx.isError === "0" || tx.status === "1"),
+        categoryLabel: tx.txCategoryLabel || tx.category || "Call",
+        direction: tx.direction || "sent"
       }));
     }
     return [];
