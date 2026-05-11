@@ -102,18 +102,31 @@ async function startServer() {
       }
 
       // 3. Fetch live data from Blockscout MegaETH API
-      const blockscoutUrl = `https://megaeth.blockscout.com/api?module=account&action=txlist&address=${walletAddress}&sort=desc`;
-      const response = await fetch(blockscoutUrl, {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
-      });
+      const blockscoutUrl = `https://megaeth.blockscout.com/api?module=account&action=txlist&address=${walletAddress}&sort=desc&page=1&offset=50`;
       
-      if (!response.ok) {
-        throw new Error(`Blockscout API responded with ${response.status}`);
-      }
+      let bsData;
+      try {
+        const response = await fetch(blockscoutUrl, {
+          headers: {
+            "Accept": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+          }
+        });
+        
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(`Blockscout API responded with ${response.status}: ${text.slice(0, 100)}`);
+        }
 
-      const bsData = await response.json();
+        const text = await response.text();
+        try {
+          bsData = JSON.parse(text);
+        } catch (e) {
+          throw new Error(`Invalid JSON response from Blockscout: ${text.slice(0, 100)}`);
+        }
+      } catch (innerError: any) {
+        throw new Error(`Connection to Blockscout failed: ${innerError.message}`);
+      }
 
       // Handle "No transactions found"
       if (bsData.status === "0" && bsData.message === "No transactions found") {

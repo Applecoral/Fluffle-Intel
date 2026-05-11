@@ -302,12 +302,12 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a 
-                   href={`https://miniblocks.io/tx/${selectedTx.hash}`} 
+                   href={`https://megaeth.blockscout.com/tx/${selectedTx.hash}`} 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="flex-1 flex items-center justify-center gap-3 bg-black text-white dark:bg-white dark:text-black font-black uppercase text-[10px] tracking-widest py-4 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all shadow-md dark:shadow-none"
                 >
-                   View on Miniblocks <ExternalLink size={14} />
+                   View on Blockscout <ExternalLink size={14} />
                 </a>
                 <button 
                   onClick={() => setSelectedTx(null)}
