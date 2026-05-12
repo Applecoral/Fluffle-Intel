@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel } from "../../src/server/logic";
+import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel, lookupSelector } from "../../src/server/logic";
 import { formatEther } from "viem";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -102,7 +102,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       totalTx++;
 
       const selector = input.slice(0, 10);
-      const action = SELECTOR_REGISTRY[selector] || (input !== "0x" ? `called function ${selector}` : "sent ETH");
+      let action = SELECTOR_REGISTRY[selector];
+      
+      if (!action && input !== "0x") {
+        const signature = await lookupSelector(selector);
+        if (signature) {
+          action = `called ${signature.split('(')[0]}`;
+        } else {
+          action = `called function ${selector}`;
+        }
+      } else if (!action) {
+        action = "sent ETH";
+      }
       
       const toAddress = (toAddressRaw || "").toLowerCase();
       const protocolInfo = PROTOCOL_REGISTRY[toAddress];

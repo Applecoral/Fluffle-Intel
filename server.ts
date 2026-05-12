@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { formatEther } from "viem";
 import dotenv from "dotenv";
-import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel } from "./src/server/logic";
+import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel, lookupSelector } from "./src/server/logic";
 
 dotenv.config();
 
@@ -129,9 +129,20 @@ async function startServer() {
         if (isFailed) failedTx++;
         totalTx++;
 
-        // Existing decoding logic using mapped fields
+        // Decoding logic: Registry -> 4byte API -> Fallback
         const selector = input.slice(0, 10);
-        const action = SELECTOR_REGISTRY[selector] || (input !== "0x" ? `called function ${selector}` : "sent ETH");
+        let action = SELECTOR_REGISTRY[selector];
+        
+        if (!action && input !== "0x") {
+          const signature = await lookupSelector(selector);
+          if (signature) {
+            action = `called ${signature.split('(')[0]}`;
+          } else {
+            action = `called function ${selector}`;
+          }
+        } else if (!action) {
+          action = "sent ETH";
+        }
         
         const toAddress = (toAddressRaw || "").toLowerCase();
         const protocolInfo = PROTOCOL_REGISTRY[toAddress];
