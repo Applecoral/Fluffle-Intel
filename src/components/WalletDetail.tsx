@@ -95,11 +95,11 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                 </h1>
                 <button 
                   onClick={copyToClipboard}
-                  className="p-2 border border-black/10 dark:border-white/5 bg-white/20 dark:bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-700 dark:text-neutral-400 hover:text-blue-700 dark:hover:text-blue-400 transition-all rounded flex items-center justify-center min-w-[32px] min-h-[32px]"
+                  className="p-3 border border-black/10 dark:border-white/5 bg-white/20 dark:bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-700 dark:text-neutral-400 hover:text-blue-700 dark:hover:text-blue-400 transition-all rounded flex items-center justify-center min-w-[44px] min-h-[44px]"
                   title="Copy Full Address"
                   aria-label="Copy wallet address"
                 >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                  {copied ? <Check size={16} /> : <Copy size={16} />}
                 </button>
                 <div className="bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded">
                    <span className="text-[10px] font-black text-blue-600 dark:text-blue-500 uppercase tracking-widest leading-none">Recent TXs: {walletData.totalTx}</span>
@@ -238,8 +238,8 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                              </div>
                              <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center w-full sm:w-auto gap-4 sm:gap-2">
                                 <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-700 uppercase group-hover:text-neutral-800 dark:group-hover:text-neutral-400 transition-colors">{tx.hash.slice(0, 8)}</span>
-                                <div className="w-8 h-8 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-600 dark:text-neutral-500 group-hover:bg-blue-700 dark:group-hover:bg-blue-400 group-hover:text-white dark:group-hover:text-black group-hover:border-blue-700 dark:group-hover:border-blue-400 transition-all">
-                                   <ExternalLink size={12} aria-label="View Details" />
+                                <div className="w-11 h-11 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-600 dark:text-neutral-500 group-hover:bg-blue-700 dark:group-hover:bg-blue-400 group-hover:text-white dark:group-hover:text-black group-hover:border-blue-700 dark:group-hover:border-blue-400 transition-all">
+                                   <ExternalLink size={16} aria-label="View Details" />
                                 </div>
                              </div>
                           </motion.button>

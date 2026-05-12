@@ -5,7 +5,6 @@ import { getProtocol } from "../lib/registry";
 
 const EXPLORER_API_URL = "/api/megaeth-proxy";
 const TERMINAL_API_URL = "/api/terminal-proxy";
-const MINIBLOCKS_API_URL = "/api/miniblocks-proxy";
 
 export interface PointsData {
   allTimePoints: number;
@@ -19,20 +18,13 @@ export interface PointsData {
  */
 export async function fetchWalletTransactions(address: string): Promise<Transaction[]> {
   try {
-    // Primary source: Miniblocks
-    let response = await fetch(`${MINIBLOCKS_API_URL}/address/${address}/transactions`);
+    // Primary source: Blockscout
+    const blockscoutUrl = `${EXPLORER_API_URL}?module=account&action=txlist&address=${address.toLowerCase()}&sort=desc&offset=50&page=1`;
+    const response = await fetch(blockscoutUrl);
     let data;
     
     if (response.ok) {
         data = await response.json();
-    } else {
-        // Fallback to Etherscan proxy
-        console.warn(`Miniblocks failed, trying Etherscan fallback for ${address}`);
-        const etherscanUrl = `${EXPLORER_API_URL}?module=account&action=txlist&address=${address.toLowerCase()}&sort=desc&offset=50&page=1`;
-        response = await fetch(etherscanUrl);
-        if (response.ok) {
-            data = await response.json();
-        }
     }
 
     if (!data) return [];

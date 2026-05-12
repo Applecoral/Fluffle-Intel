@@ -167,10 +167,11 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
                           </div>
                           <button 
                             onClick={(e) => copyToClipboard(entry.address, e)}
-                            className="p-1.5 border border-black/5 dark:border-white/5 bg-black/2 dark:bg-white/2 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-500 dark:text-neutral-600 hover:text-blue-600 dark:hover:text-blue-500 transition-all rounded"
+                            className="p-3 border border-black/5 dark:border-white/5 bg-black/2 dark:bg-white/2 hover:bg-blue-500/10 hover:border-blue-500/30 text-neutral-500 dark:text-neutral-600 hover:text-blue-600 dark:hover:text-blue-500 transition-all rounded"
                             title="Copy Address"
+                            aria-label={`Copy address ${entry.address}`}
                           >
-                            {copiedAddress === entry.address ? <Check size={10} /> : <Copy size={10} />}
+                            {copiedAddress === entry.address ? <Check size={12} /> : <Copy size={12} />}
                           </button>
                         </div>
                       </td>

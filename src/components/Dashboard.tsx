@@ -119,7 +119,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                   <TrendingUp size={12} className="animate-pulse" /> Live Network Intel
                 </span>
                 {blockNumber && (
-                  <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 font-bold">
+                  <span className="text-[10px] font-mono text-neutral-700 dark:text-neutral-300 font-bold">
                     BLK #{blockNumber.toString()}
                   </span>
                 )}
@@ -154,7 +154,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                     <ShieldCheck size={10} className="text-blue-600 dark:text-blue-500" />
                     Decoding Validated by RPC
                  </div>
-                 <span className="text-[8px] text-neutral-400 dark:text-neutral-700 italic">Source: Miniblocks.io</span>
+                 <span className="text-[8px] text-neutral-500 dark:text-neutral-500 italic">Source: Blockscout</span>
               </div>
            </div>
         </div>
@@ -168,7 +168,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                     S1
                  </div>
                  <div className="flex flex-col justify-center">
-                    <h2 className="text-xl font-black uppercase tracking-tighter text-black dark:text-white">Season 1: Alpha</h2>
+                    <h3 className="text-xl font-black uppercase tracking-tighter text-black dark:text-white">Season 1: Alpha</h3>
                     <p className="text-[10px] text-neutral-600 dark:text-neutral-400 uppercase tracking-widest mt-1 font-black">Ends: June 23</p>
                  </div>
               </div>

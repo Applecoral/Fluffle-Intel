@@ -359,24 +359,6 @@ async function startServer() {
     }
   });
 
-  app.get("/api/miniblocks-proxy/address/:address/transactions", async (req, res) => {
-    const { address } = req.params;
-    const targetUrl = `https://miniblocks.io/api/address/${address}/transactions`;
-    try {
-      const response = await fetch(targetUrl, {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
-      });
-      if (!response.ok) throw new Error(`Miniblocks API responded with ${response.status}`);
-      const data = await response.json();
-      res.json(data);
-    } catch (error) {
-      console.error("Miniblocks Proxy error:", error);
-      res.status(500).json({ error: "Failed to fetch transactions from Miniblocks" });
-    }
-  });
-
   app.get("/api/megaeth-proxy", async (req, res) => {
     const query = req.url.split('?')[1];
     const targetUrl = `https://mega.etherscan.io/api?${query}`;
