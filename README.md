@@ -1,67 +1,102 @@
-# 🐇 Fluffle Intel
+#🐇 Fluffle Intel
 
-**Fluffle Intel** is a tactical intelligence layer built for **MegaETH Terminal Season 1**. It's designed to help you decode the chaos of the ecosystem, track the smartest farmers, and optimize your own strategy through clear, interpreted transaction data.
+> Transaction intelligence for the MegaETH ecosystem.
 
-Think of it as your tactical HUD for the MegaETH ecosystem. No more staring at raw hash strings—we turn "0x..." into "Swapped on Kumbaya" or "Deposited to Teko Finance."
-
----
-
-## ⚡ Core Features
-
--   **Deep Transaction Decoding**: We map hundreds of smart contract selectors to human-readable sentences.
--   **Protocol Intelligence**: Automatically identifies popular MegaETH protocols like Kumbaya, Teko, GMX, and Prism.
--   **Live Terminal Integration**: Syncs directly with the MegaETH Terminal leaderboard to track points, ranks, and dominant protocols.
--   **Smart Caching**: High-performance caching layer using Supabase to keep intelligence fast and reducing rate-limit friction.
--   **Tactical HUD UI**: A high-contrast, "terminal-aesthetic" interface designed for fast scanning and tactical decision-making.
+Enter a wallet address, get a clear picture of what it's actually doing on-chain.
 
 ---
 
-## 🛠 Tech Stack
+## Overview
 
--   **Frontend**: React 19 + Vite + Tailwind CSS 4.
--   **Backend**: Node.js / Express (Full-stack configuration).
--   **Web3 Connectivity**: `viem` for RPC calls to the MegaETH Mainnet.
--   **Intelligence Layer**: Custom registry for protocol addresses and function selectors.
--   **Database**: Supabase for transaction and profile caching.
--   **Motion**: Framer Motion for that smooth tactical feel.
+Raw transaction data is noise. Fluffle Intel cuts through it by decoding input data and mapping contract addresses to the protocols they belong to.
+
+Instead of `0x5f575529...`, you see **"Swapped on Kumbaya"** or **"Deposited to Teko Finance"**.
 
 ---
 
-## 🚀 Getting Started
+## Features
+
+- **Transaction Decoding** — Hundreds of function selectors mapped to plain English descriptions
+- **Protocol Identification** — Automatic tagging for Kumbaya, Teko Finance, GMX, Prism, and more
+- **Terminal Sync** — Pulls rank, points, and season progress from the MegaETH leaderboard
+- **Smart Caching** — Supabase-backed cache layer to reduce redundant RPC and API calls
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React 19, Vite, Tailwind CSS v4 |
+| Backend | Node.js / Express |
+| Web3 | viem (MegaETH Mainnet RPC) |
+| Database | Supabase |
+| Animation | Framer Motion |
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
-You'll need a few environment variables to unlock the full tactical capability:
-
--   `SUPABASE_URL`: Your Supabase project URL.
--   `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase service role key (for internal caching).
--   `CRON_SECRET`: A secret string for triggering cache cleanup tasks.
--   `GEMINI_API_KEY`: (Optional) For AI-driven transaction interpretation.
+- Node.js v18+
+- A Supabase project
 
 ### Installation
 
-1.  **Clone it**: Grab the repo.
-2.  **Install dependencies**: `npm install`.
-3.  **Set up environment**: Copy `.env.example` to `.env` and fill in your keys.
-4.  **Launch**: `npm run dev`.
+```bash
+# Clone the repo
+git clone https://github.com/your-username/fluffle-intel.git
+cd fluffle-intel
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+```
+
+### Environment Variables
+
+Open `.env` and fill in the following:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+CRON_SECRET=your_cron_secret_string
+```
+
+| Variable | Description |
+|---|---|
+| `SUPABASE_URL` | Your Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Service role key used for server-side cache operations |
+| `CRON_SECRET` | Secret string for triggering scheduled cache cleanup |
+
+### Run
+
+```bash
+npm run dev
+```
 
 ---
 
-## 📖 How it Works
+## How It Works
 
-When you enter a wallet address:
-1.  **Server-side processing**: Our Express backend checks if we have a fresh report in the Supabase cache.
-2.  **Blockscout Discovery**: If not cached, we query the MegaETH Blockscout API for recent activity.
-3.  **Decoding Engine**: Every transaction gets passed through our registry. We look at the `to` address to identify the protocol and the `input` data to identify the action.
-4.  **Terminal Sync**: We cross-reference the wallet with the MegaETH official terminal to show their current rank and season progress.
-5.  **Intelligence Report**: You get a beautiful, interpreted feed of exactly what that whale is doing.
-
----
-
-## 🎨 Aesthetic
-
-The UI follows a "Tactical Minimalist" philosophy. High information density, monochromatic base with functional blue accents, and mono fonts where they matter. It's built for those who spend their days in the terminal.
+1. A wallet address is submitted via the UI
+2. The Express backend checks Supabase for a cached report
+3. On a cache miss, it queries the MegaETH Blockscout API for recent transactions
+4. Each transaction is decoded — protocol identified by `to` address, action identified by `input` data
+5. The wallet is cross-referenced with the MegaETH Terminal for rank and points
+6. Results are returned as a structured intelligence report
 
 ---
 
-*Built with ❤️ for the MegaETH Community. See you on the leaderboard.*
+## Contributing
+
+Pull requests are welcome. For major changes, open an issue first to discuss what you'd like to change.
+
+---
+
+## License
+
+[MIT](LICENSE)
