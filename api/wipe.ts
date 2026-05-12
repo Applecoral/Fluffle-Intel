@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { getSupabase } from "../src/server/logic";
+import { getSupabase } from "../src/server/logic.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const cronSecret = req.headers["x-cron-secret"];

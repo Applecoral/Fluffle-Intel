@@ -75,4 +75,4 @@ export const getTimeLabel = (ts: number) => {
     return `${Math.floor(diffParams / 86400)}d ago`;
 };
 
-export { lookupSelector } from "../lib/decode";
+export { lookupSelector } from "../lib/decode.js";

@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { formatEther } from "viem";
 import dotenv from "dotenv";
-import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel, lookupSelector } from "./src/server/logic";
+import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel, lookupSelector } from "./src/server/logic.js";
 
 dotenv.config();
 

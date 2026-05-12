@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel, lookupSelector } from "../../src/server/logic";
+import { PROTOCOL_REGISTRY, SELECTOR_REGISTRY, getSupabase, getTimeLabel, lookupSelector } from "../../src/server/logic.js";
 import { formatEther } from "viem";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {

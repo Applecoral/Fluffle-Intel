@@ -1,4 +1,4 @@
-import { getSupabase } from "../server/logic";
+import { getSupabase } from "../server/logic.js";
 
 const FOURBYTE_API = 'https://www.4byte.directory/signatures/?format=json&hex=';
 
