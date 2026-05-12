@@ -132,9 +132,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const topProtocol = Object.entries(protocolCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || "None";
     const dominantCategory = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || "None";
     
+    const summary = totalTx === 0 
+      ? "No transactions found for this address."
+      : `This wallet has made ${totalTx} transactions recently. Most active on ${topProtocol}. Primary behavior: ${dominantCategory}. ${failedTx} failed transactions.`;
+    
     const responseData = {
       address: walletAddress,
-      summary: totalTx === 0 ? "No transactions found." : `Wallet decoding complete. Most active on ${topProtocol}.`,
+      summary,
       totalTx,
       failedTx,
       topProtocol,
