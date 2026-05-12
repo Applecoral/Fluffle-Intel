@@ -16,6 +16,12 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
   const [copied, setCopied] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollow = () => {
+    setIsFollowing(true);
+    setTimeout(() => setIsFollowing(false), 2000);
+  };
 
   // Find static rank data if it exists
   const staticEntry = LEADERBOARD_DATA.find(e => e.address.toLowerCase() === address.toLowerCase());
@@ -112,10 +118,10 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
               </div>
             </div>
             <TacticalButton 
-                onClick={() => alert(`Following wallet: ${walletData.address}`)}
+                onClick={handleFollow}
                 className="!py-3 !px-8 w-full sm:w-auto"
             >
-                Follow Wallet
+                {isFollowing ? "Following..." : "Follow Wallet"}
             </TacticalButton>
           </div>
         </div>

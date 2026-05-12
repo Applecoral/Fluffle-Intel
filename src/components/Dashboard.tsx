@@ -14,6 +14,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
   const [blockNumber, setBlockNumber] = useState<bigint | null>(null);
   const [isSyncing, setIsSyncing] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
+  const [errorStatus, setErrorStatus] = useState<string | null>(null);
 
   useEffect(() => {
     let unwatch: (() => void) | undefined;
@@ -45,11 +46,13 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
+    setErrorStatus(null);
     const cleanAddress = address.trim();
     if (/^0x[a-fA-F0-9]{40}$/.test(cleanAddress)) {
       onSelectWallet?.(cleanAddress, 0);
     } else {
-      alert("Please enter a valid 0x wallet address (42 characters)");
+      setErrorStatus("Invalid 0x address format");
+      setTimeout(() => setErrorStatus(null), 3000);
     }
   };
 
@@ -80,7 +83,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                      value={address}
                      onChange={(e) => setAddress(e.target.value)}
                      placeholder="0x..." 
-                     className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 px-6 py-4 pr-24 text-sm font-mono focus:outline-none focus:border-blue-500 transition-all placeholder:text-neutral-600 dark:placeholder:text-neutral-500 text-black dark:text-white shadow-sm dark:shadow-none"
+                     className={`w-full bg-white dark:bg-[#0a0a0a] border px-6 py-4 pr-24 text-sm font-mono focus:outline-none transition-all placeholder:text-neutral-600 dark:placeholder:text-neutral-500 text-black dark:text-white shadow-sm dark:shadow-none ${errorStatus ? "border-red-500" : "border-black/10 dark:border-white/10 focus:border-blue-500"}`}
                      aria-label="Wallet Address"
                   />
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1">
