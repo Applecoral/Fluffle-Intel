@@ -101,19 +101,19 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
             Leaderboard
             {isLoadingPoints && <Loader2 size={16} className="animate-spin text-blue-600 dark:text-blue-500 inline" />}
           </h1>
-          <p className="text-neutral-700 dark:text-neutral-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-2 transition-colors">
+          <p className="text-neutral-800 dark:text-neutral-400 text-[10px] font-bold uppercase tracking-[0.2em] mt-2 transition-colors">
             Global performance rankings // {LEADERBOARD_DATA.length.toLocaleString()} wallets
           </p>
         </div>
         
         <div className="flex flex-col md:flex-row gap-4 items-center w-full md:w-auto">
            <div className="flex items-center gap-2 bg-white dark:bg-black border border-black/10 dark:border-white/10 p-1 shadow-sm dark:shadow-none">
-              <span className="px-2 text-[8px] text-neutral-600 dark:text-neutral-600 uppercase font-bold">Show:</span>
+              <span className="px-2 text-[10px] text-neutral-700 dark:text-neutral-300 uppercase font-bold">Show:</span>
               {[50, 100].map((size) => (
                 <button
                   key={size}
                   onClick={() => handleItemsPerPageChange(size)}
-                  className={`px-3 py-1 text-[9px] font-bold uppercase tracking-widest transition-all ${itemsPerPage === size ? "bg-black text-white dark:bg-blue-500 dark:text-white" : "text-neutral-500 dark:text-neutral-500 hover:text-black dark:hover:text-white"}`}
+                  className={`px-3 py-1 text-[10px] font-bold uppercase tracking-widest transition-all ${itemsPerPage === size ? "bg-black text-white dark:bg-blue-500 dark:text-white" : "text-neutral-700 dark:text-neutral-400 hover:text-black dark:hover:text-white"}`}
                 >
                   {size}
                 </button>
@@ -139,7 +139,7 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
             <div className="overflow-x-auto custom-scrollbar">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-black/5 dark:border-white/5 text-neutral-600 dark:text-neutral-500 text-[9px] font-bold uppercase tracking-[0.2em]">
+                  <tr className="border-b border-black/5 dark:border-white/5 text-neutral-700 dark:text-neutral-400 text-[10px] font-bold uppercase tracking-[0.2em]">
                     <th className="px-6 py-4 text-left w-16 md:w-24">Rank</th>
                     <th className="px-6 py-4 text-left">Wallet Address</th>
                     <th className="px-6 py-4 text-left">Total Points</th>
@@ -205,7 +205,7 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
       </div>
       
       <div className="flex flex-col sm:flex-row justify-between items-center mt-8 gap-6">
-         <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-600 dark:text-neutral-500">
+         <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-700 dark:text-neutral-400">
             Page {currentPage.toString().padStart(2, '0')} // {totalPages.toString().padStart(2, '0')}
          </div>
          <div className="flex flex-wrap justify-center gap-2">

@@ -41,7 +41,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
            <span className="text-xl">🐰</span>
         </div>
       </div>
-      <span className="text-neutral-600 dark:text-neutral-500 font-sans font-bold uppercase tracking-[0.3em] animate-pulse">Scanning chain...</span>
+      <span className="text-neutral-700 dark:text-neutral-300 font-sans font-bold uppercase tracking-[0.3em] animate-pulse">Scanning chain...</span>
     </div>
   );
 
@@ -50,7 +50,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
       <AlertCircle size={40} className="text-red-500/50" />
       <div className="text-center space-y-2">
         <span className="text-red-600 dark:text-red-500 font-sans font-black uppercase tracking-[0.2em] block">[ERROR] Internal Node Link Error</span>
-        <p className="text-neutral-600 dark:text-neutral-400 text-xs font-medium max-w-md mx-auto">{error || "Failed to establish secure connection to MegaETH RPC."}</p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-xs font-medium max-w-md mx-auto">{error || "Failed to establish secure connection to MegaETH RPC."}</p>
       </div>
       <TacticalButton onClick={onBack} className="!py-2 !px-6 border-red-500/20 text-red-600 dark:text-red-500 hover:bg-red-500/10">
         Return to Safety
@@ -108,7 +108,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
               <div className="flex gap-4 mt-2">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 dark:text-blue-500">Active Scan</span>
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-300 dark:text-neutral-600">•</span>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400">Gbl Rank #{displayRank}</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300">Gbl Rank #{displayRank}</span>
                 {walletData.cached && (
                   <>
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-300 dark:text-neutral-600">•</span>
@@ -152,7 +152,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                   <div key={p} className="space-y-2">
                     <div className="flex justify-between text-[10px] uppercase font-black tracking-widest">
                       <span className="text-neutral-800 dark:text-neutral-300 truncate max-w-[180px]">{p}</span>
-                      <span className="text-neutral-600 dark:text-neutral-500 font-bold">{count} Events</span>
+                      <span className="text-neutral-700 dark:text-neutral-300 font-bold">{count} Events</span>
                     </div>
                     <div className="w-full h-[1px] bg-black/5 dark:bg-white/5 transition-colors">
                       <div className="h-full bg-blue-600 dark:bg-blue-500 transition-all duration-500" style={{ width: `${(Number(count) / (walletData.totalTx || 1)) * 100}%` }} />
@@ -167,7 +167,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                 <ShieldCheck size={14} className="text-blue-600 dark:text-blue-500" />
                 Security Report
              </div>
-             <p className="text-[10px] font-medium text-neutral-500 dark:text-neutral-500 leading-relaxed uppercase tracking-tighter">
+             <p className="text-[10px] font-medium text-neutral-600 dark:text-neutral-400 leading-relaxed uppercase tracking-tighter">
                 Manual decoding active. All interactions verified against global protocol registry. Block range: last 50 blocks.
              </p>
           </div>
@@ -205,7 +205,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                       <div className="flex items-center gap-4">
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-800 dark:text-neutral-300 bg-black/5 dark:bg-white/5 py-1 px-3 border border-black/10 dark:border-white/10">{protocol}</span>
                         <div className="h-[1px] flex-1 bg-black/10 dark:bg-white/10" />
-                        <span className="text-[10px] font-black text-neutral-600 dark:text-neutral-500">{groupedByProtocol[protocol].length} Actions</span>
+                        <span className="text-[10px] font-black text-neutral-700 dark:text-neutral-300">{groupedByProtocol[protocol].length} Actions</span>
                       </div>
                       
                       <div className="space-y-3">
@@ -225,12 +225,12 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                                 <div className="flex-1 min-w-0">
                                    <div className="text-sm font-black text-black dark:text-white tracking-tight leading-normal sm:leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors uppercase flex flex-wrap items-center gap-x-3 gap-y-1">
                                       <span className="truncate max-w-full block">{tx.sentence}</span>
-                                      {tx.failed && <span className="text-[8px] font-black bg-red-500/10 text-red-700 dark:text-red-400 px-2 py-0.5 border border-red-500/10 tracking-widest shrink-0">ERROR</span>}
+                                      {tx.failed && <span className="text-[10px] font-black bg-red-500/10 text-red-700 dark:text-red-400 px-2 py-0.5 border border-red-500/10 tracking-widest shrink-0">ERROR</span>}
                                    </div>
                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
-                                      <span className="text-[10px] font-black uppercase tracking-[0.1em] text-neutral-700 dark:text-neutral-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">{tx.category}</span>
+                                      <span className="text-[10px] font-black uppercase tracking-[0.1em] text-neutral-700 dark:text-neutral-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">{tx.category}</span>
                                       <span className="hidden sm:block w-1 h-1 bg-black/10 dark:bg-white/10 rounded-full transition-colors" />
-                                      <span className="text-[10px] text-neutral-700 dark:text-neutral-500 uppercase flex items-center gap-2 font-black">
+                                      <span className="text-[10px] text-neutral-700 dark:text-neutral-400 uppercase flex items-center gap-2 font-black">
                                          <Clock size={10} /> {tx.time}
                                       </span>
                                    </div>

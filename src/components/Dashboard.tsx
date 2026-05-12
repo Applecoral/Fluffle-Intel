@@ -134,7 +134,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                     <div key={p.protocolName} className="flex items-center gap-3 shrink-0">
                       <div className="flex items-center gap-2">
                         <span className="text-blue-600 dark:text-blue-500 font-black tabular-nums">{p.usageCount.toLocaleString()}</span>
-                        <span className="text-neutral-500 dark:text-neutral-600 lowercase variant-small-caps">txs on</span>
+                        <span className="text-neutral-600 dark:text-neutral-400 lowercase variant-small-caps">txs on</span>
                         <span className="text-black dark:text-white font-black">{p.protocolName}</span>
                       </div>
                       {i < 2 && <span className="text-neutral-300 dark:text-neutral-800 font-normal select-none">|</span>}
@@ -150,11 +150,11 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                 <div className="absolute top-0 right-0 w-16 h-full bg-linear-to-l from-black/[0.02] dark:from-white/[0.02] to-transparent pointer-events-none" />
               </div>
               <div className="flex items-center justify-between px-1">
-                 <div className="flex items-center gap-2 text-[8px] text-neutral-500 dark:text-neutral-600 font-bold uppercase tracking-[0.2em]">
+                 <div className="flex items-center gap-2 text-[10px] text-neutral-600 dark:text-neutral-400 font-bold uppercase tracking-[0.2em]">
                     <ShieldCheck size={10} className="text-blue-600 dark:text-blue-500" />
                     Decoding Validated by RPC
                  </div>
-                 <span className="text-[8px] text-neutral-500 dark:text-neutral-500 italic">Source: Blockscout</span>
+                 <span className="text-[10px] text-neutral-600 dark:text-neutral-400 italic">Source: Blockscout</span>
               </div>
            </div>
         </div>
@@ -164,7 +164,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
         <Panel title="Current Progress">
            <div className="space-y-8">
               <div className="flex gap-6">
-                 <div className="text-8xl font-black text-black/10 dark:text-white/10 tracking-tighter leading-none italic font-serif select-none" aria-hidden="true">
+                 <div className="text-8xl font-black text-black/20 dark:text-white/20 tracking-tighter leading-none italic font-serif select-none" aria-hidden="true">
                     S1
                  </div>
                  <div className="flex flex-col justify-center">
@@ -174,7 +174,7 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
               </div>
               
               <div className="p-6 border border-black/5 dark:border-white/5 bg-white/40 dark:bg-black/40 backdrop-blur-sm">
-                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed uppercase tracking-widest text-[9px] font-bold">
+                 <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed uppercase tracking-widest text-[10px] font-bold">
                     Analysis of the MegaETH ecosystem using real-time data ingestion. 
                     Search a wallet to begin decoding.
                  </p>
