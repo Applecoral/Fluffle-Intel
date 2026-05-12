@@ -1,4 +1,4 @@
-# 🐇 Fluffle Intel
+#🐇 Fluffle Intel
 
 > Transaction intelligence for the MegaETH ecosystem.
 

@@ -4,5 +4,15 @@
       "path": "/api/cleanup",
       "schedule": "0 0 * * *"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/wallet/:address",
+      "destination": "/api/wallet/[address]"
+    },
+    {
+      "source": "/api/terminal-proxy/user/:address",
+      "destination": "/api/terminal-proxy/user/[address]"
+    }
   ]
 }
