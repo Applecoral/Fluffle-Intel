@@ -109,7 +109,8 @@ export const PROTOCOLS: Protocol[] = [
     contracts: {
       primary: "0x0BE268Ebb2114C39Ca817FFf66503d4785eD019a",
       secondary: "0xE5BbEF8De2DB447a7432A47EBa58924d94eE470e",
-      tertiary: "0xF9f676066eB7BaEEED93E859BC26a41663F277A8"
+      tertiary: "0xF9f676066eB7BaEEED93E859BC26a41663F277A8",
+      nftPositionManager: "0x2b781C57e6358f64864Ff8EC464a03Fdaf9974bA"
     },
     verified: true
   },
@@ -130,6 +131,16 @@ export const PROTOCOLS: Protocol[] = [
     category: "perps",
     contracts: {
       treasury: "0xdf248bafe6fe9a73f201a125641e5c8bb20472f7"
+    },
+    verified: true
+  },
+  {
+    name: "World Markets",
+    slug: "world-markets",
+    website: "https://world.inc",
+    category: "perps",
+    contracts: {
+      primary: "0x5e3Ae52EbA0F9740364Bd5dd39738e1336086A8b"
     },
     verified: true
   }

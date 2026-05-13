@@ -15,6 +15,11 @@ export default function App() {
     return saved ? JSON.parse(saved) : null;
   });
 
+  // Leaderboard state persistence
+  const [leaderboardPage, setLeaderboardPage] = useState(1);
+  const [leaderboardSearch, setLeaderboardSearch] = useState("");
+  const [leaderboardItemsPerPage, setLeaderboardItemsPerPage] = useState(50);
+
   useEffect(() => {
     localStorage.setItem("fluffle_activeTab", activeTab);
   }, [activeTab]);
@@ -69,6 +74,12 @@ export default function App() {
           >
             <LeaderboardPage 
               onSelectWallet={(address, rank) => setSelectedWallet({ address, rank })} 
+              currentPage={leaderboardPage}
+              onPageChange={setLeaderboardPage}
+              searchQuery={leaderboardSearch}
+              onSearchChange={setLeaderboardSearch}
+              itemsPerPage={leaderboardItemsPerPage}
+              onItemsPerPageChange={setLeaderboardItemsPerPage}
             />
           </motion.div>
         );

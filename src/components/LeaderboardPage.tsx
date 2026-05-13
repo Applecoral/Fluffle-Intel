@@ -7,12 +7,23 @@ import { motion, AnimatePresence } from "motion/react";
 
 interface LeaderboardPageProps {
   onSelectWallet: (address: string, rank: number) => void;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
+  itemsPerPage: number;
+  onItemsPerPageChange: (count: number) => void;
 }
 
-export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
-  const [itemsPerPage, setItemsPerPage] = useState(50);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+export function LeaderboardPage({ 
+  onSelectWallet, 
+  currentPage, 
+  onPageChange, 
+  searchQuery, 
+  onSearchChange,
+  itemsPerPage,
+  onItemsPerPageChange
+}: LeaderboardPageProps) {
   const [livePoints, setLivePoints] = useState<Record<string, PointsData>>({});
   const [isLoadingPoints, setIsLoadingPoints] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
@@ -57,13 +68,13 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
   }, [currentData]);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1);
+    onSearchChange(e.target.value);
+    onPageChange(1);
   };
 
   const handleItemsPerPageChange = (count: number) => {
-    setItemsPerPage(count);
-    setCurrentPage(1);
+    onItemsPerPageChange(count);
+    onPageChange(1);
   };
 
   const copyToClipboard = (address: string, e: MouseEvent) => {
@@ -210,14 +221,14 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
          </div>
          <div className="flex flex-wrap justify-center gap-2">
              <button 
-                 onClick={() => setCurrentPage(1)}
+                 onClick={() => onPageChange(1)}
                  disabled={currentPage === 1}
                  className="px-3 md:px-4 py-2 border border-black/10 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-600 hover:text-black dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
              >
                  First
              </button>
              <button 
-                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                 onClick={() => onPageChange(Math.max(1, currentPage - 1))}
                  disabled={currentPage === 1}
                  className="px-3 md:px-4 py-2 border border-black/10 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-600 hover:text-black dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
              >
@@ -228,23 +239,23 @@ export function LeaderboardPage({ onSelectWallet }: LeaderboardPageProps) {
                 {getPageNumbers().map((pageNum) => (
                    <button 
                      key={pageNum}
-                     onClick={() => setCurrentPage(pageNum)}
+                     onClick={() => onPageChange(pageNum)}
                      className={`min-w-[32px] md:min-w-[40px] h-8 md:h-10 border font-bold text-[10px] uppercase tracking-widest transition-all ${currentPage === pageNum ? "border-blue-600 text-blue-600 bg-blue-500/5 dark:border-blue-500 dark:text-blue-500 dark:bg-blue-500/5" : "border-black/10 dark:border-white/10 text-neutral-600 hover:text-black dark:hover:text-white"}`}
                    >
                      {pageNum}
                    </button>
                 ))}
              </div>
-
+ 
              <button 
-                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                 onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
                  disabled={currentPage === totalPages}
                  className="px-3 md:px-4 py-2 border border-black/10 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-600 hover:text-black dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
              >
                  Next
              </button>
              <button 
-                 onClick={() => setCurrentPage(totalPages)}
+                 onClick={() => onPageChange(totalPages)}
                  disabled={currentPage === totalPages}
                  className="px-3 md:px-4 py-2 border border-black/10 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest text-neutral-600 hover:text-black dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
              >
