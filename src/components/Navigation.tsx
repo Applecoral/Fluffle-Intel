@@ -1,5 +1,5 @@
-import { Home, Wallet, Trophy, Sword, HelpCircle } from "lucide-react";
-import { TacticalButton } from "./ui/Tactical";
+import { Home, Wallet } from "lucide-react";
+import { motion } from "motion/react";
 
 interface NavigationProps {
   activeTab: string;
@@ -8,23 +8,39 @@ interface NavigationProps {
 
 export function Navigation({ activeTab, onTabChange }: NavigationProps) {
   const tabs = [
-    { id: "booster", label: "Home", icon: <Home size={16} /> },
-    { id: "leaderboard", label: "Ranking", icon: <Wallet size={16} /> },
+    { id: "booster", label: "Home", icon: <Home size={18} /> },
+    { id: "leaderboard", label: "Ranking", icon: <Wallet size={18} /> },
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-[#f7f7f7] dark:bg-[#080808] border-t border-black/10 dark:border-white/10 flex items-center justify-center md:justify-between px-6 md:px-12 z-50 transition-colors">
-      <div className="flex gap-2 md:gap-4 h-full py-4 overflow-x-auto no-scrollbar">
+    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 h-14 sm:h-16 bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-2xl border border-black/5 dark:border-white/5 flex items-center px-2 z-50 transition-all shadow-2xl dark:shadow-blue-500/5">
+      <div className="flex gap-1 h-full py-2">
         {tabs.map((tab) => (
-          <TacticalButton
+          <button
             key={tab.id}
-            active={activeTab === tab.id}
             onClick={() => onTabChange(tab.id)}
-            icon={tab.icon}
-            className="px-6 md:px-10 whitespace-nowrap"
+            className={`
+              relative flex items-center justify-center gap-2 px-6 sm:px-10 h-full rounded-xl transition-all duration-300 font-sans text-[10px] font-bold uppercase tracking-[0.2em] outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+              ${activeTab === tab.id 
+                ? "text-blue-700 dark:text-blue-400 bg-blue-500/10" 
+                : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
+              }
+            `}
+            aria-selected={activeTab === tab.id}
+            role="tab"
           >
+            <span className={`${activeTab === tab.id ? "opacity-100" : "opacity-60"}`}>
+              {tab.icon}
+            </span>
             <span className="hidden sm:inline">{tab.label}</span>
-          </TacticalButton>
+            
+            {activeTab === tab.id && (
+              <motion.div 
+                layoutId="active-tab"
+                className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-600 dark:bg-blue-400 rounded-full"
+              />
+            )}
+          </button>
         ))}
       </div>
     </nav>
