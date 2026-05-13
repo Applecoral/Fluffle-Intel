@@ -271,16 +271,17 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] overflow-y-auto bg-black/60 dark:bg-black/80 backdrop-blur-sm transition-colors p-4 sm:p-8 flex justify-center items-start sm:items-center"
+            className="fixed inset-0 z-[60] overflow-y-auto bg-black/60 dark:bg-black/80 backdrop-blur-sm transition-colors"
             onClick={() => setSelectedTx(null)}
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="relative w-full max-w-lg bg-[#fbfbfb] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-10 space-y-6 sm:space-y-8 my-auto shadow-2xl transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="flex min-h-full items-center justify-center p-4 sm:p-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                className="relative w-full max-w-lg bg-[#fbfbfb] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-10 space-y-6 sm:space-y-8 shadow-2xl transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
               <button 
                 onClick={() => setSelectedTx(null)}
                 className="absolute top-6 right-6 p-2 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
@@ -354,9 +355,10 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                 </button>
               </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
     </div>
   );
 }
