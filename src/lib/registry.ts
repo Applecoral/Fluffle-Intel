@@ -143,6 +143,16 @@ export const PROTOCOLS: Protocol[] = [
       primary: "0x5e3Ae52EbA0F9740364Bd5dd39738e1336086A8b"
     },
     verified: true
+  },
+  {
+    name: "Prism",
+    slug: "prism",
+    website: "https://prismfi.cc",
+    category: "dex",
+    contracts: {
+      primary: "0x955d56F6391a496231509134e0d2Beadf82a223f"
+    },
+    verified: true
   }
 ];
 
