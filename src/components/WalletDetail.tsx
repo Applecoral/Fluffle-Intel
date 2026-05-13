@@ -271,14 +271,14 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex flex-col items-center justify-start sm:justify-center p-4 sm:p-8 bg-black/60 dark:bg-black/80 backdrop-blur-sm transition-colors overflow-y-auto"
+            className="fixed inset-0 z-[60] overflow-y-auto bg-black/60 dark:bg-black/80 backdrop-blur-sm transition-colors p-4 sm:p-8 flex justify-center items-start sm:items-center"
             onClick={() => setSelectedTx(null)}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="w-full max-w-lg my-auto bg-[#fbfbfb] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-10 space-y-6 sm:space-y-8 relative shadow-2xl transition-colors"
+              className="relative w-full max-w-lg bg-[#fbfbfb] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-10 space-y-6 sm:space-y-8 my-auto shadow-2xl transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
@@ -289,11 +289,11 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                 <X size={20} />
               </button>
 
-              <div className="space-y-2">
+              <div className="space-y-2 pr-8">
                 <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${selectedTx.failed ? "text-red-600 dark:text-red-500" : "text-blue-600 dark:text-blue-500"}`}>
                    {selectedTx.failed ? "Transaction Failed" : "Transaction Verified"}
                 </span>
-                <h2 className="text-2xl font-black text-black dark:text-white uppercase tracking-tight leading-tight">
+                <h2 className="text-xl sm:text-2xl font-black text-black dark:text-white uppercase tracking-tight leading-tight">
                   {selectedTx.sentence}
                 </h2>
               </div>
