@@ -48,7 +48,11 @@ export function interpretTransaction(tx: Transaction): InterpretedTransaction {
   return {
     sentence,
     time,
-    protocol: protocol.name,
+    protocol: {
+      name: protocol.name,
+      category: protocol.category,
+      website: protocol.website
+    },
     category: protocol.category,
     hash: tx.hash,
     failed,
@@ -62,14 +66,16 @@ export function summarizeWallet(address: string, transactions: Transaction[], ra
   
   const protocolCounts: Record<string, number> = {};
   interpreted.forEach(t => {
-    if (!protocolCounts[t.protocol]) protocolCounts[t.protocol] = 0;
-    protocolCounts[t.protocol]++;
+    const key = t.protocol.name;
+    if (!protocolCounts[key]) protocolCounts[key] = 0;
+    protocolCounts[key]++;
   });
 
   const categoryCounts: Record<string, number> = {};
   interpreted.forEach(t => {
-    if (!categoryCounts[t.category]) categoryCounts[t.category] = 0;
-    categoryCounts[t.category]++;
+    const key = t.category;
+    if (!categoryCounts[key]) categoryCounts[key] = 0;
+    categoryCounts[key]++;
   });
 
   const sortedProtocols = Object.entries(protocolCounts).sort((a, b) => b[1] - a[1]);

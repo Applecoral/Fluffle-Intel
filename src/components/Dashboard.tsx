@@ -15,6 +15,20 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
   const [isSyncing, setIsSyncing] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
   const [errorStatus, setErrorStatus] = useState<string | null>(null);
+  const [topProtocols, setTopProtocols] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch("/api/top-protocols");
+        const data = await res.json();
+        if (data.protocols) setTopProtocols(data.protocols);
+      } catch (e) {
+        console.error("Failed to fetch protocol stats:", e);
+      }
+    }
+    fetchStats();
+  }, []);
 
   useEffect(() => {
     let unwatch: (() => void) | undefined;
@@ -128,18 +142,22 @@ export function Dashboard({ onSelectWallet }: DashboardProps) {
                 <div className="text-[10px] uppercase font-bold tracking-widest leading-relaxed text-neutral-600 dark:text-neutral-400 flex flex-wrap items-center gap-x-4 gap-y-2">
                   <div className="flex items-center gap-2 text-black dark:text-white font-black shrink-0">
                     <Activity size={12} className="text-blue-600 dark:text-blue-500" />
-                    <span>7D TOP PROTOCOLS:</span>
+                    <span>NETWORK LEADERS:</span>
                   </div>
-                  {PERFORMANCE_MATRIX.slice(0, 3).map((p, i) => (
-                    <div key={p.protocolName} className="flex items-center gap-3 shrink-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-blue-600 dark:text-blue-500 font-black tabular-nums">{p.usageCount.toLocaleString()}</span>
-                        <span className="text-neutral-600 dark:text-neutral-400 lowercase variant-small-caps">txs on</span>
-                        <span className="text-black dark:text-white font-black">{p.protocolName}</span>
+                  {topProtocols.length > 0 ? (
+                    topProtocols.slice(0, 3).map((p, i) => (
+                      <div key={p.protocolName} className="flex items-center gap-3 shrink-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-600 dark:text-blue-500 font-black tabular-nums">{p.usageCount.toLocaleString()}</span>
+                          <span className="text-neutral-600 dark:text-neutral-400 lowercase variant-small-caps">interactions on</span>
+                          <span className="text-black dark:text-white font-black">{p.protocolName}</span>
+                        </div>
+                        {i < Math.min(topProtocols.length, 3) - 1 && <span className="text-neutral-300 dark:text-neutral-800 font-normal select-none">|</span>}
                       </div>
-                      {i < 2 && <span className="text-neutral-300 dark:text-neutral-800 font-normal select-none">|</span>}
-                    </div>
-                  ))}
+                    ))
+                  ) : (
+                    <div className="text-[9px] text-neutral-500 italic">Aggregating real-time usage data...</div>
+                  )}
                 </div>
                 {/* Decorative scanning line */}
                 <motion.div 

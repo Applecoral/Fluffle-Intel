@@ -1,19 +1,23 @@
 import { createClient } from "@supabase/supabase-js";
-import { formatEther } from "viem";
+export { lookupSelector } from "../lib/decode.js";
+export { PROTOCOLS, getProtocol } from "../lib/registry.js";
 
-// Registries (Synced from server.ts)
-export const PROTOCOL_REGISTRY: Record<string, { name: string; category: string }> = {
-  "0x0ca3a2fbc3d770b578223fbb6b062fa875a2ee75": { name: "MegaETH Native Bridge", category: "bridge" },
-  "0x68b34591f662508076927803c567cc8006988a09": { name: "Kumbaya", category: "swap" },
-  "0xf3393dc9e747225fca0d61bfe588ba2838afb077": { name: "Top Strike", category: "game" },
-  "0xed62616a7c1dd354801f4e72389299a81493e004": { name: "Prism", category: "liquidity" },
-  "0x57020375f4df37012a2f1c765d5a0f9a2bb77996": { name: "Xeet", category: "other" },
-  "0x5b424c6ccba77b32b9625a6fd5a30d409d20d997": { name: "Mega Domains", category: "mint" },
-  "0x8ca83c6243b7461ae24b5cb167912f5c055f80b0": { name: "GMX", category: "swap" },
-  "0x5e3ae52eba0f9740364bd5dd39738e1336086a8b": { name: "World Markets", category: "swap" },
-  "0x8aaf217a7a1534327234bd09474fc358e6e4d322": { name: "Showdown TCG", category: "game" },
-  "0x955d56f6391a496231509134e0d2beadf82a223f": { name: "Teko Finance", category: "lend" },
-};
+// Keep PROTOCOL_REGISTRY for backward compatibility (used in server.ts and Vercel functions)
+// but map it from the new source of truth
+import { PROTOCOLS as NewPROTOCOLS } from "../lib/registry.js";
+export const PROTOCOL_REGISTRY: Record<string, { name: string; category: string; website?: string }> = {} as any;
+
+// Populate it once for constant-time lookups if needed, 
+// though we should prefer the getProtocolByAddress helper
+NewPROTOCOLS.forEach(p => {
+  Object.values(p.contracts).forEach(addr => {
+    PROTOCOL_REGISTRY[addr.toLowerCase()] = {
+      name: p.name,
+      category: p.category,
+      website: p.website
+    };
+  });
+});
 
 export const SELECTOR_REGISTRY: Record<string, string> = {
   "0xa9059cbb": "transferred",
@@ -74,5 +78,3 @@ export const getTimeLabel = (ts: number) => {
     if (diffParams < 86400) return `${Math.floor(diffParams / 3600)}h ago`;
     return `${Math.floor(diffParams / 86400)}d ago`;
 };
-
-export { lookupSelector } from "../lib/decode.js";

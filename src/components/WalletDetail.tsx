@@ -65,7 +65,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
   });
 
   const groupedByProtocol = filteredTransactions.reduce((acc, tx) => {
-    const key = tx.protocol;
+    const key = tx.protocol.name;
     if (!acc[key]) acc[key] = [];
     acc[key].push(tx);
     return acc;
@@ -145,7 +145,8 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
              <div className="space-y-6">
                 {Object.entries(
                    walletData.recentActivity.reduce((acc, tx) => {
-                     acc[tx.protocol] = (acc[tx.protocol] || 0) + 1;
+                     const key = tx.protocol.name;
+                     acc[key] = (acc[key] || 0) + 1;
                      return acc;
                    }, {} as Record<string, number>)
                 ).sort((a, b) => (b[1] as number) - (a[1] as number)).map(([p, count]) => (
@@ -201,9 +202,20 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
              ) : (
                <AnimatePresence mode="popLayout">
                  {protocols.map((protocol) => (
-                    <div className="space-y-2">
+                    <div key={protocol} className="space-y-2">
                       <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-800 dark:text-neutral-300 bg-black/5 dark:bg-white/5 py-1 px-3 border border-black/10 dark:border-white/10">{protocol}</span>
+                        {groupedByProtocol[protocol][0].protocol.website ? (
+                          <a 
+                            href={groupedByProtocol[protocol][0].protocol.website} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 py-1 px-3 border border-blue-500/20 hover:bg-blue-500/10 transition-colors flex items-center gap-2"
+                          >
+                            {protocol} <ExternalLink size={10} />
+                          </a>
+                        ) : (
+                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-800 dark:text-neutral-300 bg-black/5 dark:bg-white/5 py-1 px-3 border border-black/10 dark:border-white/10">{protocol}</span>
+                        )}
                         <div className="h-[1px] flex-1 bg-black/10 dark:bg-white/10" />
                         <span className="text-[10px] font-black text-neutral-700 dark:text-neutral-300">{groupedByProtocol[protocol].length} Actions</span>
                       </div>
@@ -288,8 +300,19 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
 
               <div className="grid grid-cols-2 gap-8 border-y border-black/10 dark:border-white/10 py-8 transition-colors">
                 <div className="space-y-1">
-                  <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest">Protocol</span>
-                  <div className="text-sm font-black text-black dark:text-white uppercase">{selectedTx.protocol}</div>
+                  <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest block">Protocol</span>
+                  {selectedTx.protocol.website ? (
+                    <a 
+                      href={selectedTx.protocol.website} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm font-black text-blue-700 dark:text-blue-400 uppercase hover:underline flex items-center gap-2"
+                    >
+                      {selectedTx.protocol.name} <ExternalLink size={14} />
+                    </a>
+                  ) : (
+                    <div className="text-sm font-black text-black dark:text-white uppercase">{selectedTx.protocol.name}</div>
+                  )}
                 </div>
                 <div className="space-y-1">
                   <span className="text-[10px] text-neutral-600 dark:text-neutral-500 uppercase font-black tracking-widest">Category</span>

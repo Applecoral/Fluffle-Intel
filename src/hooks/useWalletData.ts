@@ -3,7 +3,11 @@ import { useState, useEffect } from 'react';
 export interface Transaction {
   sentence: string;
   time: string;
-  protocol: string;
+  protocol: {
+    name: string;
+    category: string;
+    website?: string;
+  };
   category: string;
   hash: string;
   failed: boolean;

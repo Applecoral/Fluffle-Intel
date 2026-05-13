@@ -117,8 +117,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       
       const toAddress = (toAddressRaw || "").toLowerCase();
       const protocolInfo = PROTOCOL_REGISTRY[toAddress];
-      const protocolName = protocolInfo?.name || (toAddress ? `Unknown protocol (${toAddress.slice(0, 6)}...${toAddress.slice(-4)})` : "N/A");
-      const category = protocolInfo?.category || "other";
+      const protocolMetadata = protocolInfo 
+        ? { name: protocolInfo.name, category: protocolInfo.category, website: protocolInfo.website }
+        : { name: (toAddress ? `Unknown protocol (${toAddress.slice(0, 6)}...${toAddress.slice(-4)})` : "N/A"), category: "other" };
+      
+      const protocolName = protocolMetadata.name;
+      const category = protocolMetadata.category;
       
       protocolCounts[protocolName] = (protocolCounts[protocolName] || 0) + 1;
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
@@ -130,7 +134,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       transactions.push({
         sentence,
         time: getTimeLabel(Number(bsTx.timeStamp)),
-        protocol: protocolName,
+        protocol: protocolMetadata,
         category,
         hash: txHash,
         failed: isFailed,

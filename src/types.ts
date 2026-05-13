@@ -1,6 +1,10 @@
 export interface Protocol {
   name: string;
-  category: "bridge" | "swap" | "lend" | "liquidity" | "mint" | "stake" | "game" | "other" | "unknown";
+  slug: string;
+  website: string;
+  category: string;
+  contracts: Record<string, string>;
+  verified: boolean;
   isTerminalApproved?: boolean;
 }
 
@@ -24,12 +28,19 @@ export interface Transaction {
 export interface InterpretedTransaction {
   sentence: string;
   time: string;
-  protocol: string;
+  protocol: {
+    name: string;
+    category: string;
+    website?: string;
+  };
   category: string;
   hash: string;
   failed: boolean;
   valueEth?: string;
-  raw: Transaction;
+  raw?: Transaction;
+  blockNumber?: string;
+  direction?: string;
+  txCategoryLabel?: string;
 }
 
 export interface WalletProfile {

@@ -1,67 +1,157 @@
 import { Protocol, Token } from "../types";
 
-export const PROTOCOLS: Record<string, Protocol> = {
-  // Native Bridge
-  "0x0ca3a2fbc3d770b578223fbb6b062fa875a2ee75": {
-    name: "MegaETH Native Bridge",
-    category: "bridge",
-    isTerminalApproved: true,
+export const PROTOCOLS: Protocol[] = [
+  {
+    name: "AveForge",
+    slug: "aveforge",
+    website: "https://www.aveforge.gg/",
+    category: "dex",
+    contracts: { SafeProxy: "0xb12e49a4CDB83eac29C759ffC64DF818fBa8e28b" },
+    verified: true
   },
-  // Kumbaya (Swap)
-  "0x68b34591f662508076927803c567cc8006988a09": {
-    name: "Kumbaya",
-    category: "swap",
-    isTerminalApproved: true,
-  },
-  // Top Strike (Game)
-  "0xf3393dc9e747225fca0d61bfe588ba2838afb077": {
-    name: "Top Strike",
-    category: "game",
-    isTerminalApproved: true,
-  },
-  // Prism (Liquidity)
-  "0xed62616a7c1dd354801f4e72389299a81493e004": {
-    name: "Prism",
-    category: "liquidity",
-    isTerminalApproved: true,
-  },
-  // Xeet (Other)
-  "0x57020375f4df37012a2f1c765d5a0f9a2bb77996": {
-    name: "Xeet",
+  {
+    name: "Blackhaven",
+    slug: "blackhaven",
+    website: "https://app.blackhaven.xyz",
     category: "other",
-    isTerminalApproved: true,
+    contracts: {
+      bond: "0xe5C0836bcd3A37627Fa95A432C7Dbb1b9c79e3df",
+    },
+    verified: true
   },
-  // Mega Domains (Mint)
-  "0x5b424c6ccba77b32b9625a6fd5a30d409d20d997": {
-    name: "Mega Domains",
-    category: "mint",
-    isTerminalApproved: true,
+  {
+    name: "Brix",
+    slug: "brix",
+    website: "https://brix.money",
+    category: "yield and credit",
+    contracts: {
+      router: "0x15b271d9012b5820fc42b1c495b4c1e206547de5"
+    },
+    verified: true
   },
-  // GMX (Swap)
-  "0x8ca83c6243b7461ae24b5cb167912f5c055f80b0": {
+  {
+    name: "Canonic",
+    slug: "canonic",
+    website: "https://canonic.trade",
+    category: "dex",
+    contracts: {
+      vault1: "0x11469caf743C2bFBD663C42A2E339A75E053075C",
+      vault2: "0xcC32b639767126f08A51ca5284F9a72150F418D5",
+      vault3: "0xC397f8ffd517EDA78da4dE59c53516B65846a82A",
+      vault4: "0x26F35fcbA3C1387dBaC477d82Bb8a66fA2eDfb4E"
+    },
+    verified: true
+  },
+  {
+    name: "Cap",
+    slug: "cap",
+    website: "https://www.cap.app",
+    category: "yield",
+    contracts: {
+      token1: "0xcCcc62962d17b8914c62D74FfB843d73B2a3cccC",
+      token2: "0x88887bE419578051FF9F4eb6C858A951921D8888"
+    },
+    verified: true
+  },
+  {
+    name: "Chisino",
+    slug: "chisino",
+    website: "https://app.chisino.io",
+    category: "gaming",
+    contracts: {
+      primary: "0x4fd02a1A80923cE1D7E70A8719421431Ea286941"
+    },
+    verified: true
+  },
+  {
     name: "GMX",
-    category: "swap",
-    isTerminalApproved: true,
+    slug: "gmx",
+    website: "https://app.gmx.io",
+    category: "perps",
+    contracts: {
+      router: "0x3782d91C5888dE31F627495e6aAAC3f09499fe72"
+    },
+    verified: true
   },
-  // World Markets (Swap)
-  "0x5e3ae52eba0f9740364bd5dd39738e1336086a8b": {
-    name: "World Markets",
-    category: "swap",
-    isTerminalApproved: true,
+  {
+    name: "Gains Network",
+    slug: "gains-network",
+    website: "https://gains.trade",
+    category: "perps",
+    contracts: {
+      primary: "0x46344456f130e9dcdeA7F98cDb0E02fB9F4ab72D"
+    },
+    verified: true
   },
-  // Showdown TCG (Game)
-  "0x8aaf217a7a1534327234bd09474fc358e6e4d322": {
-    name: "Showdown TCG",
-    category: "game",
-    isTerminalApproved: true,
+  {
+    name: "Ferdy",
+    slug: "ferdy",
+    website: "https://ferdy.bet",
+    category: "gaming",
+    contracts: {
+      dice: "0xf9baBEb6e0013e91E669A4872907c19Aa78826Ce",
+      keno: "0xfAe58cfD2b2F372229B3610F98BbaE7Cc4c12Ab4",
+      coinflip: "0xfac05d5F67BD01850378C0C08FB2bC7117045Aa6",
+      rockpaperscissors: "0xB9e036F8d3129179c9eb15615F7a711c4f1Cc413",
+      pvpflip: "0xcf9A3e1635D02bc2B6294591607A9B43fcb1B901",
+      plinko: "0x062355a2f867724C96F6c1CEf08ea03E74B80f49",
+      horserace: "0x11B8f71a3EB3eB6C04B53F7020538a2F501aB6b5",
+      slots: "0x03C5433E91AdDEcf3cD9B9167d598f882A05e46f",
+      slide: "0x9F40194914a3116C095B7304c859dA0359d4e3B6"
+    },
+    verified: true
   },
-  // Teko Finance (Lending)
-  "0x955d56f6391a496231509134e0d2beadf82a223f": {
-    name: "Teko Finance",
-    category: "lend",
-    isTerminalApproved: true,
+  {
+    name: "Kumbaya",
+    slug: "kumbaya",
+    website: "https://www.kumbaya.xyz",
+    category: "dex",
+    contracts: {
+      primary: "0x0BE268Ebb2114C39Ca817FFf66503d4785eD019a",
+      secondary: "0xE5BbEF8De2DB447a7432A47EBa58924d94eE470e",
+      tertiary: "0xF9f676066eB7BaEEED93E859BC26a41663F277A8"
+    },
+    verified: true
   },
-};
+  {
+    name: "Offshore Protocol",
+    slug: "offshore-protocol",
+    website: "https://app.offshoreprotocol.fun",
+    category: "gaming",
+    contracts: {
+      configRegistry: "0xCD8e5aaee73730347d8a3568D57510158a07b4A6"
+    },
+    verified: true
+  },
+  {
+    name: "Hit One",
+    slug: "hit-one",
+    website: "https://app.hit.one",
+    category: "perps",
+    contracts: {
+      treasury: "0xdf248bafe6fe9a73f201a125641e5c8bb20472f7"
+    },
+    verified: true
+  }
+];
+
+export function getProtocolByAddress(address: string | null | undefined): Protocol | null {
+  if (!address) return null;
+  const addr = address.toLowerCase();
+  
+  for (const protocol of PROTOCOLS) {
+    const contractAddresses = Object.values(protocol.contracts).map(a => a.toLowerCase());
+    if (contractAddresses.includes(addr)) {
+      return protocol;
+    }
+  }
+  
+  return null;
+}
+
+export function getProtocolBySlug(slug: string): Protocol | null {
+  return PROTOCOLS.find(p => p.slug === slug) || null;
+}
 
 export const TOKENS: Record<string, Token> = {
   "0xusdm_token_address": { symbol: "USDm", decimals: 6 },
@@ -128,11 +218,14 @@ export const SELECTORS: Record<string, string> = {
   "0x": "sent ETH",
 };
 
-export function getProtocol(address: string | null | undefined): Protocol {
+export function getProtocol(address: string | null | undefined): { name: string; category: string; website?: string } {
+  const protocol = getProtocolByAddress(address);
+  if (protocol) return protocol;
+  
   if (!address) return { name: "Contract Creation", category: "other" };
-  const addr = address.toLowerCase();
-  return PROTOCOLS[addr] || { 
-    name: `Unknown protocol (${address.slice(0, 6)}...${address.slice(-4)})`, 
+  
+  return { 
+    name: `${address.slice(0, 6)}...${address.slice(-4)}`, 
     category: "unknown" 
   };
 }
