@@ -177,7 +177,7 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
         <div className="md:col-span-8 flex flex-col gap-6 overflow-hidden">
           <div className="flex justify-between items-center border-b border-black/10 dark:border-white/10 pb-4 overflow-x-auto no-scrollbar transition-colors">
              <div className="flex gap-6 md:gap-8 min-w-max pr-4" role="tablist">
-                {["all", "lend", "swap", "bridge", "failed"].map((f) => (
+                {["all", "failed"].map((f) => (
                   <button 
                     key={f}
                     role="tab"
