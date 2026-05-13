@@ -227,19 +227,19 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
                              initial={{ opacity: 0, x: -10 }}
                              animate={{ opacity: 1, x: 0 }}
                              transition={{ delay: i * 0.02 }}
-                             className={`w-full text-left p-5 border border-black/5 dark:border-white/5 bg-white/40 dark:bg-[#0a0a0a] hover:bg-black/5 dark:hover:bg-white/5 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center group cursor-pointer gap-4 shadow-sm dark:shadow-none ${tx.failed ? "border-red-600/20 dark:border-red-900/20" : ""}`}
+                             className={`w-full text-left p-3.5 border border-black/5 dark:border-white/5 bg-white/40 dark:bg-[#0a0a0a] hover:bg-black/5 dark:hover:bg-white/5 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center group cursor-pointer gap-4 shadow-sm dark:shadow-none ${tx.failed ? "border-red-600/20 dark:border-red-900/20" : ""}`}
                              onClick={() => setSelectedTx(tx)}
                           >
-                             <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 w-full min-w-0">
-                                <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${tx.failed ? "border-red-500/20 text-red-700 dark:text-red-400 bg-red-500/5" : "border-black/10 dark:border-white/10 text-neutral-600 dark:text-neutral-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 bg-black/2 dark:bg-white/2"}`}>
-                                   {tx.failed ? <XCircle size={12} /> : <CheckCircle2 size={12} />}
+                             <div className="flex flex-col sm:flex-row sm:items-center gap-3 md:gap-5 w-full min-w-0">
+                                <div className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-colors ${tx.failed ? "border-red-500/20 text-red-700 dark:text-red-400 bg-red-500/5" : "border-black/10 dark:border-white/10 text-neutral-600 dark:text-neutral-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 bg-black/2 dark:bg-white/2"}`}>
+                                   {tx.failed ? <XCircle size={11} /> : <CheckCircle2 size={11} />}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                   <div className="text-sm font-black text-black dark:text-white tracking-tight leading-normal sm:leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors uppercase flex flex-wrap items-center gap-x-3 gap-y-1">
+                                   <div className="text-xs sm:text-[13px] font-black text-black dark:text-white tracking-tight leading-tight group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors uppercase flex flex-wrap items-center gap-x-2 gap-y-1">
                                       <span className="truncate max-w-full block">{tx.sentence}</span>
-                                      {tx.failed && <span className="text-[10px] font-black bg-red-500/10 text-red-700 dark:text-red-400 px-2 py-0.5 border border-red-500/10 tracking-widest shrink-0">ERROR</span>}
+                                      {tx.failed && <span className="text-[9px] font-black bg-red-500/10 text-red-700 dark:text-red-400 px-1.5 py-0.5 border border-red-500/10 tracking-widest shrink-0">ERR</span>}
                                    </div>
-                                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
+                                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 opacity-80">
                                       <span className="text-[10px] font-black uppercase tracking-[0.1em] text-neutral-700 dark:text-neutral-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">{tx.category}</span>
                                       <span className="hidden sm:block w-1 h-1 bg-black/10 dark:bg-white/10 rounded-full transition-colors" />
                                       <span className="text-[10px] text-neutral-700 dark:text-neutral-400 uppercase flex items-center gap-2 font-black">
@@ -274,12 +274,12 @@ export function WalletDetail({ address, onBack, rank = 0 }: WalletDetailProps) {
             className="fixed inset-0 z-[60] overflow-y-auto bg-black/60 dark:bg-black/80 backdrop-blur-sm transition-colors"
             onClick={() => setSelectedTx(null)}
           >
-            <div className="flex min-h-full items-center justify-center p-4 sm:p-8">
+            <div className="flex min-h-full items-start sm:items-center justify-center p-4 sm:p-8">
               <motion.div
-                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                initial={{ scale: 0.98, opacity: 0, y: 10 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                className="relative w-full max-w-lg bg-[#fbfbfb] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-10 space-y-6 sm:space-y-8 shadow-2xl transition-colors"
+                exit={{ scale: 0.98, opacity: 0, y: 10 }}
+                className="relative w-full max-w-lg bg-[#fbfbfb] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-10 space-y-6 sm:space-y-8 shadow-2xl transition-colors my-auto"
                 onClick={(e) => e.stopPropagation()}
               >
               <button 
