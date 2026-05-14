@@ -1,1 +1,1202 @@
-export const RAW_3 = [{"rank":301,"wallet":"0xb0419e2419db9ac33ef36256b2a99d12c30c9fb0","totalPoints":1205,"weeklyPoints":1205},{"rank":302,"wallet":"0x3e486ec07a997d51c78d74c76d6f4b74ec1c2018","totalPoints":1204,"weeklyPoints":1204},{"rank":303,"wallet":"0x83fdc811b8d0fb9eef1a94462005e0d3e8bed64f","totalPoints":1203,"weeklyPoints":1203},{"rank":304,"wallet":"0xab8a7fef1b3f53476d9ce47d4f74d999a1dacf8c","totalPoints":1195,"weeklyPoints":1195},{"rank":305,"wallet":"0x52eb8a6ed274b7ea5fc33dda79c448d9bed9c611","totalPoints":1193,"weeklyPoints":1193},{"rank":306,"wallet":"0x55824087db3e0f877e555cdcc60768ea1f4b8cd0","totalPoints":1184,"weeklyPoints":1184},{"rank":307,"wallet":"0xc8292bc6b2076e231cb127f5b7a0818fbcbf211d","totalPoints":1169,"weeklyPoints":1169},{"rank":308,"wallet":"0xa0bb8934bd44a7900add77fe21af2efd9121b3c9","totalPoints":1388,"weeklyPoints":1165},{"rank":309,"wallet":"0xd6890661aa2fdb0d71803ada58f6e294c4a5e038","totalPoints":1165,"weeklyPoints":1165},{"rank":309,"wallet":"0x25c1541071258523322657289a4c2923c21185d2","totalPoints":1883,"weeklyPoints":0},{"rank":310,"wallet":"0x34cb21ce819fbb838cf53c2dc35e6329cbb74d8f","totalPoints":1201,"weeklyPoints":1151},{"rank":311,"wallet":"0x30a26c2837e9ad41ea5955949f00402dbf86f124","totalPoints":1146,"weeklyPoints":1146},{"rank":312,"wallet":"0x1b394344da437549860964aa1e42aa86f9bcbfc9","totalPoints":1141,"weeklyPoints":1141},{"rank":313,"wallet":"0xeed2a5fd7b8b2142f8a0fab770f7ed1de3f2ed64","totalPoints":1139,"weeklyPoints":1139},{"rank":314,"wallet":"0xe8ce8248ad8b87d56163c24d21772785f811544f","totalPoints":1136,"weeklyPoints":1136},{"rank":315,"wallet":"0x96ea3317a62d77d66b857b323abf56d3c8acc6a4","totalPoints":1136,"weeklyPoints":1136},{"rank":315,"wallet":"0xf42fe4b1b165b7523afd1ac44d147ed2a208a38b","totalPoints":1835,"weeklyPoints":0},{"rank":316,"wallet":"0x0c19fda23415b752734003946cec6861d7318597","totalPoints":1124,"weeklyPoints":1124},{"rank":316,"wallet":"0x50b73d52a00dd10feef49a074657285515020320","totalPoints":1833,"weeklyPoints":0},{"rank":317,"wallet":"0x22edc38749b59c31c9319eae7fc62143ac2fcc6c","totalPoints":1120,"weeklyPoints":1120},{"rank":317,"wallet":"0xc6a9218386a5d9146f6ec46f96d24251cfeabb66","totalPoints":1833,"weeklyPoints":0},{"rank":318,"wallet":"0xd427b458dbecaf81af0b8db53c10404249e81b00","totalPoints":1116,"weeklyPoints":1116},{"rank":319,"wallet":"0x9347ea27d20da04fa3af9444ebd086c73ff6553b","totalPoints":1164,"weeklyPoints":1114},{"rank":320,"wallet":"0x6620f274fb8512d3e2e954e325e044a018c475b4","totalPoints":1114,"weeklyPoints":1114},{"rank":321,"wallet":"0x19bcee09ef6ad2321216c97a77641c1841697375","totalPoints":1107,"weeklyPoints":1107},{"rank":322,"wallet":"0xa5019cf0224d21d41437d3cd7648d39a5868282f","totalPoints":1106,"weeklyPoints":1106},{"rank":323,"wallet":"0x30d83d444e230f652e2c62cb5697c8dad503987b","totalPoints":1144,"weeklyPoints":1094},{"rank":324,"wallet":"0xe8000d7f9e36360e431ef17f0c842716753b8dc6","totalPoints":1077,"weeklyPoints":1077},{"rank":325,"wallet":"0xc3aab477f9279ba2d4697f804518fa91696de042","totalPoints":1074,"weeklyPoints":1074},{"rank":326,"wallet":"0x0e9beee0eebd1e1b1e49e2d6011cfd0b59bb79c3","totalPoints":1069,"weeklyPoints":1069},{"rank":327,"wallet":"0x4c7be9a9a1069216fbd12886dd91b4db3a6526c2","totalPoints":1065,"weeklyPoints":1065},{"rank":328,"wallet":"0x5cdae504b8b91bc9969803280cffc5bfe45254ed","totalPoints":1063,"weeklyPoints":1063},{"rank":329,"wallet":"0xed0dd71eaf964e8e4f1ee599863134c2f52f9b16","totalPoints":1052,"weeklyPoints":1052},{"rank":330,"wallet":"0xc30dc38308a684777a7c9f83b1420d8a857676da","totalPoints":1049,"weeklyPoints":1049},{"rank":331,"wallet":"0x79603115df2ba00659adc63192325cf104ca529c","totalPoints":1115,"weeklyPoints":1042},{"rank":332,"wallet":"0x83378c70b12be0431a36416622efd2e430b04628","totalPoints":1033,"weeklyPoints":1033},{"rank":333,"wallet":"0x4269bf9727ed052c40e6f127ee0dd5e2ddee6289","totalPoints":1023,"weeklyPoints":1023},{"rank":334,"wallet":"0x887d462dc0031691aabd616c7bbcb12b0efbbb64","totalPoints":1017,"weeklyPoints":1017},{"rank":335,"wallet":"0xec70cd946dbeb417524d95c8ba198d53bdd7968d","totalPoints":1017,"weeklyPoints":1017},{"rank":336,"wallet":"0x3a26d11a8883df7518a968ee20a27f9e2bb48784","totalPoints":1014,"weeklyPoints":1014},{"rank":337,"wallet":"0x4ab57461f2e09b950525d9acb029c924a17317ff","totalPoints":1013,"weeklyPoints":1013},{"rank":338,"wallet":"0x8ab913a71a9f181c4dfd051a52a9ec91dce41855","totalPoints":1010,"weeklyPoints":1010},{"rank":339,"wallet":"0x2f1be7e9d6f5ae564f82b7cdd79a3a51222e86ba","totalPoints":1004,"weeklyPoints":1004},{"rank":340,"wallet":"0x5d0ac389c669d6efe3ba96b9878d8156f180c539","totalPoints":995,"weeklyPoints":995},{"rank":341,"wallet":"0x3b464c069a714f4d9a12b349b6120af74c817baa","totalPoints":1070,"weeklyPoints":982},{"rank":342,"wallet":"0x22a676b52392591bc6c7caf51c14b38f5e0f3716","totalPoints":964,"weeklyPoints":964},{"rank":343,"wallet":"0x95b4d8de77be9b2cd7848072d315770511373197","totalPoints":962,"weeklyPoints":962},{"rank":344,"wallet":"0x9e9bbd60b1f2a177d11280636ffe4892a89a5912","totalPoints":1011,"weeklyPoints":961},{"rank":345,"wallet":"0x50f2d8da7f0349be9de72fbbd1bf1fc87e4a2b8b","totalPoints":959,"weeklyPoints":959},{"rank":346,"wallet":"0x05f7bb35c6bb3a212bd5bc7890578f458eebcb7a","totalPoints":1000,"weeklyPoints":950},{"rank":347,"wallet":"0xae10415dcbcc2a7f13e9b302bb8585fdb60a66c9","totalPoints":949,"weeklyPoints":949},{"rank":348,"wallet":"0xa9ca470bdf0c60f3cf84b0ae23218e60a260e4da","totalPoints":944,"weeklyPoints":944},{"rank":349,"wallet":"0x0374f0273e01841f594a4c0becdf7bfbd9b13a42","totalPoints":943,"weeklyPoints":943},{"rank":350,"wallet":"0x9d0214c3db28875fe2b9eb9cd9d4f71e7817890a","totalPoints":939,"weeklyPoints":939},{"rank":351,"wallet":"0x6f0d30ee2bc8d381eefc23d5149fc9eee268321b","totalPoints":987,"weeklyPoints":937},{"rank":352,"wallet":"0xa8ba45114d66a826d9e4c6f4a48f183811d34bc6","totalPoints":935,"weeklyPoints":935},{"rank":353,"wallet":"0x4e3705bf67e4d2e4e6569b8e1ebd801fc5a13a41","totalPoints":931,"weeklyPoints":931},{"rank":354,"wallet":"0x117e1ebb7d05545064850513021df6ade3c1690b","totalPoints":927,"weeklyPoints":927},{"rank":355,"wallet":"0xf2f57d43cd39837c62e94dfacf66bb507b28853e","totalPoints":921,"weeklyPoints":921},{"rank":355,"wallet":"0x6eeb400b09bf54452947e2ed4a03648a3f5efb50","totalPoints":1522,"weeklyPoints":0},{"rank":356,"wallet":"0x7fb05c8a178cfdbb6a5a4d875b5bd3bcbe2b7f32","totalPoints":1396,"weeklyPoints":919},{"rank":357,"wallet":"0x1888e621ad15059944ed92dd5469417eb193fb51","totalPoints":992,"weeklyPoints":919},{"rank":358,"wallet":"0x8d4d78cce63e93290c5120df2fb6f50a740b29fb","totalPoints":968,"weeklyPoints":918},{"rank":359,"wallet":"0xe5c6034ae26948b0283665dea942aa05b024793d","totalPoints":910,"weeklyPoints":910},{"rank":359,"wallet":"0x5c270528353b44b9e11fbef10aaa91765d040969","totalPoints":1509,"weeklyPoints":0},{"rank":360,"wallet":"0x5eba35d60f0f995ac7118d290f43292c7937b52e","totalPoints":1022,"weeklyPoints":908},{"rank":361,"wallet":"0xec3eb5c74955f0ee151aae4bc6e89e8affa3eca1","totalPoints":906,"weeklyPoints":906},{"rank":362,"wallet":"0x40b6d9400c7ea7fbbe38d851727de2e958795c11","totalPoints":904,"weeklyPoints":904},{"rank":363,"wallet":"0x3a5842f5c8f3730f23efb3799aa2578dfcf11c09","totalPoints":899,"weeklyPoints":899},{"rank":364,"wallet":"0x577b2ddf06fcfc2abf73c9bd64e9a9c8aedaed94","totalPoints":947,"weeklyPoints":897},{"rank":365,"wallet":"0x268070d5eed5b24e34a5f4c17b5482178b18089d","totalPoints":896,"weeklyPoints":896},{"rank":366,"wallet":"0xd278a769940ba618a7f8260a4ba5777ff974bdbb","totalPoints":943,"weeklyPoints":893},{"rank":367,"wallet":"0x5f7c27402603d2607b07c19fcd41c84a1f5557ac","totalPoints":893,"weeklyPoints":893},{"rank":367,"wallet":"0xc560bc4a6e6f7b48e3c4876acc822da87b692578","totalPoints":1467,"weeklyPoints":0},{"rank":368,"wallet":"0x83eebeca1d2f6ec2e7d43e1f1c9ebe959bc4029a","totalPoints":882,"weeklyPoints":882},{"rank":368,"wallet":"0x47f1905cd4ca0d65c37ababc56931ec95805a54f","totalPoints":1467,"weeklyPoints":0},{"rank":369,"wallet":"0xb41a57d2908cedea1ab3f2d5a56eba17b8fe2332","totalPoints":878,"weeklyPoints":878},{"rank":369,"wallet":"0xc22e97801ed1aa3cfbbb40b251773d8917249a82","totalPoints":1467,"weeklyPoints":0},{"rank":370,"wallet":"0x0fcf9f7e1974acb95386a5ca9f1594908b449264","totalPoints":873,"weeklyPoints":873},{"rank":371,"wallet":"0xb98c9ced420a137d3def9c62d99dde55d4d8879f","totalPoints":2504,"weeklyPoints":871},{"rank":372,"wallet":"0xd695a06b2a430e351e7ef94506ed6935f6f35eaf","totalPoints":913,"weeklyPoints":863},{"rank":373,"wallet":"0x9ff0d37ebdac4cf853373066bc156515060a70cf","totalPoints":862,"weeklyPoints":862},{"rank":374,"wallet":"0x90e06d2d9705c181bad2a4e7c3dca13631a6f479","totalPoints":1042,"weeklyPoints":859},{"rank":375,"wallet":"0x33dccc315913eca939519fd8857b5a5f246e8dd4","totalPoints":856,"weeklyPoints":856},{"rank":376,"wallet":"0x80212d1d03cb6a12b61cf5e98ca98d30c293127c","totalPoints":1005,"weeklyPoints":853},{"rank":377,"wallet":"0x7a6f38594496617f61f8358912f4ea69fe33d02f","totalPoints":853,"weeklyPoints":853},{"rank":378,"wallet":"0x62de84e817a9f328605122acb88a6449100680f2","totalPoints":849,"weeklyPoints":849},{"rank":379,"wallet":"0x1ece8e8929b0d8846715a13cb9b4a2ebe85f4943","totalPoints":901,"weeklyPoints":839},{"rank":380,"wallet":"0xe1a2d40de3d4008033d3044952e10d5a14d489d6","totalPoints":839,"weeklyPoints":839},{"rank":381,"wallet":"0x1a903fe2f732f96baa7292a05f4121766dd7e07a","totalPoints":837,"weeklyPoints":837},{"rank":381,"wallet":"0xbc38869609040bb20a884beef46acff1be966889","totalPoints":1393,"weeklyPoints":0},{"rank":382,"wallet":"0x1afb41e5fd28a7c55c2b30eff6544364ddf0151e","totalPoints":837,"weeklyPoints":837},{"rank":383,"wallet":"0x775d1bd04e076e5812adab5a8ba2c4de71a8e50d","totalPoints":835,"weeklyPoints":835},{"rank":383,"wallet":"0x0e01b9d728bef0f3a0d88be539704a6513bec4c7","totalPoints":1379,"weeklyPoints":0},{"rank":384,"wallet":"0xb922940e9d5e5fc6a3c63527c9b02c7070ba6b29","totalPoints":831,"weeklyPoints":831},{"rank":385,"wallet":"0xe7e436d2fd560e1a41a9a6e15b0773bb2b841a6a","totalPoints":830,"weeklyPoints":830},{"rank":386,"wallet":"0x4f84e68d07bb2909144dc59000abaf1e0931f709","totalPoints":829,"weeklyPoints":829},{"rank":387,"wallet":"0xf002fcaf8a060808ed39d04e6ff92425080a71d7","totalPoints":827,"weeklyPoints":827},{"rank":388,"wallet":"0x960f16fff5070555c0efa22f6b839ed7d5ab6094","totalPoints":4517,"weeklyPoints":824},{"rank":389,"wallet":"0xf0462427a46a36baa325f4bbd3789209116cdbe0","totalPoints":9951,"weeklyPoints":821},{"rank":390,"wallet":"0x4c2c4c05b9f1d2e8e780107f53b99548cca28118","totalPoints":821,"weeklyPoints":821},{"rank":391,"wallet":"0x5de0c18ad34e2895aa6b7088e4e42305909d409d","totalPoints":820,"weeklyPoints":820},{"rank":391,"wallet":"0x7d047a4bd4b89ecb0998b4e1f89b171dc2f057ee","totalPoints":1346,"weeklyPoints":0},{"rank":392,"wallet":"0x84792e0f6f7b4861ebcd75e93cf7539186a77180","totalPoints":819,"weeklyPoints":819},{"rank":393,"wallet":"0x9b841c31943b4ae4b9fc7bef0ba00b80276c205e","totalPoints":818,"weeklyPoints":818},{"rank":393,"wallet":"0x637fed24d31822d36a74fd9e35fa5b9f05820ef0","totalPoints":1342,"weeklyPoints":0},{"rank":394,"wallet":"0x510b755a23db81c55c81046b46f26ab701744d7f","totalPoints":962,"weeklyPoints":815},{"rank":394,"wallet":"0x9540cee706d07b9347816e15c661e9c6cb1b7d81","totalPoints":1342,"weeklyPoints":0},{"rank":395,"wallet":"0x5ec19b48741322ec4c54fd642ffc7ed306ef4a4c","totalPoints":815,"weeklyPoints":815},{"rank":396,"wallet":"0x768263481c4703c22144558112d931b683492b52","totalPoints":810,"weeklyPoints":810},{"rank":397,"wallet":"0x0cdc9bded6b23909d2998d37c0a1f8d00cf73fbd","totalPoints":859,"weeklyPoints":809},{"rank":398,"wallet":"0x267a6d0c65fe804689cb590967f536cd7f0d0c65","totalPoints":808,"weeklyPoints":808},{"rank":399,"wallet":"0xeb4b8ecce912e40fa4877f1d5380a810c7b5036c","totalPoints":807,"weeklyPoints":807},{"rank":400,"wallet":"0x5806b8892f0a4eb308855bf6807426721b225f14","totalPoints":805,"weeklyPoints":805},{"rank":401,"wallet":"0x54bf374c1a0eb4c52017cc52cf1633327ee3e985","totalPoints":804,"weeklyPoints":804},{"rank":402,"wallet":"0xd941c574bfc0c8e3defa9f572291895af3a03458","totalPoints":800,"weeklyPoints":800},{"rank":403,"wallet":"0xb3140318954ba7bd67ec733c5a570a58462a39d9","totalPoints":798,"weeklyPoints":798},{"rank":404,"wallet":"0xecbd5c9c1e3ef761bbedcb9f4f08839bc8f22059","totalPoints":796,"weeklyPoints":796},{"rank":405,"wallet":"0x565e1bf0851a694371122d11dfa99eb31a9e7945","totalPoints":796,"weeklyPoints":796},{"rank":406,"wallet":"0x1afd3a258b1a9b397a24a239bb70444b478deedb","totalPoints":794,"weeklyPoints":794},{"rank":407,"wallet":"0x5d1d5f3c940a088f9fe54bd7907b4a6cc12f5203","totalPoints":793,"weeklyPoints":793},{"rank":408,"wallet":"0xd96e7e6443099ec80a8d8b37fdeaaab1e109d62f","totalPoints":836,"weeklyPoints":786},{"rank":409,"wallet":"0x572645a7be0ea308b1177e985c49cf1239f68a1d","totalPoints":784,"weeklyPoints":784},{"rank":410,"wallet":"0x4d2d988f3264a8c01298492ee4a599594bc95f94","totalPoints":783,"weeklyPoints":783},{"rank":411,"wallet":"0x69e12f4519ff489f74739aa20e5bbb0dcf74a85c","totalPoints":781,"weeklyPoints":781},{"rank":411,"wallet":"0xf8c6d1017b151414165c3b62d9bf5d61b845d1a2","totalPoints":1224,"weeklyPoints":0},{"rank":412,"wallet":"0x295eb22151d3f09ea711382120e42d9015f90696","totalPoints":779,"weeklyPoints":779},{"rank":413,"wallet":"0x01b0d1dd8302374403b5f6697bb4f5992f1c75a3","totalPoints":851,"weeklyPoints":778},{"rank":414,"wallet":"0x5930ca8289b7a01e3ebbcb14454c93c163430491","totalPoints":777,"weeklyPoints":777},{"rank":415,"wallet":"0xe10721a627cf9b958c921619a864491455f23734","totalPoints":775,"weeklyPoints":775},{"rank":416,"wallet":"0x9727e451546e8d2103d432967796904164477d9a","totalPoints":774,"weeklyPoints":774},{"rank":417,"wallet":"0x294550d046773278ca8e9072ce4e697e6d949f41","totalPoints":770,"weeklyPoints":770},{"rank":418,"wallet":"0x69f40ae0e91845ac3bdb1cf80d09d662afd30576","totalPoints":925,"weeklyPoints":768},{"rank":418,"wallet":"0x36649afca98c71ffa75ab2a626bd6f208520e6f4","totalPoints":1200,"weeklyPoints":0},{"rank":419,"wallet":"0x25dba842220d8ffe1ab6014539128bb76c2cc40e","totalPoints":15432,"weeklyPoints":765},{"rank":420,"wallet":"0x1a48f4f0781bbe369c567169e30513ec155eae4e","totalPoints":765,"weeklyPoints":765},{"rank":421,"wallet":"0xe7e7f922cfc016b96658b4a5dd26f59231f3c93e","totalPoints":757,"weeklyPoints":757},{"rank":422,"wallet":"0xc984e1f0c91bf40ce023c385a823d7fbd6a043ff","totalPoints":752,"weeklyPoints":752},{"rank":423,"wallet":"0x87415604e043d6f688eb0e9d8e6b41809d3b8a61","totalPoints":752,"weeklyPoints":752},{"rank":424,"wallet":"0x7e6b1200e996da4beb3e5c631fea8927bef4a5c7","totalPoints":750,"weeklyPoints":750},{"rank":425,"wallet":"0x472f212479000bc16169db2dfed9310c466528ed","totalPoints":749,"weeklyPoints":749},{"rank":426,"wallet":"0xe5fcfca8519154ad9d73893e381db99fcafbf5af","totalPoints":748,"weeklyPoints":748},{"rank":427,"wallet":"0x75775181080b3684cc3be770ba070d1ecc1ec50d","totalPoints":793,"weeklyPoints":743},{"rank":428,"wallet":"0xc20c94022182505a0c73d1f235acb86647bda29e","totalPoints":740,"weeklyPoints":740},{"rank":429,"wallet":"0xa6c0501cb2b3864338f75bb4bf2932390f98ceb3","totalPoints":738,"weeklyPoints":738},{"rank":430,"wallet":"0xdc44816d18c1fa71d895a9cef9ee899fc5a2666b","totalPoints":737,"weeklyPoints":737},{"rank":431,"wallet":"0x2245c733dd052343b60f44130a25c9f574a696d4","totalPoints":730,"weeklyPoints":730},{"rank":432,"wallet":"0x83bad39f067ef72e354f2ea9d318eaad381a7f15","totalPoints":722,"weeklyPoints":722},{"rank":433,"wallet":"0xe7a9f850b32d279ecca2c97411754afaf440156a","totalPoints":770,"weeklyPoints":720},{"rank":434,"wallet":"0xe9bd9bce3b1ab61f380547ebac49b4d0bfae1c0c","totalPoints":717,"weeklyPoints":717},{"rank":435,"wallet":"0x68292357e9b0b35e08861ccdb53290bdb92999c5","totalPoints":1079,"weeklyPoints":712},{"rank":436,"wallet":"0x8647e3f8c78c7b4d603c65c1f1d01a15f6bdb31c","totalPoints":710,"weeklyPoints":710},{"rank":437,"wallet":"0xbdfa4f4492dd7b7cf211209c4791af8d52bf5c50","totalPoints":709,"weeklyPoints":709},{"rank":438,"wallet":"0x2515926e3a14ea1f3e7fd70b35cb8d6214398fb0","totalPoints":706,"weeklyPoints":706},{"rank":439,"wallet":"0x8199117a9580a98e40b732b735fc42753422f981","totalPoints":706,"weeklyPoints":706},{"rank":440,"wallet":"0x1e20462daf2d8ffa7332ac91db2b77ad0351c202","totalPoints":2168,"weeklyPoints":703},{"rank":441,"wallet":"0x963266a2a9c2068dda656b93e32e2e4dbff14b68","totalPoints":702,"weeklyPoints":702},{"rank":442,"wallet":"0x8eeceec8367efb3951b50c98ab3a846adf7d8a38","totalPoints":701,"weeklyPoints":701},{"rank":443,"wallet":"0x663bdcb9e4d515db3c56e890b7660e8878aa9749","totalPoints":695,"weeklyPoints":695},{"rank":444,"wallet":"0x4f8382f3d38108128e98b621f7370179dd99e1b6","totalPoints":758,"weeklyPoints":691},{"rank":444,"wallet":"0x6fd9ed768d4b3bd159a69d64d64c2b85b10a43df","totalPoints":1100,"weeklyPoints":0},{"rank":445,"wallet":"0x2c4dac5203ae03debf541e279e9923eff1924121","totalPoints":687,"weeklyPoints":687},{"rank":445,"wallet":"0xfc7af206e1a69f7886fb47ff8e1287fff4406d03","totalPoints":1100,"weeklyPoints":0},{"rank":446,"wallet":"0xb2c2a17df5fabed1b4ca9d6b0d19d7af51bdb58e","totalPoints":736,"weeklyPoints":686},{"rank":447,"wallet":"0x217d452b93dd9d369d4242c744da5484e59db312","totalPoints":686,"weeklyPoints":686},{"rank":448,"wallet":"0xe7ab68392b3ae1733313ccc379e244de4aebad49","totalPoints":761,"weeklyPoints":684},{"rank":449,"wallet":"0x355c1cf73c2c1d0193b0dac92863d5f254a3e83d","totalPoints":684,"weeklyPoints":684},{"rank":450,"wallet":"0x720fec086d1ee3378f5e724f3dcf1dfcd80f5ee2","totalPoints":683,"weeklyPoints":683},{"rank":451,"wallet":"0x60931f62c4a80623df942d0e88feb34c67bcff13","totalPoints":679,"weeklyPoints":679},{"rank":452,"wallet":"0xf3346db25e4a35996ac6f77fd174f471e904a33f","totalPoints":677,"weeklyPoints":677},{"rank":453,"wallet":"0x46a28e29171ac075d1532d8adf2e1df7f61e33c5","totalPoints":673,"weeklyPoints":673},{"rank":454,"wallet":"0xb342cad05655cee7c8c50124504c7c989a50907a","totalPoints":670,"weeklyPoints":670},{"rank":455,"wallet":"0x93a692fe5477902c3cf5f6997c1cf59a3712ced4","totalPoints":669,"weeklyPoints":669},{"rank":456,"wallet":"0x82e3b7b3467f975903f3ef3cb307f4f278e0fffa","totalPoints":666,"weeklyPoints":666},{"rank":457,"wallet":"0xd755a8d0c72b379f445ab17fe60af9a76eaad221","totalPoints":658,"weeklyPoints":658},{"rank":458,"wallet":"0xff33c82337dce4a11af0bc4b7cd6d281738a5a37","totalPoints":658,"weeklyPoints":658},{"rank":458,"wallet":"0x4a242a7a733d58dd05acd5c02c4f19cbe0fd0e1f","totalPoints":1027,"weeklyPoints":0},{"rank":459,"wallet":"0x0f3d9384c109ccbc17a167cee5ad8efd855da261","totalPoints":657,"weeklyPoints":657},{"rank":460,"wallet":"0xebc6592e62753fdca2798f0389a3a7e7c952d861","totalPoints":706,"weeklyPoints":656},{"rank":461,"wallet":"0x7fdd4d253998769874cbb594e1a975c5b4ff9b48","totalPoints":702,"weeklyPoints":652},{"rank":462,"wallet":"0x4b05fee30ba471941ed1fd6fb3f68bcdfecfc036","totalPoints":652,"weeklyPoints":652},{"rank":463,"wallet":"0x43a5de74e350ff0b746639b5d4e6c150716401e7","totalPoints":651,"weeklyPoints":651},{"rank":464,"wallet":"0xfdaf855829f2c296a2c78743c539b3395dfcfc1e","totalPoints":644,"weeklyPoints":644},{"rank":465,"wallet":"0xa46ad30767a6185c337155bc555e3e7333b48d13","totalPoints":642,"weeklyPoints":642},{"rank":466,"wallet":"0xf25041497082f71223e89d40efb75c66af87e408","totalPoints":641,"weeklyPoints":641},{"rank":467,"wallet":"0x6fea30497a5465a603213f292c99bc9085dc5845","totalPoints":639,"weeklyPoints":639},{"rank":468,"wallet":"0x66b1edd8de72741b80b61bdf746c4ea0c821699f","totalPoints":639,"weeklyPoints":639},{"rank":469,"wallet":"0xa43346642567fe2bced401832daa438fb92d61e4","totalPoints":683,"weeklyPoints":633},{"rank":470,"wallet":"0xcc2f25693d6e7459b0917c6d075f38ea1f5d5c96","totalPoints":999,"weeklyPoints":632},{"rank":471,"wallet":"0x64c7189da07d232c34f13d0a409abfe23cd77c8a","totalPoints":680,"weeklyPoints":630},{"rank":472,"wallet":"0x80ab7bb96ec9d42830276565f3771948382fdbf3","totalPoints":630,"weeklyPoints":630},{"rank":473,"wallet":"0xbc4619ed07a421ce9e4a1b9147c853db74924b78","totalPoints":679,"weeklyPoints":629},{"rank":474,"wallet":"0x54e4e2f96de9591d67fe3bba440b540cecf21ba1","totalPoints":920,"weeklyPoints":627},{"rank":475,"wallet":"0x87486b18526ab3dacf1e1e8a4b0d5c3a6978bdc9","totalPoints":677,"weeklyPoints":627},{"rank":476,"wallet":"0x2e9985b38b347f705a65575d5c7c767d61be0a56","totalPoints":627,"weeklyPoints":627},{"rank":477,"wallet":"0x62b12e2a1a852aa03cc8610323baac982cb23f92","totalPoints":1542,"weeklyPoints":625},{"rank":478,"wallet":"0x0bf70902219881598352214950c1ce7f33945dea","totalPoints":621,"weeklyPoints":621},{"rank":478,"wallet":"0x025f7cb6bdb8cd6ed126e1cb2efe2fc3539602b8","totalPoints":965,"weeklyPoints":0},{"rank":479,"wallet":"0xd4392a8a247705fa29e32dce8e72e60a4f1aa06c","totalPoints":617,"weeklyPoints":617},{"rank":480,"wallet":"0x0b17cf48420400e1d71f8231d4a8e43b3566bb5b","totalPoints":614,"weeklyPoints":614},{"rank":481,"wallet":"0xd9eed39ffcf0274c0b44e3f50586b208b9e8b50b","totalPoints":613,"weeklyPoints":613},{"rank":482,"wallet":"0xe7c2dfe9897274b930aaf70d35ee451588b6f0a5","totalPoints":659,"weeklyPoints":609},{"rank":483,"wallet":"0xa0f2e2f7b3ab58e3e52b74f08d94ae52778d46df","totalPoints":608,"weeklyPoints":608},{"rank":484,"wallet":"0xda30d629fbf792e56c74c20ec17f5ca96f41aec6","totalPoints":608,"weeklyPoints":608},{"rank":485,"wallet":"0x255b767d27622bff4587611f89e2002b95eed854","totalPoints":606,"weeklyPoints":606},{"rank":486,"wallet":"0x8f2df56bcecb03e9118a8c78b454e7ecf1592872","totalPoints":605,"weeklyPoints":605},{"rank":487,"wallet":"0xfc38641c2dbd49bcc0a746c68baf4ae7bed4d2f4","totalPoints":605,"weeklyPoints":605},{"rank":488,"wallet":"0x47d1944c18ca7b47438f2710ad4476add342c30e","totalPoints":603,"weeklyPoints":603},{"rank":489,"wallet":"0x5508ee93c62505a983bcd927854d1ca329e15857","totalPoints":600,"weeklyPoints":600},{"rank":490,"wallet":"0x05d79534d876578fb2da65220a66d6c953c8b252","totalPoints":648,"weeklyPoints":598},{"rank":491,"wallet":"0x821221842fd8c25f124165df51a684a1c433f36e","totalPoints":595,"weeklyPoints":595},{"rank":492,"wallet":"0x96cb80b9e136320a1faf632982d35ae54bddbab9","totalPoints":18185,"weeklyPoints":594},{"rank":493,"wallet":"0x71c39125034c8d0467a4710edadd638db0d128c2","totalPoints":890,"weeklyPoints":594},{"rank":494,"wallet":"0x6a5dbf2fb5206ec8192620810c3edb6d5e62b188","totalPoints":593,"weeklyPoints":593},{"rank":495,"wallet":"0x627ea69fbc1fb269a94c5832a804b8ea99042154","totalPoints":593,"weeklyPoints":593},{"rank":496,"wallet":"0xb9b98205f564666f7b432b942642e45d23acd5d4","totalPoints":812,"weeklyPoints":592},{"rank":496,"wallet":"0xe834504cf05c57e7f246900431b7fa03c9bf3f5a","totalPoints":917,"weeklyPoints":0},{"rank":497,"wallet":"0x6613113a35ebc3fe14346d20078c331b00d23dda","totalPoints":589,"weeklyPoints":589},{"rank":498,"wallet":"0xeb2edccfac15189cd9bfe1191f794b7c06a685af","totalPoints":588,"weeklyPoints":588},{"rank":499,"wallet":"0xd5341d82350fd09012375ffb4d8b3cdf22634286","totalPoints":588,"weeklyPoints":588},{"rank":500,"wallet":"0x5d4df680d2aec9d745dd7dca1b28aad765e36ca6","totalPoints":588,"weeklyPoints":588}];
+export const RAW_3 = [
+  {
+    "wallet": "0x239e9e51a7a881221c4cec228e1d093b5a434dc8",
+    "rank": 401,
+    "totalPoints": 2077,
+    "weeklyPoints": 1824
+  },
+  {
+    "wallet": "0xdc1cc838ce64e14a7af47c08dbf64c595a6aa4d4",
+    "rank": 402,
+    "totalPoints": 2075,
+    "weeklyPoints": 2075
+  },
+  {
+    "wallet": "0x01a2052d61e4558cacce7d4b2e795e9793e6b0fc",
+    "rank": 403,
+    "totalPoints": 2069,
+    "weeklyPoints": 560
+  },
+  {
+    "wallet": "0xe455eb3c10378010dc35c1ee9bc75a5b93dc8976",
+    "rank": 404,
+    "totalPoints": 2064,
+    "weeklyPoints": 2064
+  },
+  {
+    "wallet": "0x0c19fda23415b752734003946cec6861d7318597",
+    "rank": 405,
+    "totalPoints": 2060,
+    "weeklyPoints": 936
+  },
+  {
+    "wallet": "0x9d99e0488a2dbf17ca2d692f5688f10072a8fad9",
+    "rank": 406,
+    "totalPoints": 2030,
+    "weeklyPoints": 571
+  },
+  {
+    "wallet": "0x2b7eb65b0f55eee19bff5a66fba989ae0118fb12",
+    "rank": 407,
+    "totalPoints": 1975,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x453d1549f8d8c9fe42416741073246b42c2b8a3e",
+    "rank": 408,
+    "totalPoints": 1962,
+    "weeklyPoints": 29
+  },
+  {
+    "wallet": "0x768263481c4703c22144558112d931b683492b52",
+    "rank": 409,
+    "totalPoints": 1960,
+    "weeklyPoints": 1150
+  },
+  {
+    "wallet": "0x7132b5edc9ee267c58d3562d3e621384b18da7f3",
+    "rank": 410,
+    "totalPoints": 1957,
+    "weeklyPoints": 45
+  },
+  {
+    "wallet": "0x5de0c18ad34e2895aa6b7088e4e42305909d409d",
+    "rank": 411,
+    "totalPoints": 1940,
+    "weeklyPoints": 1120
+  },
+  {
+    "wallet": "0x1d1714a49483f4b2b71f468cf471e13eedcf760a",
+    "rank": 412,
+    "totalPoints": 1932,
+    "weeklyPoints": 67
+  },
+  {
+    "wallet": "0x96e24c5ae25cf5652038f9afb96ec1ca2825cf05",
+    "rank": 413,
+    "totalPoints": 1929,
+    "weeklyPoints": 1929
+  },
+  {
+    "wallet": "0x4f84e68d07bb2909144dc59000abaf1e0931f709",
+    "rank": 414,
+    "totalPoints": 1923,
+    "weeklyPoints": 1094
+  },
+  {
+    "wallet": "0x77fabb24d656cc08153309ca9fd9e9c41c6c2005",
+    "rank": 415,
+    "totalPoints": 1920,
+    "weeklyPoints": 1465
+  },
+  {
+    "wallet": "0x807b755d5374769dd5282a05ebaca84ca70af607",
+    "rank": 416,
+    "totalPoints": 1910,
+    "weeklyPoints": 694
+  },
+  {
+    "wallet": "0x5ec19b48741322ec4c54fd642ffc7ed306ef4a4c",
+    "rank": 417,
+    "totalPoints": 1904,
+    "weeklyPoints": 1089
+  },
+  {
+    "wallet": "0xf9f02def55e1cceedf017e0353c14ba6f7f4d3df",
+    "rank": 418,
+    "totalPoints": 1902,
+    "weeklyPoints": 1575
+  },
+  {
+    "wallet": "0x37c997b512afd73f8cda05d8a872b990ccd27d6d",
+    "rank": 419,
+    "totalPoints": 1900,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x74d611c7fbf8bfe0737e0cd3f7a032246bd8a6d3",
+    "rank": 420,
+    "totalPoints": 1893,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x6eb53d61a9a9315a7dc1b0d083fa3935a7b851ce",
+    "rank": 421,
+    "totalPoints": 1884,
+    "weeklyPoints": 1378
+  },
+  {
+    "wallet": "0x25c1541071258523322657289a4c2923c21185d2",
+    "rank": 422,
+    "totalPoints": 1883,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x88004441a0f79727d19a2697344244c901736e0a",
+    "rank": 423,
+    "totalPoints": 1875,
+    "weeklyPoints": 480
+  },
+  {
+    "wallet": "0xba64f7895f7546244d11e345eae803da2ef1afc2",
+    "rank": 424,
+    "totalPoints": 1874,
+    "weeklyPoints": 1874
+  },
+  {
+    "wallet": "0xecbd5c9c1e3ef761bbedcb9f4f08839bc8f22059",
+    "rank": 425,
+    "totalPoints": 1870,
+    "weeklyPoints": 1074
+  },
+  {
+    "wallet": "0xd365670968fe006c225d3195f4d59723c5c1c170",
+    "rank": 426,
+    "totalPoints": 1865,
+    "weeklyPoints": 78
+  },
+  {
+    "wallet": "0xe8ce8248ad8b87d56163c24d21772785f811544f",
+    "rank": 427,
+    "totalPoints": 1862,
+    "weeklyPoints": 726
+  },
+  {
+    "wallet": "0x6d140bd6c0eff25e3a628d95be7864aca6e86a58",
+    "rank": 428,
+    "totalPoints": 1862,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xec8982195f339e202c0450c7baa82fb201003222",
+    "rank": 429,
+    "totalPoints": 1861,
+    "weeklyPoints": 1663
+  },
+  {
+    "wallet": "0xedf7b675a2fe3c27efb263fb4c204a3f0fb17d46",
+    "rank": 430,
+    "totalPoints": 1857,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x637c47c9486353671f0f59f712258872e7d36255",
+    "rank": 431,
+    "totalPoints": 1854,
+    "weeklyPoints": 347
+  },
+  {
+    "wallet": "0x4947d60680d76c506807b4bf13aa04683fff3f25",
+    "rank": 432,
+    "totalPoints": 1846,
+    "weeklyPoints": 1423
+  },
+  {
+    "wallet": "0xeca622a39c03ab4cb191bc09c9cc0dadb216eadd",
+    "rank": 433,
+    "totalPoints": 1843,
+    "weeklyPoints": 81
+  },
+  {
+    "wallet": "0xc6a9218386a5d9146f6ec46f96d24251cfeabb66",
+    "rank": 434,
+    "totalPoints": 1842,
+    "weeklyPoints": 9
+  },
+  {
+    "wallet": "0xcc974ff463659d200fc0bcb66754072159b3b8c7",
+    "rank": 435,
+    "totalPoints": 1840,
+    "weeklyPoints": 1840
+  },
+  {
+    "wallet": "0xd6890661aa2fdb0d71803ada58f6e294c4a5e038",
+    "rank": 436,
+    "totalPoints": 1836,
+    "weeklyPoints": 671
+  },
+  {
+    "wallet": "0xf42fe4b1b165b7523afd1ac44d147ed2a208a38b",
+    "rank": 437,
+    "totalPoints": 1835,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x50b73d52a00dd10feef49a074657285515020320",
+    "rank": 438,
+    "totalPoints": 1833,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x83bad39f067ef72e354f2ea9d318eaad381a7f15",
+    "rank": 439,
+    "totalPoints": 1831,
+    "weeklyPoints": 1109
+  },
+  {
+    "wallet": "0xa991253c9a8670a26b9c19879b19e14b4607d991",
+    "rank": 440,
+    "totalPoints": 1829,
+    "weeklyPoints": 494
+  },
+  {
+    "wallet": "0xeed2a5fd7b8b2142f8a0fab770f7ed1de3f2ed64",
+    "rank": 441,
+    "totalPoints": 1822,
+    "weeklyPoints": 683
+  },
+  {
+    "wallet": "0x5cb58bfa6916c501cd3d0839df2318a6e288d05f",
+    "rank": 442,
+    "totalPoints": 1822,
+    "weeklyPoints": 166
+  },
+  {
+    "wallet": "0x3b464c069a714f4d9a12b349b6120af74c817baa",
+    "rank": 443,
+    "totalPoints": 1819,
+    "weeklyPoints": 749
+  },
+  {
+    "wallet": "0xc69f099ed802590908197e7b5a7d695da6877141",
+    "rank": 444,
+    "totalPoints": 1812,
+    "weeklyPoints": 25
+  },
+  {
+    "wallet": "0xe4911ba1e8d27d3cfa025bd7f7ce78e662d63345",
+    "rank": 445,
+    "totalPoints": 1811,
+    "weeklyPoints": 1811
+  },
+  {
+    "wallet": "0x947a5a2e5b096752f0f3663964dd52151e3ad2b9",
+    "rank": 446,
+    "totalPoints": 1811,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xc0cdbcd0b24361df8a888e18d2a3cedd4cec948e",
+    "rank": 447,
+    "totalPoints": 1799,
+    "weeklyPoints": 1388
+  },
+  {
+    "wallet": "0xc74ed898456fc7bbbbd7c8805bfdaf7ce3d4d513",
+    "rank": 448,
+    "totalPoints": 1798,
+    "weeklyPoints": 1798
+  },
+  {
+    "wallet": "0x187b6ab771482ccfee7cd2c35176080631082368",
+    "rank": 449,
+    "totalPoints": 1794,
+    "weeklyPoints": 443
+  },
+  {
+    "wallet": "0x317a57705ef848452a93fcca21a392bbe386ca23",
+    "rank": 450,
+    "totalPoints": 1783,
+    "weeklyPoints": 446
+  },
+  {
+    "wallet": "0x4c1e900cb9083329fc930b9eb8fddc1905f197b5",
+    "rank": 451,
+    "totalPoints": 1781,
+    "weeklyPoints": 1484
+  },
+  {
+    "wallet": "0x090197aade9266008141e9e32c144526a0004cc6",
+    "rank": 452,
+    "totalPoints": 1781,
+    "weeklyPoints": 2
+  },
+  {
+    "wallet": "0xdc5afb5de928bac740e4bcb1600b93504560d850",
+    "rank": 453,
+    "totalPoints": 1780,
+    "weeklyPoints": 376
+  },
+  {
+    "wallet": "0x303e302d7db847491d59bdfbe320b1ed4bbd9443",
+    "rank": 454,
+    "totalPoints": 1776,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x9a11f826b680c6a94c98d0afd24ca1604fddebef",
+    "rank": 455,
+    "totalPoints": 1773,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x385e318e8aeb0d68fe472d0f74a886cfb48551a4",
+    "rank": 456,
+    "totalPoints": 1769,
+    "weeklyPoints": 1673
+  },
+  {
+    "wallet": "0x93a692fe5477902c3cf5f6997c1cf59a3712ced4",
+    "rank": 457,
+    "totalPoints": 1762,
+    "weeklyPoints": 1093
+  },
+  {
+    "wallet": "0x1cca082840abf3c851c2d261771fc8f43daefca0",
+    "rank": 458,
+    "totalPoints": 1761,
+    "weeklyPoints": 1470
+  },
+  {
+    "wallet": "0xe8000d7f9e36360e431ef17f0c842716753b8dc6",
+    "rank": 459,
+    "totalPoints": 1753,
+    "weeklyPoints": 676
+  },
+  {
+    "wallet": "0xdfd302dd8d0582c62922d8de1c122420ca426948",
+    "rank": 460,
+    "totalPoints": 1742,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x0ff7f5043dd39186c2df04f81cfa95672b8a3994",
+    "rank": 461,
+    "totalPoints": 1738,
+    "weeklyPoints": 1532
+  },
+  {
+    "wallet": "0x138d2eaa9014e8f675b3a4b17e3cea3c0ebf17e0",
+    "rank": 462,
+    "totalPoints": 1736,
+    "weeklyPoints": 1614
+  },
+  {
+    "wallet": "0xb4aca4d18c3f3ad9bfddd0a0dc8f669d51798dea",
+    "rank": 463,
+    "totalPoints": 1733,
+    "weeklyPoints": 123
+  },
+  {
+    "wallet": "0x87d63b96ca7695775fdde18ade27480143f9dfa0",
+    "rank": 464,
+    "totalPoints": 1733,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xf5d0495bfaf012940711f8ecc42e83c42a14f658",
+    "rank": 465,
+    "totalPoints": 1726,
+    "weeklyPoints": 38
+  },
+  {
+    "wallet": "0x87415604e043d6f688eb0e9d8e6b41809d3b8a61",
+    "rank": 466,
+    "totalPoints": 1718,
+    "weeklyPoints": 966
+  },
+  {
+    "wallet": "0xec3eb5c74955f0ee151aae4bc6e89e8affa3eca1",
+    "rank": 467,
+    "totalPoints": 1710,
+    "weeklyPoints": 804
+  },
+  {
+    "wallet": "0x459e9e7fa2631ce07a8369beeaebce0a660b9ecc",
+    "rank": 468,
+    "totalPoints": 1698,
+    "weeklyPoints": 459
+  },
+  {
+    "wallet": "0x2fcb3fef0bf57fd3f1428d00d91e50aeff0ca48c",
+    "rank": 469,
+    "totalPoints": 1693,
+    "weeklyPoints": 17
+  },
+  {
+    "wallet": "0xb5ed4580baa8724804e04616422772ccd4c862cf",
+    "rank": 470,
+    "totalPoints": 1684,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x4ca33aa149888e4ceda33ecdd367837f59116406",
+    "rank": 471,
+    "totalPoints": 1680,
+    "weeklyPoints": 1347
+  },
+  {
+    "wallet": "0xcd90574bc2ef39bcebbc5561c1c9d8e42110c239",
+    "rank": 472,
+    "totalPoints": 1678,
+    "weeklyPoints": 1116
+  },
+  {
+    "wallet": "0x62b12e2a1a852aa03cc8610323baac982cb23f92",
+    "rank": 473,
+    "totalPoints": 1672,
+    "weeklyPoints": 130
+  },
+  {
+    "wallet": "0x14b27e03a394cadec25b2b20573e1ce88f482e91",
+    "rank": 474,
+    "totalPoints": 1664,
+    "weeklyPoints": 400
+  },
+  {
+    "wallet": "0xc526fb73c639aaf21aa9aafe7ac5249c249e2730",
+    "rank": 475,
+    "totalPoints": 1659,
+    "weeklyPoints": 1492
+  },
+  {
+    "wallet": "0x66b1edd8de72741b80b61bdf746c4ea0c821699f",
+    "rank": 476,
+    "totalPoints": 1655,
+    "weeklyPoints": 1016
+  },
+  {
+    "wallet": "0x83eebeca1d2f6ec2e7d43e1f1c9ebe959bc4029a",
+    "rank": 477,
+    "totalPoints": 1655,
+    "weeklyPoints": 773
+  },
+  {
+    "wallet": "0x7846e738f5509a23de53820fea3031ebe4def351",
+    "rank": 478,
+    "totalPoints": 1652,
+    "weeklyPoints": 1494
+  },
+  {
+    "wallet": "0xb8a0b7e09d883ae98ab223e8dfda627fc9d04c9f",
+    "rank": 479,
+    "totalPoints": 1644,
+    "weeklyPoints": 1644
+  },
+  {
+    "wallet": "0x4ab57461f2e09b950525d9acb029c924a17317ff",
+    "rank": 480,
+    "totalPoints": 1644,
+    "weeklyPoints": 631
+  },
+  {
+    "wallet": "0x98840ea7ff0710e8f1f9249905f3417d5272d227",
+    "rank": 481,
+    "totalPoints": 1644,
+    "weeklyPoints": 239
+  },
+  {
+    "wallet": "0x43a5de74e350ff0b746639b5d4e6c150716401e7",
+    "rank": 482,
+    "totalPoints": 1642,
+    "weeklyPoints": 991
+  },
+  {
+    "wallet": "0xf76ec434dc20c3fa13980b5f04db1d14024ce701",
+    "rank": 483,
+    "totalPoints": 1635,
+    "weeklyPoints": 257
+  },
+  {
+    "wallet": "0x5cdae504b8b91bc9969803280cffc5bfe45254ed",
+    "rank": 484,
+    "totalPoints": 1632,
+    "weeklyPoints": 569
+  },
+  {
+    "wallet": "0x17735ad53064ebc0456622e0309bb4abb3dcbe5b",
+    "rank": 485,
+    "totalPoints": 1625,
+    "weeklyPoints": 1539
+  },
+  {
+    "wallet": "0x0d5922477ccecf4745e31dc3ab46e43c59b1f658",
+    "rank": 486,
+    "totalPoints": 1613,
+    "weeklyPoints": 97
+  },
+  {
+    "wallet": "0x117e1ebb7d05545064850513021df6ade3c1690b",
+    "rank": 487,
+    "totalPoints": 1611,
+    "weeklyPoints": 684
+  },
+  {
+    "wallet": "0x593d8058af933b82b1f5743e7d2ef7eadfa47ce2",
+    "rank": 488,
+    "totalPoints": 1604,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xb91ce9129a30d9e891bb670672a452034ffe0860",
+    "rank": 489,
+    "totalPoints": 1587,
+    "weeklyPoints": 103
+  },
+  {
+    "wallet": "0x6fea30497a5465a603213f292c99bc9085dc5845",
+    "rank": 490,
+    "totalPoints": 1586,
+    "weeklyPoints": 947
+  },
+  {
+    "wallet": "0x3a26d11a8883df7518a968ee20a27f9e2bb48784",
+    "rank": 491,
+    "totalPoints": 1586,
+    "weeklyPoints": 572
+  },
+  {
+    "wallet": "0x55dfbe2e4437b23926a3ee761c5582a40ba65a48",
+    "rank": 492,
+    "totalPoints": 1586,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x3e7794fade79741551608cd8e5cc948e35b627fe",
+    "rank": 493,
+    "totalPoints": 1580,
+    "weeklyPoints": 1580
+  },
+  {
+    "wallet": "0x7f1ae4cc24d79161b3a5db05a3dbc39d00eb2709",
+    "rank": 494,
+    "totalPoints": 1580,
+    "weeklyPoints": 22
+  },
+  {
+    "wallet": "0xee5d702c37139d893d730d00831d057cdbb509f4",
+    "rank": 495,
+    "totalPoints": 1573,
+    "weeklyPoints": 1272
+  },
+  {
+    "wallet": "0xa5019cf0224d21d41437d3cd7648d39a5868282f",
+    "rank": 496,
+    "totalPoints": 1572,
+    "weeklyPoints": 466
+  },
+  {
+    "wallet": "0x5b9f7f6c2cbe7425b9c03fe5254ced9fae05b50c",
+    "rank": 497,
+    "totalPoints": 1566,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x85bd6874ce656b3ab058df04d1b64f30b15d350d",
+    "rank": 498,
+    "totalPoints": 1565,
+    "weeklyPoints": 153
+  },
+  {
+    "wallet": "0xcc7e2574edf131ea9bfcb3ac50e01d66c71c170c",
+    "rank": 499,
+    "totalPoints": 1561,
+    "weeklyPoints": 52
+  },
+  {
+    "wallet": "0xa0f2e2f7b3ab58e3e52b74f08d94ae52778d46df",
+    "rank": 500,
+    "totalPoints": 1558,
+    "weeklyPoints": 950
+  },
+  {
+    "wallet": "0x2f2f665974261c4129b1dc6c359bd259cd66f78a",
+    "rank": 501,
+    "totalPoints": 1558,
+    "weeklyPoints": 24
+  },
+  {
+    "wallet": "0x0005ca2f309ea1e280521fde3220e669c451e913",
+    "rank": 502,
+    "totalPoints": 1554,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xc2adca5fdff401097f04468b7a022f0a9f3c46b9",
+    "rank": 503,
+    "totalPoints": 1545,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x95b4d8de77be9b2cd7848072d315770511373197",
+    "rank": 504,
+    "totalPoints": 1535,
+    "weeklyPoints": 573
+  },
+  {
+    "wallet": "0xbb2ea38a99fdc89dd22d06009ba34aa4081075ce",
+    "rank": 505,
+    "totalPoints": 1535,
+    "weeklyPoints": 89
+  },
+  {
+    "wallet": "0x963266a2a9c2068dda656b93e32e2e4dbff14b68",
+    "rank": 506,
+    "totalPoints": 1530,
+    "weeklyPoints": 828
+  },
+  {
+    "wallet": "0x95d4b05a61341592dd0bfa6fd0dcbebbfd0b5da9",
+    "rank": 507,
+    "totalPoints": 1525,
+    "weeklyPoints": 256
+  },
+  {
+    "wallet": "0x6eeb400b09bf54452947e2ed4a03648a3f5efb50",
+    "rank": 508,
+    "totalPoints": 1522,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x9d71b3ee654bd0759d822ec3c89885f7a84501f1",
+    "rank": 509,
+    "totalPoints": 1516,
+    "weeklyPoints": 1430
+  },
+  {
+    "wallet": "0xf2f57d43cd39837c62e94dfacf66bb507b28853e",
+    "rank": 510,
+    "totalPoints": 1516,
+    "weeklyPoints": 595
+  },
+  {
+    "wallet": "0xa0bb8934bd44a7900add77fe21af2efd9121b3c9",
+    "rank": 511,
+    "totalPoints": 1515,
+    "weeklyPoints": 127
+  },
+  {
+    "wallet": "0x5c270528353b44b9e11fbef10aaa91765d040969",
+    "rank": 512,
+    "totalPoints": 1509,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x624b3e19e11d1e5a591afa1e9c61002258c471a8",
+    "rank": 513,
+    "totalPoints": 1507,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x30a26c2837e9ad41ea5955949f00402dbf86f124",
+    "rank": 514,
+    "totalPoints": 1499,
+    "weeklyPoints": 353
+  },
+  {
+    "wallet": "0x83fdc811b8d0fb9eef1a94462005e0d3e8bed64f",
+    "rank": 515,
+    "totalPoints": 1491,
+    "weeklyPoints": 288
+  },
+  {
+    "wallet": "0x17352485a7b4533afec62da15d492579bb83776e",
+    "rank": 516,
+    "totalPoints": 1487,
+    "weeklyPoints": 1390
+  },
+  {
+    "wallet": "0xc23a22e08e89b74a69da058a011a5ed97c747521",
+    "rank": 517,
+    "totalPoints": 1484,
+    "weeklyPoints": 1376
+  },
+  {
+    "wallet": "0x1af4fa98d39ad9b551a887544fd05d5d247fd4ff",
+    "rank": 518,
+    "totalPoints": 1484,
+    "weeklyPoints": 1253
+  },
+  {
+    "wallet": "0x405512912c51c81cc663921a5733e6d19d0e5cc5",
+    "rank": 519,
+    "totalPoints": 1481,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xc3aab477f9279ba2d4697f804518fa91696de042",
+    "rank": 520,
+    "totalPoints": 1480,
+    "weeklyPoints": 406
+  },
+  {
+    "wallet": "0x8b41f6c128f755d84af944a2257b16478e63e425",
+    "rank": 521,
+    "totalPoints": 1474,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xc8ddae24d836f58ea4a5cc11e62aaf781c5ed6c0",
+    "rank": 522,
+    "totalPoints": 1472,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xc560bc4a6e6f7b48e3c4876acc822da87b692578",
+    "rank": 523,
+    "totalPoints": 1467,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x47f1905cd4ca0d65c37ababc56931ec95805a54f",
+    "rank": 524,
+    "totalPoints": 1467,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xc22e97801ed1aa3cfbbb40b251773d8917249a82",
+    "rank": 525,
+    "totalPoints": 1467,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x5d0ac389c669d6efe3ba96b9878d8156f180c539",
+    "rank": 526,
+    "totalPoints": 1466,
+    "weeklyPoints": 471
+  },
+  {
+    "wallet": "0x30ed73e8bf9ade841779d76ba332aefb9af31dee",
+    "rank": 527,
+    "totalPoints": 1462,
+    "weeklyPoints": 43
+  },
+  {
+    "wallet": "0x56a061f4ef706e1f6dcdbcf7e10e4340c1d99bbd",
+    "rank": 528,
+    "totalPoints": 1461,
+    "weeklyPoints": 947
+  },
+  {
+    "wallet": "0xe5cde6071ff829c1297b7a944cebb276050a1ae8",
+    "rank": 529,
+    "totalPoints": 1459,
+    "weeklyPoints": 1459
+  },
+  {
+    "wallet": "0x007717bd3342b172c0a1e4349c92d2513d000d49",
+    "rank": 530,
+    "totalPoints": 1438,
+    "weeklyPoints": 1438
+  },
+  {
+    "wallet": "0xb00b18b3bf6ecc43e6235ee69424d4a220437a4d",
+    "rank": 531,
+    "totalPoints": 1432,
+    "weeklyPoints": 862
+  },
+  {
+    "wallet": "0x174e02265cb9f03dc26cec9a045913fd84e7f387",
+    "rank": 532,
+    "totalPoints": 1423,
+    "weeklyPoints": 94
+  },
+  {
+    "wallet": "0xb2d23184b35329a401d578d01e19dd1bdc7c43d5",
+    "rank": 533,
+    "totalPoints": 1419,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x7fb05c8a178cfdbb6a5a4d875b5bd3bcbe2b7f32",
+    "rank": 534,
+    "totalPoints": 1412,
+    "weeklyPoints": 16
+  },
+  {
+    "wallet": "0x0e9beee0eebd1e1b1e49e2d6011cfd0b59bb79c3",
+    "rank": 535,
+    "totalPoints": 1409,
+    "weeklyPoints": 340
+  },
+  {
+    "wallet": "0xf886a86bed90747eda4b8227afefad7d98f612b7",
+    "rank": 536,
+    "totalPoints": 1407,
+    "weeklyPoints": 1033
+  },
+  {
+    "wallet": "0x9cb21ce0ff81e55db73bbb36d5a9eac9d50a938b",
+    "rank": 537,
+    "totalPoints": 1407,
+    "weeklyPoints": 152
+  },
+  {
+    "wallet": "0x1ece8e8929b0d8846715a13cb9b4a2ebe85f4943",
+    "rank": 538,
+    "totalPoints": 1394,
+    "weeklyPoints": 493
+  },
+  {
+    "wallet": "0xbc38869609040bb20a884beef46acff1be966889",
+    "rank": 539,
+    "totalPoints": 1393,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xe3d2ea2804819286cc9199dd8b06ae5dac366cc0",
+    "rank": 540,
+    "totalPoints": 1392,
+    "weeklyPoints": 239
+  },
+  {
+    "wallet": "0x4ea3bf404aafe9066d3ad2a5323bdb4f5be5d281",
+    "rank": 541,
+    "totalPoints": 1390,
+    "weeklyPoints": 1232
+  },
+  {
+    "wallet": "0x4df7ce9b7aecc7dd8379cd2e01295fe4ffa6999d",
+    "rank": 542,
+    "totalPoints": 1390,
+    "weeklyPoints": 837
+  },
+  {
+    "wallet": "0x724b5a7029da169618ec92ef88c59039723195fb",
+    "rank": 543,
+    "totalPoints": 1389,
+    "weeklyPoints": 1021
+  },
+  {
+    "wallet": "0xd278a769940ba618a7f8260a4ba5777ff974bdbb",
+    "rank": 544,
+    "totalPoints": 1388,
+    "weeklyPoints": 445
+  },
+  {
+    "wallet": "0xfb07303c6d4ad156a8370ecf129bf0e0740f8125",
+    "rank": 545,
+    "totalPoints": 1387,
+    "weeklyPoints": 10
+  },
+  {
+    "wallet": "0x62de84e817a9f328605122acb88a6449100680f2",
+    "rank": 546,
+    "totalPoints": 1383,
+    "weeklyPoints": 534
+  },
+  {
+    "wallet": "0xc911fa29808479b3c862c7531ea1a4c34e3a4100",
+    "rank": 547,
+    "totalPoints": 1379,
+    "weeklyPoints": 616
+  },
+  {
+    "wallet": "0x0e01b9d728bef0f3a0d88be539704a6513bec4c7",
+    "rank": 548,
+    "totalPoints": 1379,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x73507506efaf47dcdc84aae5b87ade5d7d7f14c6",
+    "rank": 549,
+    "totalPoints": 1371,
+    "weeklyPoints": 102
+  },
+  {
+    "wallet": "0x775d1bd04e076e5812adab5a8ba2c4de71a8e50d",
+    "rank": 550,
+    "totalPoints": 1368,
+    "weeklyPoints": 533
+  },
+  {
+    "wallet": "0x16d171bcdbfaee03a566fd03c9cd9779e5a7e371",
+    "rank": 551,
+    "totalPoints": 1367,
+    "weeklyPoints": 975
+  },
+  {
+    "wallet": "0x784ddfd11f498cd388970293c39709aa3275e4c7",
+    "rank": 552,
+    "totalPoints": 1355,
+    "weeklyPoints": 1355
+  },
+  {
+    "wallet": "0x0d56eb924c31a42219c3ca915d019ad8174e1441",
+    "rank": 553,
+    "totalPoints": 1353,
+    "weeklyPoints": 1277
+  },
+  {
+    "wallet": "0xf271698bb09914dd7f54654ce1810cf4b0dcb123",
+    "rank": 554,
+    "totalPoints": 1353,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xd1b7ba65398fff9d581acf6aeb4cb80c216ef95a",
+    "rank": 555,
+    "totalPoints": 1351,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x7d047a4bd4b89ecb0998b4e1f89b171dc2f057ee",
+    "rank": 556,
+    "totalPoints": 1346,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xb28f51be955d3e1f83a494c805e3d3f627cd0ad1",
+    "rank": 557,
+    "totalPoints": 1343,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x637fed24d31822d36a74fd9e35fa5b9f05820ef0",
+    "rank": 558,
+    "totalPoints": 1342,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x9540cee706d07b9347816e15c661e9c6cb1b7d81",
+    "rank": 559,
+    "totalPoints": 1342,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x12920c17acb822f40d1b62ef776e28637e982547",
+    "rank": 560,
+    "totalPoints": 1338,
+    "weeklyPoints": 43
+  },
+  {
+    "wallet": "0xf0df21e24569a69773287a5b654274e285ee545c",
+    "rank": 561,
+    "totalPoints": 1333,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x134215819032c6d9eec2d386ffc01e50e26e1dad",
+    "rank": 562,
+    "totalPoints": 1332,
+    "weeklyPoints": 835
+  },
+  {
+    "wallet": "0x577b2ddf06fcfc2abf73c9bd64e9a9c8aedaed94",
+    "rank": 563,
+    "totalPoints": 1323,
+    "weeklyPoints": 376
+  },
+  {
+    "wallet": "0xd427b458dbecaf81af0b8db53c10404249e81b00",
+    "rank": 564,
+    "totalPoints": 1315,
+    "weeklyPoints": 199
+  },
+  {
+    "wallet": "0x19f605f48cb963115f5d8f8d9e8ec1890877745b",
+    "rank": 565,
+    "totalPoints": 1315,
+    "weeklyPoints": 12
+  },
+  {
+    "wallet": "0x52eb8a6ed274b7ea5fc33dda79c448d9bed9c611",
+    "rank": 566,
+    "totalPoints": 1292,
+    "weeklyPoints": 99
+  },
+  {
+    "wallet": "0x1b394344da437549860964aa1e42aa86f9bcbfc9",
+    "rank": 567,
+    "totalPoints": 1291,
+    "weeklyPoints": 150
+  },
+  {
+    "wallet": "0x33d3cad5b003ae22eee3e2f4bf014539efbd5347",
+    "rank": 568,
+    "totalPoints": 1290,
+    "weeklyPoints": 1086
+  },
+  {
+    "wallet": "0x13e2d56ca035257fb75a27b7e49a78ed03d213e9",
+    "rank": 569,
+    "totalPoints": 1273,
+    "weeklyPoints": 737
+  },
+  {
+    "wallet": "0x5806b8892f0a4eb308855bf6807426721b225f14",
+    "rank": 570,
+    "totalPoints": 1267,
+    "weeklyPoints": 462
+  },
+  {
+    "wallet": "0x6620f274fb8512d3e2e954e325e044a018c475b4",
+    "rank": 571,
+    "totalPoints": 1261,
+    "weeklyPoints": 147
+  },
+  {
+    "wallet": "0xd3e2b7c68a9bf6567b5c12165e0520876164e0c2",
+    "rank": 572,
+    "totalPoints": 1258,
+    "weeklyPoints": 27
+  },
+  {
+    "wallet": "0x79603115df2ba00659adc63192325cf104ca529c",
+    "rank": 573,
+    "totalPoints": 1256,
+    "weeklyPoints": 141
+  },
+  {
+    "wallet": "0x4d2d988f3264a8c01298492ee4a599594bc95f94",
+    "rank": 574,
+    "totalPoints": 1247,
+    "weeklyPoints": 464
+  },
+  {
+    "wallet": "0x1888e621ad15059944ed92dd5469417eb193fb51",
+    "rank": 575,
+    "totalPoints": 1245,
+    "weeklyPoints": 253
+  },
+  {
+    "wallet": "0x4f8382f3d38108128e98b621f7370179dd99e1b6",
+    "rank": 576,
+    "totalPoints": 1237,
+    "weeklyPoints": 479
+  },
+  {
+    "wallet": "0x90f15e09b8fb5bc080b968170c638920db3a3446",
+    "rank": 577,
+    "totalPoints": 1237,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xfd6aee13b037fe2644dbff826e3642338a205907",
+    "rank": 578,
+    "totalPoints": 1235,
+    "weeklyPoints": 979
+  },
+  {
+    "wallet": "0x64c7189da07d232c34f13d0a409abfe23cd77c8a",
+    "rank": 579,
+    "totalPoints": 1233,
+    "weeklyPoints": 553
+  },
+  {
+    "wallet": "0x68292357e9b0b35e08861ccdb53290bdb92999c5",
+    "rank": 580,
+    "totalPoints": 1233,
+    "weeklyPoints": 154
+  },
+  {
+    "wallet": "0x291e4ebb46c04d87c2fb10582b20e9258a1a83f8",
+    "rank": 581,
+    "totalPoints": 1229,
+    "weeklyPoints": 16
+  },
+  {
+    "wallet": "0x39cc765cd610e8fcd24d07fe01fccfe7eca7810b",
+    "rank": 582,
+    "totalPoints": 1226,
+    "weeklyPoints": 867
+  },
+  {
+    "wallet": "0xf8c6d1017b151414165c3b62d9bf5d61b845d1a2",
+    "rank": 583,
+    "totalPoints": 1224,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x0374f0273e01841f594a4c0becdf7bfbd9b13a42",
+    "rank": 584,
+    "totalPoints": 1219,
+    "weeklyPoints": 276
+  },
+  {
+    "wallet": "0xb0419e2419db9ac33ef36256b2a99d12c30c9fb0",
+    "rank": 585,
+    "totalPoints": 1219,
+    "weeklyPoints": 14
+  },
+  {
+    "wallet": "0x90c5c5affe4a64611ac677fe4981481d16d2ee21",
+    "rank": 586,
+    "totalPoints": 1218,
+    "weeklyPoints": 841
+  },
+  {
+    "wallet": "0x4269bf9727ed052c40e6f127ee0dd5e2ddee6289",
+    "rank": 587,
+    "totalPoints": 1213,
+    "weeklyPoints": 190
+  },
+  {
+    "wallet": "0x9bca105c43ff4210d26db8a178de69c13a4ba521",
+    "rank": 588,
+    "totalPoints": 1210,
+    "weeklyPoints": 1155
+  },
+  {
+    "wallet": "0xab8a7fef1b3f53476d9ce47d4f74d999a1dacf8c",
+    "rank": 589,
+    "totalPoints": 1210,
+    "weeklyPoints": 15
+  },
+  {
+    "wallet": "0x1b4862f983aa573518b612f1bb1579f4b02796cb",
+    "rank": 590,
+    "totalPoints": 1204,
+    "weeklyPoints": 1035
+  },
+  {
+    "wallet": "0x75775181080b3684cc3be770ba070d1ecc1ec50d",
+    "rank": 591,
+    "totalPoints": 1204,
+    "weeklyPoints": 411
+  },
+  {
+    "wallet": "0x3e486ec07a997d51c78d74c76d6f4b74ec1c2018",
+    "rank": 592,
+    "totalPoints": 1204,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0x36649afca98c71ffa75ab2a626bd6f208520e6f4",
+    "rank": 593,
+    "totalPoints": 1200,
+    "weeklyPoints": 0
+  },
+  {
+    "wallet": "0xd9f0834e7ca9b9262df3189b850ebf9514027e82",
+    "rank": 594,
+    "totalPoints": 1197,
+    "weeklyPoints": 13
+  },
+  {
+    "wallet": "0xec1e56c07db492895c0e39fbcde800e277c41ab3",
+    "rank": 595,
+    "totalPoints": 1195,
+    "weeklyPoints": 5
+  },
+  {
+    "wallet": "0x6936865ecddd44f623cc1f83cd4ba312362947d0",
+    "rank": 596,
+    "totalPoints": 1194,
+    "weeklyPoints": 829
+  },
+  {
+    "wallet": "0xf002fcaf8a060808ed39d04e6ff92425080a71d7",
+    "rank": 597,
+    "totalPoints": 1192,
+    "weeklyPoints": 365
+  },
+  {
+    "wallet": "0xc8292bc6b2076e231cb127f5b7a0818fbcbf211d",
+    "rank": 598,
+    "totalPoints": 1188,
+    "weeklyPoints": 19
+  },
+  {
+    "wallet": "0xc1e7ca17274c36a3358460f93ce30200916688b6",
+    "rank": 599,
+    "totalPoints": 1184,
+    "weeklyPoints": 339
+  },
+  {
+    "wallet": "0x55824087db3e0f877e555cdcc60768ea1f4b8cd0",
+    "rank": 600,
+    "totalPoints": 1184,
+    "weeklyPoints": 0
+  }
+];
