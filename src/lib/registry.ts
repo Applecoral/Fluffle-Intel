@@ -110,6 +110,7 @@ export const PROTOCOLS: Protocol[] = [
       primary: "0x0BE268Ebb2114C39Ca817FFf66503d4785eD019a",
       secondary: "0xE5BbEF8De2DB447a7432A47EBa58924d94eE470e",
       tertiary: "0xF9f676066eB7BaEEED93E859BC26a41663F277A8",
+      quaternary: "0x05f6d632d5ac8cEAc09AECdc9Fb8bf990B4a2732",
       nftPositionManager: "0x2b781C57e6358f64864Ff8EC464a03Fdaf9974bA"
     },
     verified: true

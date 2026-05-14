@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Header } from "./components/Header";
 import { Navigation } from "./components/Navigation";
 import { Dashboard } from "./components/Dashboard";
@@ -14,6 +14,9 @@ export default function App() {
     const saved = localStorage.getItem("fluffle_selectedWallet");
     return saved ? JSON.parse(saved) : null;
   });
+
+  // Store scroll positions for different views to restore them when navigating back
+  const scrollPositions = useRef<Record<string, number>>({});
 
   // Leaderboard state persistence
   const [leaderboardPage, setLeaderboardPage] = useState(1);
@@ -32,6 +35,31 @@ export default function App() {
     }
   }, [selectedWallet]);
 
+  // Handle restoring scroll position when returning from detail view
+  useEffect(() => {
+    if (!selectedWallet) {
+      const savedPos = scrollPositions.current[activeTab];
+      if (savedPos !== undefined) {
+        // We wait for the list component to be mounted (AnimatePresence mode="wait" means it mounts after exit animation)
+        const timer = setTimeout(() => {
+          window.scrollTo({
+            top: savedPos,
+            behavior: "instant"
+          });
+        }, 350); // Slightly more than the exit animation duration usually works best
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [selectedWallet, activeTab]);
+
+  const handleSelectWallet = (address: string, rank: number) => {
+    // Capture position before moving to detail view
+    scrollPositions.current[activeTab] = window.scrollY;
+    setSelectedWallet({ address, rank });
+    // Detail view usually should start at top
+    window.scrollTo(0, 0);
+  };
+
   const renderContent = () => {
     // If a wallet is selected, show its detail view
     if (selectedWallet) {
@@ -41,6 +69,7 @@ export default function App() {
            initial={{ opacity: 0, x: 20 }}
            animate={{ opacity: 1, x: 0 }}
            exit={{ opacity: 0, x: -20 }}
+           transition={{ duration: 0.3 }}
         >
           <WalletDetail 
             address={selectedWallet.address} 
@@ -60,8 +89,9 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <Dashboard onSelectWallet={(address, rank) => setSelectedWallet({ address, rank })} />
+            <Dashboard onSelectWallet={handleSelectWallet} />
           </motion.div>
         );
       case "leaderboard":
@@ -71,9 +101,10 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
             <LeaderboardPage 
-              onSelectWallet={(address, rank) => setSelectedWallet({ address, rank })} 
+              onSelectWallet={handleSelectWallet} 
               currentPage={leaderboardPage}
               onPageChange={setLeaderboardPage}
               searchQuery={leaderboardSearch}
@@ -84,7 +115,7 @@ export default function App() {
           </motion.div>
         );
       default:
-        return <Dashboard onSelectWallet={(address, rank) => setSelectedWallet({ address, rank })} />;
+        return <Dashboard onSelectWallet={handleSelectWallet} />;
     }
   };
 
