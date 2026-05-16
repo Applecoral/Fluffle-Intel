@@ -2,6 +2,16 @@ import { Protocol, Token } from "../types";
 
 export const PROTOCOLS: Protocol[] = [
   {
+    name: "Aave V3",
+    slug: "aave-v3",
+    website: "https://app.aave.com",
+    category: "lending",
+    contracts: {
+      pool: "0x7e324AbC5De01d112AfC03a584966ff199741C28"
+    },
+    verified: true
+  },
+  {
     name: "AveForge",
     slug: "aveforge",
     website: "https://www.aveforge.gg/",
